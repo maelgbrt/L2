@@ -1,7 +1,7 @@
 V "GNAT Lib v13"
 M P W=b
 A -g
-P SS ZX
+P ZX
 
 RN
 RV NO_ALLOCATORS
@@ -11,103 +11,100 @@ RV NO_RECURSION
 RV NO_STANDARD_ALLOCATORS_AFTER_ELABORATION
 RV NO_STANDARD_STORAGE_POOLS
 
-U main%b		main.adb		8acd5b3d NE OO SU IL
+U main%b		main.adb		5f2b28c0 NE OO SU IL
 W ada%s			ada.ads			ada.ali
 W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
-W ada.strings%s		a-string.ads		a-string.ali
 Z ada.strings.text_buffers%s  a-sttebu.adb	a-sttebu.ali
-W ada.strings.unbounded%s  a-strunb.adb		a-strunb.ali
-W ada.strings.unbounded.text_io%s  a-suteio.adb	a-suteio.ali
 W ada.text_io%s		a-textio.adb		a-textio.ali
+W ada.wide_wide_text_io%s  a-ztexio.adb		a-ztexio.ali
 
 D ada.ads		20240521074738 76789da1 ada%s
-D a-charac.ads		20240521074737 2d3ec45b ada.characters%s
-D a-chlat1.ads		20240521074737 e0d72e76 ada.characters.latin_1%s
 D a-except.ads		20240521074738 2a7d8d70 ada.exceptions%s
-D a-finali.ads		20240521074738 bf4f806b ada.finalization%s
 D a-inteio.ads		20240521074738 f64b89a4 ada.integer_text_io%s
 D a-ioexce.ads		20240521074738 40018c65 ada.io_exceptions%s
 D a-stream.ads		20240521074738 119b8fb3 ada.streams%s
 D a-string.ads		20240521074738 90ac6797 ada.strings%s
-D a-strmap.ads		20240521074738 ed8acfdb ada.strings.maps%s
 D a-sttebu.ads		20240521074738 f1ad67a2 ada.strings.text_buffers%s
-D a-strunb.ads		20240521074738 7bfb7010 ada.strings.unbounded%s
-D a-suteio.ads		20240521074738 26d8e9aa ada.strings.unbounded.text_io%s
 D a-stuten.ads		20240521074738 c6ced0ae ada.strings.utf_encoding%s
 D a-tags.ads		20240521074738 9eaa38c6 ada.tags%s
 D a-textio.ads		20240521074738 5c2c6153 ada.text_io%s
 D a-tiinio.ads		20240521074738 e58fa6fb ada.text_io.integer_io%s
 D a-unccon.ads		20240521074738 0e9b276f ada.unchecked_conversion%s
+D a-ztexio.ads		20240521074738 ce8ac589 ada.wide_wide_text_io%s
+D a-ztinio.ads		20240521074738 d1030009 ada.wide_wide_text_io.integer_io%s
 D interfac.ads		20240521074738 15f799c2 interfaces%s
 D i-cstrea.ads		20240521074738 e53d8b8e interfaces.c_streams%s
-D main.adb		20260303105716 7d892a70 main%b
+D main.adb		20260303111252 3bc605be main%b
 D system.ads		20240521074738 426dafb8 system%s
-D s-atocou.ads		20240521074738 dc18efc3 system.atomic_counters%s
 D s-crtl.ads		20240521074738 8a0692f8 system.crtl%s
 D s-exctab.ads		20240521074738 91bef6ef system.exception_table%s
 D s-ficobl.ads		20240521074738 dc5161d4 system.file_control_block%s
-D s-finroo.ads		20240521074738 4ff27390 system.finalization_root%s
 D s-parame.ads		20240904144414 1f39ba92 system.parameters%s
 D s-putima.ads		20240521074738 17291fe4 system.put_images%s
-D s-retsta.ads		20240521074738 0f6b06cb system.return_stack%s
 D s-secsta.ads		20240521074738 578279f5 system.secondary_stack%s
 D s-soflin.ads		20240521074738 df77073e system.soft_links%s
 D s-stache.ads		20240521074738 0b81c1fe system.stack_checking%s
 D s-stalib.ads		20240521074738 1c9580f6 system.standard_library%s
 D s-stoele.ads		20240521074738 ab5468e4 system.storage_elements%s
 D s-stoele.adb		20240521074738 8f5a9db6 system.storage_elements%b
-D s-stratt.ads		20240521074738 f7dfd786 system.stream_attributes%s
 D s-traent.ads		20240521074738 c81cbf8c system.traceback_entries%s
 D s-unstyp.ads		20240521074738 fa2a7f59 system.unsigned_types%s
 D s-wchcon.ads		20240521074738 d9032363 system.wch_con%s
 G a e
-G c Z b b [main standard 9 11 none]
+G c Z b b [main standard 10 11 none]
 X 1 ada.ads
-16K9*Ada 20e8 21|1r6 1r23 2r6 3r5 4r6 5r5 6r6 6r31
-X 6 a-inteio.ads
-18K13*Integer_Text_IO[17|46] 21|6w10 6r35
-X 9 a-string.ads
-16K13*Strings 35e16 21|2r10 3r9 4r10 5r9
-X 12 a-strunb.ads
-85K21*Unbounded 766e26 21|2w18 3r17 4r18 5r17
-X 13 a-suteio.ads
-39K31*Text_IO 61e34 21|4w28 5r27
-X 16 a-textio.ads
-58K13*Text_IO 787e16 21|1w10 1r27
-566U14*Put_Line 21|96s1
-X 17 a-tiinio.ads
-83U14*Put 21|62s13[6|18] 97s1[6|18]
-X 21 main.adb
-9U11*main 9b11 103l5 103t9
-17R9 noeud 18r25 19c9 22e14 46r23 47r23 48r23 49r23 52r23 53r23 56r35
-18P9 Arbre(17R9) 21r16 37r10 46r10 47r10 48r10 49r10 52r10 53r10 56r22 59r29
-. 69r30
-20i7 val{integer} 62r20 73r15 74r28
-21p7 fg{18P9} 63r23 74r47 76r39
-21p11 fd{18P9} 64r23 74r75 76r67
-24R9 noeud_liste 25r25 26c9 29e14 87r21
-25P9 liste(24R9) 28r14 84r47
-27i7 n{integer}
-28p7 suiv{25P9}
-33R9 elem 34r29 35c9 39e14
-34P9 liste_arb(33R9) 38r13 84r29
-36i7 n{integer} 87r51
-37p7 a{18P9} 87r47
-38p7 suiv{34P9} 87r68
-46p4 F5{18P9} 52r34
-47p4 F15{18P9} 52r39
-48p4 F25{18P9} 53r34
-49p4 F35{18P9} 53r39
-52p4 N10{18P9} 56r46
-53p4 N30{18P9} 56r51
-56p4 Mon_Grand_Arbre{18P9} 95r10 97r16
-59U14 Affiche 59b14 59>22 63s13 64s13 66l9 66t16 95s1
-59p22 a{18P9} 61r12 62r18 63r21 64r21
-69V13 somme_sup{integer} 69b13 69>23 69>37 74s34 74s62 76s26 76s54 80l9 80t18
-. 87s34 97s5
-69p23 a{18P9} 72r10 73r13 74r26 74r45 74r73 76r37 76r65
-69i37 Element{integer} 73r22 74r51 74r79 76r43 76r70
-70i5 res{integer} 74m13 74r20 76m13 76r20 79r14
-84V14 mega_somme{25P9} 84b14 84>25 87s54 91l8 91t18
-84p25 L{34P9} 86r10 87r45 87r49 87r66
+16K9*Ada 20e8 17|1r6 1r23 6r6 6r31 7r6 109r7 112r7
+X 3 a-inteio.ads
+18K13*Integer_Text_IO[11|46] 17|6w10 6r35 109r11
+X 10 a-textio.ads
+58K13*Text_IO 787e16 17|1w10 1r27 112r11
+88I12*Field{integer}
+282U14*New_Line 17|112s19
+566U14*Put_Line 17|121s1 123s1
+X 11 a-tiinio.ads
+83U14*Put 17|73s13[3|18] 109s27[3|18] 122s1[3|18]
+84i7 Item{integer} 17|109r31[3|18]
+85i7 Width{10|88I12} 17|109r44[3|18]
+X 13 a-ztexio.ads
+52K13*Wide_Wide_Text_IO 494e26 17|7w10
+X 17 main.adb
+10U11*main 10b11 130l5 130t9
+18R9 noeud 19r25 20c9 23e14 47r23 48r23 49r23 50r23 53r23 54r23 57r35
+19P9 Arbre(18R9) 22r16 38r10 47r10 48r10 49r10 50r10 53r10 54r10 57r22 70r29
+. 80r30
+21i7 val{integer} 73r20 84r15 85r28
+22p7 fg{19P9} 74r23 85r47 87r39
+22p11 fd{19P9} 75r23 85r75 87r67
+25R9 noeud_liste 26r25 27c9 30e14 62r22 63r22 64r22 65r22 67r28 98r21
+26P9 liste(25R9) 29r14 62r9 63r9 64r9 65r9 67r15 95r47 105r36
+28i7 n{integer} 109r41
+29p7 suiv{26P9} 114r23
+34R9 elem 35r29 36c9 40e14
+35P9 liste_arb(34R9) 39r13 95r29
+37i7 n{integer} 98r51
+38p7 a{19P9} 98r47
+39p7 suiv{35P9} 98r68
+47p4 F5{19P9} 53r34
+48p4 F15{19P9} 53r39
+49p4 F25{19P9} 54r34
+50p4 F35{19P9} 54r39
+53p4 N10{19P9} 57r46
+54p4 N30{19P9} 57r51
+57p4 Mon_Grand_Arbre{19P9} 120r10 122r16
+62p4 L1{26P9} 63r38
+63p4 L2{26P9} 64r38
+64p4 L3{26P9} 65r37 67r44
+65p4 L4{26P9}
+67p4 Ma_Liste{26P9} 124r15
+70U14 Affiche 70b14 70>22 74s13 75s13 77l9 77t16 120s1
+70p22 a{19P9} 72r12 73r18 74r21 75r21
+80V13 somme_sup{integer} 80b13 80>23 80>37 85s34 85s62 87s26 87s54 91l9 91t18
+. 98s34 122s5
+80p23 a{19P9} 83r10 84r13 85r26 85r45 85r73 87r37 87r65
+80i37 Element{integer} 84r22 85r51 85r79 87r43 87r70
+81i5 res{integer} 85m13 85r20 87m13 87r20 90r14
+95V14 mega_somme{26P9} 95b14 95>25 98s54 102l8 102t18
+95p25 L{35P9} 97r10 98r45 98r49 98r66
+105U14 Affiche_liste 105b14 105>29 114s7 116l5 116t18 124s1
+105p29 l{26P9} 107r7 109r39 114r21
 

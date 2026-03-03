@@ -33,8 +33,8 @@ package body ada_main is
    E133 : Short_Integer; pragma Import (Ada, E133, "system__finalization_root_E");
    E131 : Short_Integer; pragma Import (Ada, E131, "ada__finalization_E");
    E130 : Short_Integer; pragma Import (Ada, E130, "system__file_io_E");
-   E150 : Short_Integer; pragma Import (Ada, E150, "ada__strings__unbounded_E");
    E104 : Short_Integer; pragma Import (Ada, E104, "ada__text_io_E");
+   E150 : Short_Integer; pragma Import (Ada, E150, "ada__wide_wide_text_io_E");
    E142 : Short_Integer; pragma Import (Ada, E142, "system__img_llli_E");
    E139 : Short_Integer; pragma Import (Ada, E139, "system__img_lli_E");
 
@@ -47,17 +47,17 @@ package body ada_main is
 
    procedure finalize_library is
    begin
-      E104 := E104 - 1;
+      E150 := E150 - 1;
       declare
          procedure F1;
-         pragma Import (Ada, F1, "ada__text_io__finalize_spec");
+         pragma Import (Ada, F1, "ada__wide_wide_text_io__finalize_spec");
       begin
          F1;
       end;
-      E150 := E150 - 1;
+      E104 := E104 - 1;
       declare
          procedure F2;
-         pragma Import (Ada, F2, "ada__strings__unbounded__finalize_spec");
+         pragma Import (Ada, F2, "ada__text_io__finalize_spec");
       begin
          F2;
       end;
@@ -222,11 +222,12 @@ package body ada_main is
       E131 := E131 + 1;
       System.File_Io'Elab_Body;
       E130 := E130 + 1;
-      Ada.Strings.Unbounded'Elab_Spec;
-      E150 := E150 + 1;
       Ada.Text_Io'Elab_Spec;
       Ada.Text_Io'Elab_Body;
       E104 := E104 + 1;
+      Ada.Wide_Wide_Text_Io'Elab_Spec;
+      Ada.Wide_Wide_Text_Io'Elab_Body;
+      E150 := E150 + 1;
       System.Img_Llli'Elab_Spec;
       E142 := E142 + 1;
       System.Img_Lli'Elab_Spec;
