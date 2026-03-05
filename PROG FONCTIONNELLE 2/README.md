@@ -106,3 +106,41 @@ let creer_rat =
     function denum ->
         ( num , denum );;
 ```
+
+
+<br>
+On va écrire inverse_rat
+
+```
+inverse_rat
+
+let inverse_rat = function rat ->
+    let num = denom rat
+    and denum = numer rat in
+    creer_rat ( num , denum);;
+```
+<br>
+On va faire ensuite **mult_rat**
+
+```
+let mult_rat = function rat ->
+    let num = numer rat
+    and let denum = denom rat in
+    num * denum;;
+```
+
+<br>
+
+On va faire ensuite **mult_rat**
+
+```
+
+let div_rat = function rat ->
+    let num = numer rat
+    and let denum = denom rat in
+    num / denum;;
+
+```
+
+
+
