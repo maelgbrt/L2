@@ -1,7 +1,20 @@
 // Code en C
 
-#include <stdio.h>
+#include <stdio.h> //pr le printf
 
+#include "tableau.h"
+#include "fonctions.h"
+
+    struct Etudiant
+    {
+        char nom[50];
+        int age;
+        float moyenne;
+    };
+
+
+// on  va declarer dans autre fichier pour rviter den avoir plein en entête
+// int power(int value, int exp);
 
 void main(void)
 {
@@ -22,13 +35,60 @@ void main(void)
     }
 
 
+    printf("\n");
+
+    int tab[3];
+
+    tab[0] = 1 ;
+    tab[1] = 3 ;
+    tab[2] = 7 ;
+
+    printf("%d\n", tab[1]);
+    
+      printf("\n");
+
+
+    int res = power(2,6);
+    printf("%d\n",res);
 
     char c;
 
-    while (c != 'a')
-    {
-        putchar(c); //Traiter Element
-        c = getchar(); //Passer à l'element suivant
-    }
-    
+    multiplier_par_7(3);
+    multiplier_par_7_avec_pointeur(&mon_premier_entier_info403);
+
+        struct Etudiant julien;
+        julien.age = 42;
+        printf("%d\n",julien.age);
+
+
+    // while (c != 'a')
+    // {
+    //     putchar(c); //Traiter Element
+    //     c = getchar(); //Passer à l'element suivant
+
+    // }
+  
 }
+
+    int power(int value, int exp)
+    {
+        int res = 1;
+        for (int i = 1 ; i <= exp; i++)
+        {
+            res = res * value;
+        }
+        return res;
+    }
+
+    void multiplier_par_7(int n){
+        
+        n = 7 * n;
+        printf("ENtier multiplié par 7 : %d\n" , n);
+
+    }
+
+   void multiplier_par_7_avec_pointeur(int *n){
+        
+        *n = 7 * (*n);
+    }
+
