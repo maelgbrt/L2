@@ -382,11 +382,13 @@ let rec anniv = function tListesEleves-> function ladate ->
         else
         general tListesEleves ladate cette_annee;;
     (*
-    
+
     test : 
       liste_annee maliste noel;;
       - : tListesEleves = ClEleves (Cetudiant ("Mael", "Gaborit", 51, Cdate (25, 12, 2018), "Info"), CLNotes_vide) 
       
     *)
+
+    
 
   
