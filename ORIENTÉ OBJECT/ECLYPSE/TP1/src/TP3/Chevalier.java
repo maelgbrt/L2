@@ -1,0 +1,82 @@
+package TP3;
+
+import java.util.ArrayList;
+
+import TP2.Livre;
+
+public class Chevalier implements Entites {
+	//attributs
+	private String nom;
+	private int pv;
+	private int posX;
+	private int posY;
+	ArrayList<Graal> sac = new ArrayList<Graal>();
+	
+	
+	//constructeurs
+	public Chevalier(String nom,int pv) {
+		this.nom = nom;
+		this.pv = pv;
+	}
+	
+	public Chevalier(String nom) {
+		this.nom = nom;
+		this.pv = 50;
+	}
+	public ArrayList<Graal> getSac() {
+		return sac;
+	}
+	
+	public String getNom() {
+		return nom;
+	}
+	
+	public void setPv(int pv) {
+		this.pv = pv;
+	}
+	
+	public int getPv() {
+		return pv;
+	}
+	
+	public void setBag(Entites e) {
+		sac.add((Graal) e);
+	}
+	
+	public int getX() {
+		return posX;
+	}
+	public int getY() {
+		return posY;
+	}
+	
+    public void setPosition(int nouvelleX, int nouvelleY) {
+    	this.posX = nouvelleX;
+    	this.posY = nouvelleY;
+    }
+
+	
+	@Override
+	public boolean equals(Object o) {
+		boolean res = false;
+		if (o instanceof Chevalier) {
+			Chevalier c = (Chevalier) o;
+			res = nom.equals(c.nom);
+		}
+		return res;
+	}
+	
+	
+	
+	public String recupInitial() {
+		return "C";
+	}
+	
+	public String toString() {
+		return "Chevalier " + nom+ " " +pv+"pv" + " sac :" + sac;
+		
+	}
+
+	
+}
+

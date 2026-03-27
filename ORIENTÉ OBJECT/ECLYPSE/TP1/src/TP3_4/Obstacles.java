@@ -1,0 +1,25 @@
+package TP3_4;
+
+public class Obstacles extends Object_Quete{
+	//attributs
+
+	//contructeur
+	public Obstacles(String nom, int pv,String initial) {
+		this.nom = nom;
+		this.pv = pv;
+		this.initial = initial;
+	}
+	
+	
+	
+	//affichage
+	@Override
+	public String toString() {
+		return nom + " initial " + initial + " enlève " + pv + " pv";
+	}
+
+	
+	
+	
+}
+

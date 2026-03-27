@@ -1,0 +1,11 @@
+name = "projet_test"
+description = "test du compiler"
+version = "0.1.0-dev"
+
+authors = ["Mael Gaborit"]
+maintainers = ["Mael Gaborit <example@example.com>"]
+licenses = "MIT OR Apache-2.0 WITH LLVM-exception"
+website = ""
+tags = []
+
+executables = ["projet_test"]

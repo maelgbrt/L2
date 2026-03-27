@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<style type="text/css">
+td.java, td.java-ln {vertical-align:top;}
+tt.java, tt.java-ln, pre.java, pre.java-ln {line-height:1em; margin-bottom:0em;}
+td.java-ln { text-align:right; }
+tt.java-ln, pre.java-ln { color:#888888 }
+/* Background       */ span.java0  { font-size: 10pt; color:#ffffff; }
+/* Line numbers       */ span.java1  { font-size: 10pt; color:#808080; }
+/* Multi-line comments       */ span.java2  { font-size: 10pt; color:#3f7f5f; }
+/* Single-line comments       */ span.java3  { font-size: 10pt; color:#3f7f5f; }
+/* Keywords       */ span.java4  { font-size: 10pt; color:#7f0055; font-weight:bold; }
+/* Strings       */ span.java5  { font-size: 10pt; color:#2a00ff; }
+/* Character constants       */ span.java6  { font-size: 10pt; color:#990000; }
+/* Numeric constants       */ span.java7  { font-size: 10pt; color:#990000; }
+/* Parenthesis       */ span.java8  { font-size: 10pt; color:#000000; }
+/* Primitive Types       */ span.java9  { font-size: 10pt; color:#7f0055; font-weight:bold; }
+/* Others       */ span.java10  { font-size: 10pt; color:#000000; }
+/* Javadoc keywords       */ span.java11  { font-size: 10pt; color:#7f9fbf; }
+/* Javadoc HTML tags       */ span.java12  { font-size: 10pt; color:#7f7f9f; }
+/* Javadoc links       */ span.java13  { font-size: 10pt; color:#3f3fbf; }
+/* Javadoc others       */ span.java14  { font-size: 10pt; color:#3f5fbf; }
+/* Undefined       */ span.java15  { font-size: 10pt; color:#ff6100; }
+/* Annotation       */ span.java16  { font-size: 10pt; color:#646464; }
+</style>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<title></title>
+</head>
+<body>
+<div class="java"><code class="java"><span class="java4">package </span><span class="java10">fr.univsavoie.java.swing.tortue;<br />
+<br />
+</span><span class="java4">import </span><span class="java10">java.awt.Color;<br />
+</span><span class="java4">import </span><span class="java10">java.awt.Graphics;<br />
+</span><span class="java4">import </span><span class="java10">java.beans.PropertyChangeEvent;<br />
+</span><span class="java4">import </span><span class="java10">java.beans.PropertyChangeListener;<br />
+</span><span class="java4">import </span><span class="java10">javax.swing.JPanel;<br />
+<br />
+</span><span class="java14">/**<br />
+ * Un composant pour afficher graphiquement la position d'une tortue.<br />
+ * <br />
+ * La tortue est repr&eacute;sent&eacute;e graphiquement par un rond vert. La t&ecirc;te est<br />
+ * repr&eacute;sent&eacute;e par un petit rond vert qui permet de conna&icirc;tre la direction de la<br />
+ * tortue. Le syst&egrave;me de coordonn&eacute;es met l'origine (0,0) en haut &agrave; gauche.<br />
+ * L'axe des abscisses va de la gauche vers la droite et celui des ordonn&eacute;es du<br />
+ * haut vers le bas. Les quatre points cardinaux sont donc plac&eacute;s conform&eacute;ment<br />
+ * &agrave; l'habitude.<br />
+ * <br />
+ * </span><span class="java11">@see </span><span class="java14">Tortue<br />
+ * <br />
+ * </span><span class="java11">@author </span><span class="java14">St&eacute;phane Talbot<br />
+ */<br />
+</span><span class="java4">public class </span><span class="java10">TortueCanvas </span><span class="java4">extends </span><span class="java10">JPanel </span><span class="java4">implements </span><span class="java10">PropertyChangeListener </span><span class="java8">{<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java14">/**<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * La tortue &agrave; afficher<br />
+&#xA0;&#xA0;&#xA0;&#xA0; */<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">private </span><span class="java10">Tortue tortue;<br />
+<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java14">/**<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * Construit un afficheur pour une tortue.<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * <br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@param </span><span class="java14">t<br />
+&#xA0;&#xA0;&#xA0;&#xA0; *&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; la tortue &agrave; afficher.<br />
+&#xA0;&#xA0;&#xA0;&#xA0; *&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@see </span><span class="java14">Tortue<br />
+&#xA0;&#xA0;&#xA0;&#xA0; */<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">public </span><span class="java10">TortueCanvas</span><span class="java8">(</span><span class="java10">Tortue t</span><span class="java8">) {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">super</span><span class="java8">()</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">this</span><span class="java10">.tortue = t;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// on s'inscrit aupres de la tortue pour etre averti des modifications<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">t.addPropertyChangeListener</span><span class="java8">(</span><span class="java4">this</span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// on est opaque de fa&ccedil;on &agrave; pouvoir dessiner le fond<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">this</span><span class="java10">.setOpaque</span><span class="java8">(</span><span class="java4">true</span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// on veut pouvoir obtenir le focus <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">this</span><span class="java10">.setFocusable</span><span class="java8">(</span><span class="java4">true</span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// le fond est vert clair<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">this</span><span class="java10">.setBackground</span><span class="java8">(</span><span class="java4">new </span><span class="java10">Color</span><span class="java8">(</span><span class="java7">200</span><span class="java10">,</span><span class="java7">255</span><span class="java10">,</span><span class="java7">200</span><span class="java8">))</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java14">/**<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * Renvoie la tortue &agrave; afficher.<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * <br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@return </span><span class="java14">la tortue associ&eacute;e &agrave; l'afficheur.<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * <br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@see </span><span class="java14">Tortue<br />
+&#xA0;&#xA0;&#xA0;&#xA0; */<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">private </span><span class="java10">Tortue getTortue</span><span class="java8">() {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">return this</span><span class="java10">.tortue;<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java14">/**<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * On dessine la tortue.<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * <br />
+&#xA0;&#xA0;&#xA0;&#xA0; * La tortue est repr&eacute;sent&eacute;e graphiquement par un rond vert. <br />
+&#xA0;&#xA0;&#xA0;&#xA0; * <br />
+&#xA0;&#xA0;&#xA0;&#xA0; * La t&ecirc;te est repr&eacute;sent&eacute;e par un petit rond vert qui permet <br />
+&#xA0;&#xA0;&#xA0;&#xA0; * de conna&icirc;tre la direction de la tortue. <br />
+&#xA0;&#xA0;&#xA0;&#xA0; * Le syst&egrave;me des coordonn&eacute;es met l'origine (0,0) en haut &agrave;<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * gauche. L'axe des abscisses va de gauche vers la droite et <br />
+&#xA0;&#xA0;&#xA0;&#xA0; * celui des ordonn&eacute;es du haut vers le bas. <br />
+&#xA0;&#xA0;&#xA0;&#xA0; * Les quatres points quardinaux sont donc plac&eacute;s conform&eacute;ment &agrave; l'habitude.<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * <br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@param </span><span class="java14">g<br />
+&#xA0;&#xA0;&#xA0;&#xA0; *&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; java.awt.Graphics<br />
+&#xA0;&#xA0;&#xA0;&#xA0; */<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">public </span><span class="java9">void </span><span class="java10">paintComponent</span><span class="java8">(</span><span class="java10">Graphics g</span><span class="java8">) {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// on appelle paintComponent sur le JPanel, pour afficher le fond...<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">super</span><span class="java10">.paintComponent</span><span class="java8">(</span><span class="java10">g</span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java9">int </span><span class="java10">x = </span><span class="java4">this</span><span class="java10">.getTortue</span><span class="java8">()</span><span class="java10">.getX</span><span class="java8">()</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java9">int </span><span class="java10">y = </span><span class="java4">this</span><span class="java10">.getTortue</span><span class="java8">()</span><span class="java10">.getY</span><span class="java8">()</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// la tortue est vert fonc&eacute;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">g.setColor</span><span class="java8">(</span><span class="java4">new </span><span class="java10">Color</span><span class="java8">(</span><span class="java7">0</span><span class="java10">,</span><span class="java7">150</span><span class="java10">,</span><span class="java7">0</span><span class="java8">))</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// on dessine le corps de la tortue<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">g.fillOval</span><span class="java8">(</span><span class="java10">x - </span><span class="java7">20</span><span class="java10">, y - </span><span class="java7">20</span><span class="java10">, </span><span class="java7">40</span><span class="java10">, </span><span class="java7">40</span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// puis sa t&ecirc;te<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">switch </span><span class="java8">(</span><span class="java4">this</span><span class="java10">.getTortue</span><span class="java8">()</span><span class="java10">.getDirection</span><span class="java8">()) {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">case </span><span class="java10">Tortue.NORD:<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; g.fillOval</span><span class="java8">(</span><span class="java10">x - </span><span class="java7">4</span><span class="java10">, y - </span><span class="java7">27</span><span class="java10">, </span><span class="java7">8</span><span class="java10">, </span><span class="java7">8</span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">break</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">case </span><span class="java10">Tortue.SUD:<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; g.fillOval</span><span class="java8">(</span><span class="java10">x - </span><span class="java7">4</span><span class="java10">, y + </span><span class="java7">19</span><span class="java10">, </span><span class="java7">8</span><span class="java10">, </span><span class="java7">8</span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">break</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">case </span><span class="java10">Tortue.EST:<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; g.fillOval</span><span class="java8">(</span><span class="java10">x + </span><span class="java7">19</span><span class="java10">, y - </span><span class="java7">4</span><span class="java10">, </span><span class="java7">8</span><span class="java10">, </span><span class="java7">8</span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">break</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">case </span><span class="java10">Tortue.OUEST:<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; g.fillOval</span><span class="java8">(</span><span class="java10">x - </span><span class="java7">27</span><span class="java10">, y - </span><span class="java7">4</span><span class="java10">, </span><span class="java7">8</span><span class="java10">, </span><span class="java7">8</span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">break</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+&#xA0;&#xA0;&#xA0; }<br />
+<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java14">/**<br />
+&#xA0;&#xA0;&#xA0;&#xA0; *&#xA0; Action &agrave; effectuer quand le mod&egrave;le est modifi&eacute;.<br />
+&#xA0;&#xA0;&#xA0;&#xA0; *&#xA0; <br />
+&#xA0;&#xA0;&#xA0;&#xA0; *&#xA0; Lorsque la tortue que l'on observe, et qui constitue le mod&egrave;le,<br />
+&#xA0;&#xA0;&#xA0;&#xA0; *&#xA0; nous notifie qu'elle a &eacute;t&eacute; modifi&eacute;e, on appelle repaint() <br />
+&#xA0;&#xA0;&#xA0;&#xA0; *&#xA0; de fa&ccedil;on &agrave; demander un raffraichissement de l'affichage.<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * <br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@see </span><span class="java14">java.beans.PropertyChangeListener#propertyChange(java.beans.PropertyChangeEvent)<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@see </span><span class="java14">java.awt.Component#repaint()<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * <br />
+&#xA0;&#xA0;&#xA0;&#xA0; */<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java16">@Override<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">public </span><span class="java9">void </span><span class="java10">propertyChange</span><span class="java8">(</span><span class="java10">PropertyChangeEvent evt</span><span class="java8">) {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">this</span><span class="java10">.repaint</span><span class="java8">()</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+}</span></code></div></body>
+</html>

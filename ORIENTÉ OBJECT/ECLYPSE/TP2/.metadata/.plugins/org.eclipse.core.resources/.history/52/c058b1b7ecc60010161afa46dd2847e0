@@ -1,0 +1,8 @@
+package TP2;
+
+public interface Rangeable {
+	public int getNbLivres();
+	public void ajouter(Livre);
+	public void chercher(String,String);
+	public void supprimer(String,String);
+}

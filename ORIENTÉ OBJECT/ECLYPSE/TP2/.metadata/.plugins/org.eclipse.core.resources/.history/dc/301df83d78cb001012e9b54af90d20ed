@@ -1,0 +1,27 @@
+package TP3;
+
+
+public class Menu_Principal {
+
+	public static void main(String[] args) {
+		Chevalier ch1 = new Chevalier("Greg",10);
+		Chevalier ch2 = new Chevalier("Fabrice",10);
+		Chevalier ch3 = new Chevalier("François",10);
+		Chevalier ch4 = new Chevalier("Martin",10);
+		
+		Graal excalibur = new Graal("excalibur",100,5,"E");
+		Graal pierre_fal_lial = new Graal("fal lial",80,4,"P");
+		Graal lance_lug = new Graal("lance lug",40,2,"L");
+		Graal Chaudron_connaissance = new Graal("Chaudron_connaissance",50,3,"C");
+		
+		Obstacles roches = new Obstacles("roche",20,"r");
+		Obstacles puits = new Obstacles("puits",30,"n");
+		Obstacles ronces = new Obstacles("ronces",10,"t");
+		
+		System.out.println(ch1);
+		System.out.println(excalibur);
+		System.out.println(roches);
+		
+	}
+
+}

@@ -1,0 +1,52 @@
+package TP2;
+
+public class Livre {
+	//attribut
+	private String auteur;
+	private String titre;
+	private double prix;
+	private double nbpage;
+	
+	//constructeur
+	public Livre( String auteur,String titre,double prix,double nbpage) {
+		this.auteur = auteur;
+		this.titre = titre;
+		this.prix = prix;
+		this.nbpage = nbpage;
+	}
+	public Livre( String auteur,String titre,double prix) {
+		this(auteur,titre,prix,0);
+	}
+	
+	//methods
+	@Override
+	public boolean equals(Object o) {
+		boolean res = false;
+		if (o instanceof Livre) {
+			Livre l = (Livre) o;
+			res = auteur.equals(l.auteur) && titre.equals(l.titre);
+		}
+		return res;
+	}
+	
+	public boolean estPlusCher(Livre l) {
+		return prix > l.prix;
+	}
+	
+	public String script() {
+		return ("Le livre '" + titre + "' ecrit par M."+ auteur + " est actuellement au prix de " + prix + " pour "+ nbpage + " page de plaisir."  );
+	}
+	
+	public String getAuteur(){
+		return auteur;
+	}
+	
+	public String getTitre(){
+		return titre;
+	}
+	
+	public String toString() {
+		return (titre + " de M." + auteur);
+	}
+	
+}

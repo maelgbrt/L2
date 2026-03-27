@@ -1,0 +1,89 @@
+package TP3;
+
+import in.keyboard.Keyboard;
+
+public class Menu_Principal {
+
+
+	public static void main(String[] args) {
+		Chevalier ch1 = new Chevalier("Greg",10);
+		Chevalier ch2 = new Chevalier("Fabrice",10);
+		Chevalier ch3 = new Chevalier("François",10);
+		Chevalier ch4 = new Chevalier("Martin",10);
+		
+		Graal excalibur = new Graal("excalibur",100,5,"E");
+		Graal pierre_fal_lial = new Graal("fal lial",80,4,"F");
+		Graal lance_lug = new Graal("lance lug",40,2,"L");
+		Graal Chaudron_connaissance = new Graal("Chaudron_connaissance",50,3,"x");
+		
+		Obstacles roches = new Obstacles("roche",20,"r");
+		Obstacles puits = new Obstacles("puits",30,"n");
+		Obstacles ronces = new Obstacles("ronces",10,"t");
+		TableRonde tr = new TableRonde();
+
+		
+		tr.ajouter(ch4);
+		
+		
+		System.out.println(ch1);
+		System.out.println(excalibur);
+		System.out.println(roches);
+
+		System.out.println();
+		QuatreCoinDuMonde map1= new QuatreCoinDuMonde();
+
+		while(true) {
+			System.out.print("1 - Ajouter un Chevalier \n");
+			System.out.print("2 - Expulser de la table Ronde\n");
+			System.out.print("3 - Afficher membre de la table Ronde\n");			
+			System.out.print("4 - Afficher la map\n");			
+			System.out.print("5 - Se déplacer\n");			
+			System.out.print("6 - Recharger le monde\n");			
+		    int rep = Keyboard.getInt();
+		    
+		    
+		    
+		    if (rep == 1) {
+		    	System.out.println("Nom :");
+			    String nom = Keyboard.getString();
+			    Chevalier ch = new Chevalier(nom,10);
+			    tr.ajouter(ch);
+			    map1.ajouter(ch);
+		    }
+		    else if(rep == 2 ) {
+		    	System.out.println("Nom :");
+			    String nom = Keyboard.getString();
+			    Chevalier ch = new Chevalier(nom);
+		    	tr.supprimer(ch);
+		    }
+		    else if(rep == 3) {
+		        System.out.println(tr);
+
+		    }
+		    else if (rep == 4) {
+				System.out.println(map1);
+		    }
+		    else if (rep == 5) {
+		    	System.out.println("Nom :");
+			    String nom = Keyboard.getString();
+			    Chevalier ch = tr.trouverParNom(nom);
+			    int pv = ch.getPv();
+			    int i = 0;
+			    while(pv > 0 && ch.sac.size() < 4 && i < 10) {				    map1.seDeplacer(ch);
+				    System.out.println(map1);
+				    pv =  ch.getPv();
+				    System.out.println(ch);
+				    i ++;
+				    System.out.println(i);
+			    }
+		    }
+		    else if (rep == 6) {
+				map1= new QuatreCoinDuMonde();
+		    }
+		    else if(rep == 7) {
+		    }
+		    
+		   }
+	}
+
+}

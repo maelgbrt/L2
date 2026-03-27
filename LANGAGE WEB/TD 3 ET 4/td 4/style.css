@@ -1,0 +1,63 @@
+body{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    min-height: 100vh;
+    min-width: 100vw;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Lemon', sans-serif;
+}
+
+@font-face {
+  font-family: 'Lemon';
+  src: url('LEMONMILK-Medium.otf') format('opentype');
+}
+
+.mon-texte {
+  font-family: 'MaPolicePerso', sans-serif;
+}
+
+section{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 15px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.458);
+    width: 80vw;
+}
+
+article{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+article a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    transition: 1s;
+}
+
+article a:hover{
+    color: blue;
+    transform: scale(1.2);
+    transition: 1;
+}
+
+button{
+    border: 2px solid black;
+    padding: 10px;
+    
+    background-color: transparent;
+    cursor: pointer;
+    transition: 1s;
+    font-family: 'Lemon', sans-serif;
+}
+button:hover{
+    background-color: black;
+    color: white;
+    transition: 1s;
+}

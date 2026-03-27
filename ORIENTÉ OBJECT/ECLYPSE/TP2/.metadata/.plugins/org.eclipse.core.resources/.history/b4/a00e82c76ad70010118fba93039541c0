@@ -1,0 +1,58 @@
+package TP3;
+import java.util.Random; // N'oubliez pas l'import au début du fichier
+
+public class QuatreCoinDuMonde {
+	private int taille = 10;
+	private Entites[][] map;
+	private Obstacles[] obstacles;
+	
+	
+	public QuatreCoinDuMonde() {
+		obstacles = new Obstacles[] {
+		        new Obstacles("roche", 10, "r"),
+		        new Obstacles("ronces", 10, "R"),
+		        new Obstacles("puits", 10, "P")
+		    };
+		
+		this.map = new Entites[taille][taille];
+		int n = 10;
+		int nbAl1= (int) (Math.random()*n);
+		for(int i = 0; i<nbAl1;i++) {
+			int nbAl2= (int) (Math.random()*n);
+			int nbAl3= (int) (Math.random()*n);
+			map[nbAl2][nbAl3]=  new Obstacles("roche",10,"r");
+		}
+		int nbAl2= (int) (Math.random()*n);
+		map[nbAl1][nbAl2]=  new Chevalier("Greg",10);
+		
+	}
+	
+	
+	//afficher
+	public String toString() {
+		String res = "";
+		for (int i = 0; i<taille;i++) {
+			for(int y = 0; y < taille; y++) {
+				if(i == 0) {
+					res += y + " ";
+				}
+				
+				else if(y == 0){
+					res += i + " ";
+					}
+				
+				else if(map[i][y] != null) {
+					res += map[i][y].recupInitial() + " ";
+				}
+				
+				
+				else {
+				res += "." + " ";
+			}}
+			res += "\n";
+		
+		}
+		return res;
+	}
+ 
+}

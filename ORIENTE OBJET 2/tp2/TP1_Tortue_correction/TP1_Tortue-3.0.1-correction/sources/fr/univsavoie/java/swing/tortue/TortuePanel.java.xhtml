@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<style type="text/css">
+td.java, td.java-ln {vertical-align:top;}
+tt.java, tt.java-ln, pre.java, pre.java-ln {line-height:1em; margin-bottom:0em;}
+td.java-ln { text-align:right; }
+tt.java-ln, pre.java-ln { color:#888888 }
+/* Background       */ span.java0  { font-size: 10pt; color:#ffffff; }
+/* Line numbers       */ span.java1  { font-size: 10pt; color:#808080; }
+/* Multi-line comments       */ span.java2  { font-size: 10pt; color:#3f7f5f; }
+/* Single-line comments       */ span.java3  { font-size: 10pt; color:#3f7f5f; }
+/* Keywords       */ span.java4  { font-size: 10pt; color:#7f0055; font-weight:bold; }
+/* Strings       */ span.java5  { font-size: 10pt; color:#2a00ff; }
+/* Character constants       */ span.java6  { font-size: 10pt; color:#990000; }
+/* Numeric constants       */ span.java7  { font-size: 10pt; color:#990000; }
+/* Parenthesis       */ span.java8  { font-size: 10pt; color:#000000; }
+/* Primitive Types       */ span.java9  { font-size: 10pt; color:#7f0055; font-weight:bold; }
+/* Others       */ span.java10  { font-size: 10pt; color:#000000; }
+/* Javadoc keywords       */ span.java11  { font-size: 10pt; color:#7f9fbf; }
+/* Javadoc HTML tags       */ span.java12  { font-size: 10pt; color:#7f7f9f; }
+/* Javadoc links       */ span.java13  { font-size: 10pt; color:#3f3fbf; }
+/* Javadoc others       */ span.java14  { font-size: 10pt; color:#3f5fbf; }
+/* Undefined       */ span.java15  { font-size: 10pt; color:#ff6100; }
+/* Annotation       */ span.java16  { font-size: 10pt; color:#646464; }
+</style>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<title></title>
+</head>
+<body>
+<div class="java"><code class="java"><span class="java4">package </span><span class="java10">fr.univsavoie.java.swing.tortue;<br />
+<br />
+</span><span class="java4">import </span><span class="java10">java.awt.BorderLayout;<br />
+</span><span class="java4">import </span><span class="java10">javax.swing.JButton;<br />
+</span><span class="java4">import </span><span class="java10">javax.swing.JPanel;<br />
+<br />
+</span><span class="java14">/**<br />
+ * Un composant pour afficher graphiquement une tortue ainsi que trois boutons<br />
+ * permettant de la manipuler.<br />
+ * <br />
+ * En fait, on peut &eacute;galement manipuler la tortue avec le clavier ou la souris.<br />
+ * <br />
+ * </span><span class="java11">@see </span><span class="java14">Tortue<br />
+ * </span><span class="java11">@see </span><span class="java14">TortueButtonAvanceListener<br />
+ * </span><span class="java11">@see </span><span class="java14">TortueButtonDroiteListener<br />
+ * </span><span class="java11">@see </span><span class="java14">TortueButtonGaucheListener<br />
+ * </span><span class="java11">@see </span><span class="java14">TortueKeyListener<br />
+ * </span><span class="java11">@see </span><span class="java14">TortueMouseListener<br />
+ * <br />
+ * </span><span class="java11">@author </span><span class="java14">St&eacute;phane Talbot<br />
+ */<br />
+</span><span class="java4">public class </span><span class="java10">TortuePanel </span><span class="java4">extends </span><span class="java10">JPanel </span><span class="java8">{<br />
+<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java14">/**<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * Construit un composant pour afficher graphiquement une tortue ainsi que<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * trois boutons permettant de la manipuler.<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * <br />
+&#xA0;&#xA0;&#xA0;&#xA0; * En fait, on peut &eacute;galement manipuler la tortue avec le clavier ou la<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * souris.<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * <br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@see </span><span class="java14">Tortue<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@see </span><span class="java14">TortueButtonAvanceListener<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@see </span><span class="java14">TortueButtonDroiteListener<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@see </span><span class="java14">TortueButtonGaucheListener<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@see </span><span class="java14">TortueKeyListener<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@see </span><span class="java14">TortueMouseListener<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * <br />
+&#xA0;&#xA0;&#xA0;&#xA0; */<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">public </span><span class="java10">TortuePanel</span><span class="java8">(</span><span class="java10">Tortue t</span><span class="java8">) {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// on cr&eacute;e l'afficheur qui va dessiner la tortue.<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">TortueCanvas vue = </span><span class="java4">new </span><span class="java10">TortueCanvas</span><span class="java8">(</span><span class="java10">t</span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// on cr&eacute;e les boutons<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">JButton bAvance = </span><span class="java4">new </span><span class="java10">JButton</span><span class="java8">(</span><span class="java5">&#34;Avancer&#34;</span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; JButton bGauche = </span><span class="java4">new </span><span class="java10">JButton</span><span class="java8">(</span><span class="java5">&#34;Gauche&#34;</span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; JButton bDroite = </span><span class="java4">new </span><span class="java10">JButton</span><span class="java8">(</span><span class="java5">&#34;Droite&#34;</span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; JPanel panel = </span><span class="java4">new </span><span class="java10">JPanel</span><span class="java8">()</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; panel.add</span><span class="java8">(</span><span class="java10">bGauche</span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; panel.add</span><span class="java8">(</span><span class="java10">bAvance</span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; panel.add</span><span class="java8">(</span><span class="java10">bDroite</span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// on associe les ActionListeners aux boutons<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">bAvance.addActionListener</span><span class="java8">(</span><span class="java4">new </span><span class="java10">TortueButtonAvanceListener</span><span class="java8">(</span><span class="java10">t</span><span class="java8">))</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; bGauche.addActionListener</span><span class="java8">(</span><span class="java4">new </span><span class="java10">TortueButtonGaucheListener</span><span class="java8">(</span><span class="java10">t</span><span class="java8">))</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; bDroite.addActionListener</span><span class="java8">(</span><span class="java4">new </span><span class="java10">TortueButtonDroiteListener</span><span class="java8">(</span><span class="java10">t</span><span class="java8">))</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// on associe le MouseListener et le KeyListener &agrave; l'afficheur dessine la tortue<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">vue.addKeyListener</span><span class="java8">(</span><span class="java4">new </span><span class="java10">TortueKeyListener</span><span class="java8">(</span><span class="java10">t</span><span class="java8">))</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; vue.addMouseListener</span><span class="java8">(</span><span class="java4">new </span><span class="java10">TortueMouseListener</span><span class="java8">(</span><span class="java10">t</span><span class="java8">))</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// on mets les boutons dans un panel<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">this</span><span class="java10">.setLayout</span><span class="java8">(</span><span class="java4">new </span><span class="java10">BorderLayout</span><span class="java8">())</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// on met l'afficheur de la tortue dans la zone centrale du panel<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">this</span><span class="java10">.add</span><span class="java8">(</span><span class="java10">vue, BorderLayout.CENTER</span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// et le panel avec les boutons dans la zone sud<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; //this.add(panel, BorderLayout.SOUTH);<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; // en fait ici on va faire d&eacute;border zone de la tortue sous les boutons.<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">vue.setLayout</span><span class="java8">(</span><span class="java4">new </span><span class="java10">BorderLayout</span><span class="java8">())</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// le panel des boutons n'est pas opaque afin que l'on puisse voir la tortue<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">panel.setOpaque</span><span class="java8">(</span><span class="java4">false</span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; vue.add</span><span class="java8">(</span><span class="java10">panel, BorderLayout.SOUTH</span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+}</span></code></div></body>
+</html>

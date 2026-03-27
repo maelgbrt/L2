@@ -1,0 +1,117 @@
+package TP3;
+import java.util.Random; // N'oubliez pas l'import au début du fichier
+
+public class QuatreCoinDuMonde {
+
+	private int taille = 10;
+	private Entites[][] map;
+	private Entites[] entites;
+	public QuatreCoinDuMonde() {
+	    this.map = new Entites[taille][taille];
+	    Random rand = new Random();
+
+	    // --- 1. PLACEMENT DES GRAALS (Chacun une seule fois) ---
+	    // On les crée directement dans un tableau pour les parcourir
+	    Entites[] listeGraals = {
+	        new Graal("excalibur", 100, 5, "E"),
+	        new Graal("fal lial", 80, 4, "F"),
+	        new Graal("lance lug", 40, 2, "L"),
+	        new Graal("Chaudron_connaissance", 50, 3, "c")
+	    };
+
+	    for (Entites g : listeGraals) {
+	        int x, y;
+	        do {
+	            x = rand.nextInt(taille);
+	            y = rand.nextInt(taille);
+	        } while (map[x][y] != null); 
+	        
+	        map[x][y] = g; // On place l'unique instance du Graal
+	    }
+
+	    // --- 2. PLACEMENT DES OBSTACLES (Plusieurs fois) ---
+	    int nbObstaclesVoulus = 10; 
+	    for (int i = 0; i < nbObstaclesVoulus; i++) {
+	        int x, y;
+	        do {
+	            x = rand.nextInt(taille);
+	            y = rand.nextInt(taille);
+	        } while (map[x][y] != null);
+
+	        // ESSENTIEL : On utilise un switch ou des if pour faire un "new" à chaque fois
+	        int typeAleatoire = rand.nextInt(3); // 0, 1 ou 2
+	        if (typeAleatoire == 0) {
+	            map[x][y] = new Obstacles("roche", 10, "r");
+	        } else if (typeAleatoire == 1) {
+	            map[x][y] = new Obstacles("ronces", 10, "R");
+	        } else {
+	            map[x][y] = new Obstacles("puits", 10, "P");
+	        }
+	    }
+	}
+	public void ajouter(Chevalier c) {
+		int n = 10;
+		int nbAl2= (int) (Math.random()*n);
+		int nbAl3= (int) (Math.random()*n);
+		map[nbAl2][nbAl3] = c;
+		c.setPosition(nbAl2, nbAl3);
+	}
+	
+	
+
+	
+	public void seDeplacer(Chevalier c) {
+	    int ancienneX = c.getX();
+	    int ancienneY = c.getY();
+	    int dx = (Math.random() < 0.5) ? -1 : 1;
+	    int dy = (Math.random() < 0.5) ? -1 : 1;
+	    int nouvelleX = ancienneX + dx;
+	    int nouvelleY = ancienneY + dy;
+	    if (nouvelleX >= 0 && nouvelleX < taille && nouvelleY >= 0 && nouvelleY < taille) {
+	    	map[ancienneX][ancienneY] = null;
+	    	int pv = c.getPv();
+	    	if (map[nouvelleX][nouvelleY] instanceof Obstacles) {
+	    		pv = pv - map[nouvelleX][nouvelleY].getPv();
+	    		c.setPv(pv);
+	    		System.out.println(pv);
+	    	}
+	    	else if(map[nouvelleX][nouvelleY] instanceof Graal) {
+	    		pv = pv + map[nouvelleX][nouvelleY].getPv();
+	    		c.setPv(pv);
+	    		c.setBag(map[nouvelleX][nouvelleY]);
+	    	}
+	    	map[nouvelleX][nouvelleY] = c;
+	    	c.setPosition(nouvelleX, nouvelleY);
+	    	
+	    }
+	
+	}
+	
+	//afficher
+	public String toString() {
+		String res = "";
+		for (int i = 0; i<taille;i++) {
+			for(int y = 0; y < taille; y++) {
+				if(i == 0) {
+					res += y + " ";
+				}
+				
+				else if(y == 0){
+					res += i + " ";
+					}
+				
+				else if(map[i][y] != null) {
+					res += map[i][y].recupInitial() + " ";
+				}
+				
+				
+				else {
+				res += "." + " ";
+			}}
+			res += "\n";
+		
+		}
+		return res;
+	}
+ 
+}

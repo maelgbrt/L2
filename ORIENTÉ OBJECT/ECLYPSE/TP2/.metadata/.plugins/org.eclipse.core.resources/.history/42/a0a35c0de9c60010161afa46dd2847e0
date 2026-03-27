@@ -1,0 +1,63 @@
+package TP2;
+
+public class Etagere {
+
+	//attribut
+	private int nbLivre;
+	private Livre[] etagere;
+
+	//constructeurs}
+	public Etagere(int capacite) {
+		this.nbLivre  = 0;
+		this.etagere = new Livre[capacite];
+	}
+	
+	public void ajouter(Livre l) {
+		if (nbLivre < etagere.length ) {
+			etagere[nbLivre] = l;
+			nbLivre = nbLivre + 1;
+		}
+	}
+	
+	public int getNbLivres() {
+		return nbLivre;
+	}
+	
+	public Livre chercher(String auteur,String titre) {
+		Livre res = null;
+		for(int i = 0; i< nbLivre; i++) {
+			if (etagere[i].getAuteur().equals(auteur) && etagere[i].getTitre().equals(titre)){
+				res =  etagere[i];
+			}
+		}
+		return res;
+	}
+	
+	public int chercherPosition(Livre l) {
+		int res = 0;
+	    for (int i = 0; i < nbLivre; i++) {
+	        if (etagere[i].equals(l));
+	           res = i;  
+	    }
+		return res;
+	    }
+
+	
+	public void supprimer(String auteur, String titre) {
+		Livre l = chercher(auteur,titre);
+		int pos = chercherPosition(l);
+		for (int i = pos; i < nbLivre;i++) {
+			etagere[i] = etagere[i+1];
+		}
+		nbLivre = nbLivre - 1;
+	}
+	
+	
+	public String toString() {
+		String res = "";
+		for (Livre l : etagere) {
+			res = res + l + ", ";
+		}
+		return res;
+	}
+}

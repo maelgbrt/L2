@@ -1,0 +1,36 @@
+package TP3;
+
+import java.util.ArrayList;
+
+import TP2.Livre;
+
+public class TableRonde {
+	//attributs
+    private ArrayList<Chevalier> membres = new ArrayList<Chevalier>();
+
+    
+    public void ajouter(Chevalier c){
+    	membres.add(c);
+    }
+    
+    
+
+	
+    
+	public void supprimer(Chevalier c) {
+		if (membres.contains(c)){
+			membres.remove(c);
+		}}
+	
+	
+	@Override
+	public String toString() {
+		String res = "";
+		for (Chevalier c : membres) {
+			res = res + c + ", ";
+		}
+		return res;
+	}
+
+    
+}

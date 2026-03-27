@@ -1,0 +1,12 @@
+package TP3;
+
+import TP2.Livre;
+
+public class QuatreCoinDuMonde {
+	private int Taille = 10;
+	private Entites[] map;
+	
+	public Map() {
+		this.etagere = new Livre[taille];
+ 
+}

@@ -1,0 +1,21 @@
+package TP3;
+
+public class Chevalier {
+	//attributs
+	private String nom;
+	private int pv;
+//	ArrayList<Graal> sac = new ArrayList<Graal>();
+	
+	
+	//constructeurs
+	public Chevalier(String nom,int pv) {
+		this.nom = nom;
+		this.pv = pv;
+	}
+	
+	
+	public String toString() {
+		return "ouais c'est "  + nom +" et j'ai "+ pv +" pv";
+		
+	}
+}

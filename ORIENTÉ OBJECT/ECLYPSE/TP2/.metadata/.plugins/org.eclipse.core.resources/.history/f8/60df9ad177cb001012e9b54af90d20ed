@@ -1,0 +1,12 @@
+package TP3;
+
+
+public class QuatreCoinDuMonde {
+	private int taille = 10;
+	private Entites[] map;
+	
+	public QuatreCoinDuMonde() {
+		this.map = new Entites[taille];
+	}
+ 
+}

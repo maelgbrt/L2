@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<style type="text/css">
+td.java, td.java-ln {vertical-align:top;}
+tt.java, tt.java-ln, pre.java, pre.java-ln {line-height:1em; margin-bottom:0em;}
+td.java-ln { text-align:right; }
+tt.java-ln, pre.java-ln { color:#888888 }
+/* Background       */ span.java0  { font-size: 10pt; color:#ffffff; }
+/* Line numbers       */ span.java1  { font-size: 10pt; color:#808080; }
+/* Multi-line comments       */ span.java2  { font-size: 10pt; color:#3f7f5f; }
+/* Single-line comments       */ span.java3  { font-size: 10pt; color:#3f7f5f; }
+/* Keywords       */ span.java4  { font-size: 10pt; color:#7f0055; font-weight:bold; }
+/* Strings       */ span.java5  { font-size: 10pt; color:#2a00ff; }
+/* Character constants       */ span.java6  { font-size: 10pt; color:#990000; }
+/* Numeric constants       */ span.java7  { font-size: 10pt; color:#990000; }
+/* Parenthesis       */ span.java8  { font-size: 10pt; color:#000000; }
+/* Primitive Types       */ span.java9  { font-size: 10pt; color:#7f0055; font-weight:bold; }
+/* Others       */ span.java10  { font-size: 10pt; color:#000000; }
+/* Javadoc keywords       */ span.java11  { font-size: 10pt; color:#7f9fbf; }
+/* Javadoc HTML tags       */ span.java12  { font-size: 10pt; color:#7f7f9f; }
+/* Javadoc links       */ span.java13  { font-size: 10pt; color:#3f3fbf; }
+/* Javadoc others       */ span.java14  { font-size: 10pt; color:#3f5fbf; }
+/* Undefined       */ span.java15  { font-size: 10pt; color:#ff6100; }
+/* Annotation       */ span.java16  { font-size: 10pt; color:#646464; }
+</style>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<title></title>
+</head>
+<body>
+<div class="java"><code class="java"><span class="java4">package </span><span class="java10">fr.univsavoie.java.swing.tortue;<br />
+<br />
+</span><span class="java4">import </span><span class="java10">java.awt.BorderLayout;<br />
+</span><span class="java4">import </span><span class="java10">javax.swing.JFrame;<br />
+</span><span class="java4">import </span><span class="java10">javax.swing.JPanel;<br />
+<br />
+</span><span class="java14">/**<br />
+ * Une JFrame qui cr&eacute;e une tortue et les &eacute;l&eacute;ments permettant de la manipuler.<br />
+ * <br />
+ * </span><span class="java11">@author </span><span class="java14">St&eacute;phane Talbot<br />
+ */<br />
+</span><span class="java4">public class </span><span class="java10">TortueFrame </span><span class="java4">extends </span><span class="java10">JFrame </span><span class="java8">{<br />
+<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java14">/**<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * Cr&eacute;ation d'une JFrame pour afficher et manipuler une tortue.<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * <br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@param </span><span class="java14">t<br />
+&#xA0;&#xA0;&#xA0;&#xA0; *&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; la tortue &agrave; afficher...<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * <br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@see </span><span class="java14">Tortue<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@see </span><span class="java14">TortuePanel<br />
+&#xA0;&#xA0;&#xA0;&#xA0; */<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">public </span><span class="java10">TortueFrame</span><span class="java8">(</span><span class="java10">Tortue t</span><span class="java8">) {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">JPanel afficheur = </span><span class="java4">new </span><span class="java10">TortuePanel</span><span class="java8">(</span><span class="java10">t</span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">this</span><span class="java10">.getContentPane</span><span class="java8">()</span><span class="java10">.setLayout</span><span class="java8">(</span><span class="java4">new </span><span class="java10">BorderLayout</span><span class="java8">(</span><span class="java7">2</span><span class="java10">, </span><span class="java7">2</span><span class="java8">))</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">this</span><span class="java10">.getContentPane</span><span class="java8">()</span><span class="java10">.add</span><span class="java8">(</span><span class="java10">afficheur, BorderLayout.CENTER</span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// on indique qu'on veut quitter l'application &agrave; la fermeture de la frame<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">this</span><span class="java10">.setDefaultCloseOperation</span><span class="java8">(</span><span class="java10">JFrame.EXIT_ON_CLOSE</span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java14">/**<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * Constructeur sans param&egrave;tre pour la JFrame d'affichage de la tortue.<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * Il permet de construire une JFrame qui cr&eacute;e une tortue (coordonn&eacute;es (50,50) et<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * orientation EST) ainsi que les &eacute;l&eacute;ments permettant de manipuler cette tortue.<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * <br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@see </span><span class="java14">Tortue<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@see </span><span class="java14">TortuePanel<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * <br />
+&#xA0;&#xA0;&#xA0;&#xA0; */<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">public </span><span class="java10">TortueFrame</span><span class="java8">() {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">this</span><span class="java8">(</span><span class="java4">new </span><span class="java10">Tortue</span><span class="java8">(</span><span class="java7">50</span><span class="java10">, </span><span class="java7">50</span><span class="java10">, Tortue.EST</span><span class="java8">))</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java14">/**<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * La m&eacute;thode main sert juste &agrave; lancer l'application. </span><span class="java12">&lt;br&gt;<br />
+&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java14">* Cr&eacute;ation d'une tortue (coordonn&eacute;es (100,50) et orientation SUD). </span><span class="java12">&lt;br&gt;<br />
+&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java14">* Cr&eacute;ation d'une JFrame, instance de TortueFrame et affichage de celle-ci.<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * <br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@param </span><span class="java14">args<br />
+&#xA0;&#xA0;&#xA0;&#xA0; *&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; java.lang.String[]<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * <br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@see </span><span class="java14">java.awt.Component#setVisible(boolean)<br />
+&#xA0;&#xA0;&#xA0;&#xA0; */<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">public static </span><span class="java9">void </span><span class="java10">main</span><span class="java8">(</span><span class="java10">String args</span><span class="java8">[]) {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">Tortue caroline = </span><span class="java4">new </span><span class="java10">Tortue</span><span class="java8">(</span><span class="java7">100</span><span class="java10">, </span><span class="java7">50</span><span class="java10">, Tortue.SUD</span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; JFrame f = </span><span class="java4">new </span><span class="java10">TortueFrame</span><span class="java8">(</span><span class="java10">caroline</span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; f.setSize</span><span class="java8">(</span><span class="java7">300</span><span class="java10">, </span><span class="java7">300</span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; f.setVisible</span><span class="java8">(</span><span class="java4">true</span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+}</span></code></div></body>
+</html>

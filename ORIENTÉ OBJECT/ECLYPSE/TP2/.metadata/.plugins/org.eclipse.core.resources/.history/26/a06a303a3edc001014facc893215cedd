@@ -1,0 +1,61 @@
+package TP3;
+
+import java.util.ArrayList;
+
+import TP2.Livre;
+
+public class TableRonde {
+    private ArrayList<Chevalier> membres;
+    
+    
+    
+public TableRonde(){
+	membres = new ArrayList<Chevalier>();
+}
+    
+    public void ajouter(Chevalier c){
+    	membres.add(c);
+    }
+    
+    
+    public Chevalier trouverParNom(String nomRecherche) {
+        for (Chevalier c : membres) {
+            if (c.getNom().equalsIgnoreCase(nomRecherche)) {
+                return c; 
+            }
+        }
+        return null; 
+    }
+    
+
+	
+    
+ // Dans la classe TableRonde
+    public void supprimer(Chevalier c, QuatreCoinDuMonde map1) {
+        if (membres.contains(c)) {
+            membres.remove(c);
+            
+            int x = c.getX();
+            int y = c.getY();
+            
+            if (x >= 0 && x < map1.getGrille().length && y >= 0 && y < map1.getGrille()[0].length) {
+                map1.getGrille()[x][y] = null;
+                
+            }
+            
+            System.out.println(c.getNom() + " a été retiré de la table et de la carte.");
+        }
+    }
+	
+	
+	@Override
+	public String toString() {
+		String res = "";
+		for (Chevalier c : membres) {
+			res = res + c + ", ";
+		}
+		return res;
+	}
+
+    
+}

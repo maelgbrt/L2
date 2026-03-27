@@ -1,0 +1,129 @@
+package TP3;
+import java.util.Random; 
+public class QuatreCoinDuMonde {
+
+	private int taille = 10;
+	private Entites[][] map;
+	private Entites[] entites;
+    Random rand = new Random();
+
+	public QuatreCoinDuMonde() {
+	    this.map = new Entites[taille][taille];
+
+	    Entites[] listeGraals = {
+	        new Graal("excalibur", 100, 5, "E"),
+	        new Graal("fal lial", 80, 4, "F"),
+	        new Graal("lance lug", 40, 2, "L"),
+	        new Graal("Chaudron_connaissance", 50, 3, "c")
+	    };
+
+	    for (Entites g : listeGraals) {
+	        int x = 0;
+	        int y = 0;
+	        while (map[x][y] != null) {
+	            x = rand.nextInt(taille - 1) + 1; 
+	            y = rand.nextInt(taille);
+	        } 
+	        map[x][y] = g;
+	    }
+
+	    int nbObstaclesVoulus = 10; 
+	    for (int i = 0; i < nbObstaclesVoulus; i++) {
+	        int x = 0;
+	        int y =0;
+	        while (map[x][y] != null) {
+	            x = rand.nextInt(taille - 1) + 1;
+	            y = rand.nextInt(taille);
+	        } 
+
+	        int typeAleatoire = rand.nextInt(3);
+	        if (typeAleatoire == 0) map[x][y] = new Obstacles("roche", 10, "r");
+	        else if (typeAleatoire == 1) map[x][y] = new Obstacles("ronces", 10, "R");
+	        else map[x][y] = new Obstacles("puits", 10, "P");
+	    }
+	}
+	
+	public Entites[][] getMap() {
+	    return this.map;
+	}
+	
+	
+	
+	public void ajouter(Chevalier c) {
+	    int x = 0;
+	    int y =0;
+	    while (map[x][y] != null) {
+	        x = rand.nextInt(taille);
+	        y = rand.nextInt(taille - 1) + 1;
+	        
+	    }
+	    map[x][y] = c;
+	    c.setPosition(x, y);
+	}
+	
+	public void seDeplacer(Chevalier c) {
+		
+	    while(c.getPv() > 0 && c.getSac().size() < 4) {	
+	    	int ancienneX = c.getX();
+		    int ancienneY = c.getY();
+		    int dx = (Math.random() < 0.5) ? -1 : 1;
+		    int dy = (Math.random() < 0.5) ? -1 : 1;
+		    
+		    int nouvelleX = (ancienneX + dx + taille) % taille;
+		    int nouvelleY = (ancienneY + dy + taille) % taille;
+		    
+		    if (ancienneX != nouvelleX || ancienneY != nouvelleY) {
+		        map[ancienneX][ancienneY] = null;
+		        
+		        //poids des ogbjets du graal dans le sac
+		        if (c.sac != null) {
+		        	for(Graal g : c.sac) {
+		        		int nouveauPv = c.getPv() - g.getPoids();
+		        		c.setPv(nouveauPv);
+		        		System.out.println("pv restant" + c.getPv());
+		        	}
+		        }
+		    }   
+		    if (map[nouvelleX][nouvelleY] != null) {
+		    	
+		    	if (map[nouvelleX][nouvelleY] instanceof Obstacles) {
+		    		c.setPv(c.getPv() - map[nouvelleX][nouvelleY].getPv());
+		    		System.out.println("Obstacle touché ! PV restants : " + c.getPv());
+		    	}
+		    	
+		    	
+		    	else if (map[nouvelleX][nouvelleY] instanceof Graal) {
+		    		c.setPv(c.getPv() + map[nouvelleX][nouvelleY].getPv());
+		    		c.setBag(map[nouvelleX][nouvelleY]);
+		    		System.out.println("Graal récupéré ! : " + map[nouvelleX][nouvelleY] );
+		    	}
+		    }
+		    map[nouvelleX][nouvelleY] = c;
+		    c.setPosition(nouvelleX, nouvelleY);
+	    }
+	    System.out.println(this.toString());
+	}
+	
+	public String toString() {
+	    String res = "  "; 
+	    
+	    for (int y = 0; y < taille; y++) {
+	        res += y + " ";
+	    }
+	    res += "\n";
+
+	    for (int i = 0; i < taille; i++) {
+	        res += i + " "; 
+	        
+	        for (int y = 0; y < taille; y++) {
+	            if (map[i][y] != null) {
+	                res += map[i][y].recupInitial() + " ";
+	            } else {
+	                res += ". ";
+	            }
+	        }
+	        res += "\n";
+	    }
+	    return res;
+	}
+}

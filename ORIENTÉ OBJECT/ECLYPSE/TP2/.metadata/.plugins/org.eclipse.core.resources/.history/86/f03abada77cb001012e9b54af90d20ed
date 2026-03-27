@@ -1,0 +1,21 @@
+package TP3;
+
+
+public class QuatreCoinDuMonde {
+	private int taille = 10;
+	private Entites[][] map;
+	
+	public QuatreCoinDuMonde() {
+		this.map = new Entites[taille][taille];
+	}
+	
+	
+	//afficher
+	public String toString() {
+		String res = "";
+		for (int i; i<0;i++) {
+			res += map[i]
+		}
+	}
+ 
+}

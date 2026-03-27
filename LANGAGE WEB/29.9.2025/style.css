@@ -1,0 +1,19 @@
+body{
+    display: flex;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: antiquewhite;
+}
+
+div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#coeur{
+    font-size: 5em;
+    cursor: pointer;
+}

@@ -1,0 +1,139 @@
+html,body{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+nav{
+    width: 90%;
+    box-sizing: border-box;
+    height: 10vh;
+    display: flex;
+    align-items: end;
+    margin-left: -3px;
+}
+
+.container{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+    align-items: center;
+    overflow: auto;
+    gap: 20px;
+    
+    }
+
+    .surcontainer{
+        width: 90%;
+        height: 70vh;
+        border: 2px solid black;
+        display: flex;
+        flex-direction: column;
+        z-index: 3;
+    }
+
+    .tri{
+        width: 100%;
+        background-color: rgba(9, 173, 107, 0.685);
+        display: flex;
+        justify-content: end;
+        padding: 15px;
+        box-sizing: border-box;
+        border-bottom: 2px solid black;
+        position: relative;
+    }
+
+    .tri button{
+        width: 30vw;
+    }
+
+    .tri ul{
+        left: auto;
+        background-color: white;
+        border: 2px solid black;
+        list-style: none;
+        position: absolute;
+        padding: 0;
+        width: 30vw;
+        margin-top: 30px;
+        flex-direction: column;
+        display: none;
+    }
+
+    .tri ul li{
+        padding: 7px;
+        margin: 0;
+    }
+    .tri ul li:hover{
+        background-color: rgba(9, 173, 107, 0.685);
+    }
+
+.sport{
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    box-shadow: 0 0 15px black;
+    width: 100px;
+    padding: 20px;
+    justify-content: space-around;
+    align-items: center;
+    gap: 2px;
+}
+.sport h1{
+    font-size: 1em;
+    margin: 0;
+    padding: 0;
+}
+.sport p{
+    margin: 0;
+    padding: 0;
+    font-size: 0.7em;
+}
+.submit{
+    padding: 15px;
+    background-color: orange;
+    border: none;
+    border-radius: 15px;
+    transition: 1s;
+}
+
+    .submit:hover{
+    background-color: rgb(178, 116, 0);
+    transition: 1s;
+    cursor: pointer;
+
+    }
+.insert{
+    padding: 15px;
+    border-radius: 15px;
+    border:2p solid black;
+}
+.button{
+    border-left: 2px solid black;
+        background-color: rgb(174, 174, 174);
+
+    border-top: 2px solid black;
+    padding: 7px;
+    z-index: 2;
+}
+.activate{
+    margin-bottom: -1px;
+    background-color: white;
+
+}
+.button:last-child{
+    border-right: 2px solid black;
+}
+
+#formulaire{
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}

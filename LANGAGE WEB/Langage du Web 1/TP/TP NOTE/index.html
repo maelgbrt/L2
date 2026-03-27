@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+DE+Grund+Guides&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <title>L'île lettrée</title>
+</head>
+<body>
+    <h1 id="anim">L'île lettrée</h1>
+    <nav>
+        <div class="activate">Movies</div>
+        <div>Genres</div>
+        <div>Administrateur</div>
+    </nav>
+    <div class="container">
+        <div id="parametres">
+             <button id="tri">Genre</button>
+                <ul class="genre">
+                </ul>
+            <button id="tri">Trier Par</button>
+                <ul class="type">
+                   <li class="choix">Genres</li>
+                   <li class="choix">Titre</li>
+                   <li class="choix">Année</li>
+                   <li class="choix">Animation</li>
+                   <li class="choix">Director</li>
+                </ul>
+        </div>
+        <div id="emplacement_donnees"></div>
+    </div>
+            <div class="nb_film"></div>
+
+</body>
+<script src="main.js"></script>
+</html>

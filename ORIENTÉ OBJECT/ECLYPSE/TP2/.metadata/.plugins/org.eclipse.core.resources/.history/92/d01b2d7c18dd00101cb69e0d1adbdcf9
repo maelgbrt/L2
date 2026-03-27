@@ -1,0 +1,27 @@
+package TP3;
+
+public abstract class Object_Quete implements Entites {
+	protected String nom;
+	protected int pv;
+	protected String initial;
+	
+	public String recupInitial() {
+        return this.initial;
+    }
+	
+	public int getPv() {
+		return pv;
+	}
+	
+	public String getNom() {
+		return nom;
+	}
+	
+	public void setPv(int pv) {
+		this.pv = pv;
+	}
+	
+}
+
+
+

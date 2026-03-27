@@ -1,0 +1,19 @@
+package TP3;
+
+public abstract class Object_Quete implements Entites {
+	protected String nom;
+	protected int pv;
+	protected String initial;
+	
+	public String recupInitial() {
+        return this.initial;
+    }
+	
+	public getPv() {
+		return pv;
+	}
+	
+}
+
+
+

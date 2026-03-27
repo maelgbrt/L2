@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;TP3.Table_ronde&apos; to &apos;TableRonde&apos;&#x0D;&#x0A;- Original project: &apos;TP1&apos;&#x0D;&#x0A;- Original element: &apos;TP3.Table_ronde&apos;&#x0D;&#x0A;- Renamed element: &apos;TP3.TableRonde&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Table_ronde&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;TP3{Table_ronde.java[Table_ronde" matchStrategy="1" name="TableRonde" qualified="false" references="true" similarDeclarations="false" stamp="1765550818267" textual="false" version="1.0"/>
+</session>

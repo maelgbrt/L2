@@ -1,0 +1,23 @@
+package TP2;
+
+import in.keyboard.Keyboard;
+
+
+public class main {
+
+	public static void main(String[] args) {
+		while(true) {
+		System.out.print("Definir un Livre ('o'/'n') ? ");
+		String rep = Keyboard.getString();
+		if (rep.equals("o")){
+			System.out.print("Auteur ?");
+			String rep = Keyboard.getString();
+			System.out.print("Titre ? ");
+			String rep = Keyboard.getString();
+			System.out.print("Prix ? ");
+			String rep = Keyboard.getString();
+			System.out.print("Nb de page ? ");
+			String rep = Keyboard.getString();
+		}
+		}
+	}}

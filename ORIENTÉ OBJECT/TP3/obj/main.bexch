@@ -1,0 +1,19 @@
+[GENERATED OBJECT FILE]
+b__main.o
+[PROJECT FILES]
+C:\Users\maelg\Desktop\FAC\L2\TP3\default.gpr
+20251017091746 3aa42eddd5f976030a0e7dab6b9f8ff8
+[BOUND OBJECT FILES]
+C:\Users\maelg\Desktop\FAC\L2\TP3\obj\main.o
+[GENERATED SOURCE FILES]
+b__main.ads
+b__main.adb
+b__main.ali
+[RESULTING OPTIONS]
+-LC:\Users\maelg\Desktop\FAC\L2\TP3\obj\
+-LC:\Users\maelg\Desktop\FAC\L2\TP3\obj\
+-LC:/gnat/2021/lib/gcc/x86_64-w64-mingw32/10.3.1/adalib/
+-static
+-static-libgcc
+C:/gnat/2021/lib/gcc/x86_64-w64-mingw32/10.3.1/adalib/libgnat.a
+-Wl,--stack=0x2000000

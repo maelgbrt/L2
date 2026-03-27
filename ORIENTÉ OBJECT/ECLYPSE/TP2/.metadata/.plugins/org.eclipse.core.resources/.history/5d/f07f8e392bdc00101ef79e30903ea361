@@ -1,0 +1,126 @@
+package TP3;
+import java.util.Random; 
+public class QuatreCoinDuMonde {
+
+	private int taille = 10;
+	private Entites[][] map;
+	private Entites[] entites;
+    Random rand = new Random();
+
+	public QuatreCoinDuMonde() {
+	    this.map = new Entites[taille][taille];
+
+	    Entites[] listeGraals = {
+	        new Graal("excalibur", 100, 5, "E"),
+	        new Graal("fal lial", 80, 4, "F"),
+	        new Graal("lance lug", 40, 2, "L"),
+	        new Graal("Chaudron_connaissance", 50, 3, "c")
+	    };
+
+	    for (Entites g : listeGraals) {
+	        int x, y;
+	        do {
+	            x = rand.nextInt(taille - 1) + 1; 
+	            y = rand.nextInt(taille);
+	        } while (map[x][y] != null); 
+	        map[x][y] = g;
+	    }
+
+	    int nbObstaclesVoulus = 10; 
+	    for (int i = 0; i < nbObstaclesVoulus; i++) {
+	        int x, y;
+	        do {
+	            x = rand.nextInt(taille - 1) + 1;
+	            y = rand.nextInt(taille);
+	        } while (map[x][y] != null);
+
+	        int typeAleatoire = rand.nextInt(3);
+	        if (typeAleatoire == 0) map[x][y] = new Obstacles("roche", 10, "r");
+	        else if (typeAleatoire == 1) map[x][y] = new Obstacles("ronces", 10, "R");
+	        else map[x][y] = new Obstacles("puits", 10, "P");
+	    }
+	}
+	
+	public Entites[][] getGrille() {
+	    return this.map;
+	}
+	
+	
+	
+	public void ajouter(Chevalier c) {
+	    int x, y;
+	    do {
+	        x = rand.nextInt(taille);
+	        
+	        y = rand.nextInt(taille - 1) + 1;
+	        
+	    } while (map[x][y] != null);
+
+	    map[x][y] = c;
+	    c.setPosition(x, y);
+	}
+	
+	
+	public void seDeplacer(Chevalier c) {
+	    int ancienneX = c.getX();
+	    int ancienneY = c.getY();
+	    
+	    // Déplacement aléatoire (-1, 0, ou 1)
+	    // Ici on garde votre logique de force -1 ou 1
+	    int dx = (Math.random() < 0.5) ? -1 : 1;
+	    int dy = (Math.random() < 0.5) ? -1 : 1;
+
+	    // Calcul des nouvelles positions avec modulo pour l'effet "monde rond"
+	    // Cela fonctionne pour des indices de 0 à taille-1
+	    int nouvelleX = (ancienneX + dx + taille) % taille;
+	    int nouvelleY = (ancienneY + dy + taille) % taille;
+
+	    // On efface l'ancienne position seulement si on a bougé
+	    if (ancienneX != nouvelleX || ancienneY != nouvelleY) {
+	        map[ancienneX][ancienneY] = null;
+	    }
+
+	    // Gestion des collisions
+	    if (map[nouvelleX][nouvelleY] != null) {
+	        if (map[nouvelleX][nouvelleY] instanceof Obstacles) {
+	            c.setPv(c.getPv() - map[nouvelleX][nouvelleY].getPv());
+	            System.out.println("Obstacle touché ! PV restants : " + c.getPv());
+	        } 
+	        else if (map[nouvelleX][nouvelleY] instanceof Graal) {
+	            c.setPv(c.getPv() + map[nouvelleX][nouvelleY].getPv());
+	            c.setBag(map[nouvelleX][nouvelleY]);
+	            System.out.println("Graal récupéré !");
+	        }
+	    }
+
+	    // Mise à jour finale
+	    map[nouvelleX][nouvelleY] = c;
+	    c.setPosition(nouvelleX, nouvelleY);
+	}
+	//afficher
+	public String toString() {
+	    String res = "  "; // Espace pour décaler la première ligne
+	    
+	    // 1. Afficher les numéros de colonnes en haut (Ligne 0 virtuelle)
+	    for (int y = 0; y < taille; y++) {
+	        res += y + " ";
+	    }
+	    res += "\n";
+
+	    for (int i = 0; i < taille; i++) {
+	        // 2. Afficher le numéro de la ligne au début
+	        res += i + " "; 
+	        
+	        for (int y = 0; y < taille; y++) {
+	            // 3. Afficher le contenu de la map
+	            if (map[i][y] != null) {
+	                res += map[i][y].recupInitial() + " ";
+	            } else {
+	                res += ". ";
+	            }
+	        }
+	        res += "\n";
+	    }
+	    return res;
+	}
+}

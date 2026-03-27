@@ -1,0 +1,36 @@
+package TP2;
+import java.util.ArrayList;
+
+
+public class EtagereDeux {	
+    ArrayList<Livre> etagere = new ArrayList<Livre>();
+    
+    //methods
+    public void ajouter(Livre l){
+    	etagere.add(l);
+    }
+    
+	public int getNbLivres() {
+		return etagere.size();
+	}
+	
+	public Livre chercher(String auteur,String titre) {
+		Livre res = null;
+		for(Livre l : etagere) {
+			if (l.getAuteur().equals(auteur) && l.getTitre().equals(titre)){
+				res = l;
+			}
+		}
+		return res;
+	}
+	
+	
+	
+	public String toString() {
+		String res = " ";
+		for (Livre l : etagere) {
+			res = res + l + ", ";
+		}
+		return res;
+	}
+}

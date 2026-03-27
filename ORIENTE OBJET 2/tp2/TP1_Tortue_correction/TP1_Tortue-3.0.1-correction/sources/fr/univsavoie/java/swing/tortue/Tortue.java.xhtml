@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<style type="text/css">
+td.java, td.java-ln {vertical-align:top;}
+tt.java, tt.java-ln, pre.java, pre.java-ln {line-height:1em; margin-bottom:0em;}
+td.java-ln { text-align:right; }
+tt.java-ln, pre.java-ln { color:#888888 }
+/* Background       */ span.java0  { font-size: 10pt; color:#ffffff; }
+/* Line numbers       */ span.java1  { font-size: 10pt; color:#808080; }
+/* Multi-line comments       */ span.java2  { font-size: 10pt; color:#3f7f5f; }
+/* Single-line comments       */ span.java3  { font-size: 10pt; color:#3f7f5f; }
+/* Keywords       */ span.java4  { font-size: 10pt; color:#7f0055; font-weight:bold; }
+/* Strings       */ span.java5  { font-size: 10pt; color:#2a00ff; }
+/* Character constants       */ span.java6  { font-size: 10pt; color:#990000; }
+/* Numeric constants       */ span.java7  { font-size: 10pt; color:#990000; }
+/* Parenthesis       */ span.java8  { font-size: 10pt; color:#000000; }
+/* Primitive Types       */ span.java9  { font-size: 10pt; color:#7f0055; font-weight:bold; }
+/* Others       */ span.java10  { font-size: 10pt; color:#000000; }
+/* Javadoc keywords       */ span.java11  { font-size: 10pt; color:#7f9fbf; }
+/* Javadoc HTML tags       */ span.java12  { font-size: 10pt; color:#7f7f9f; }
+/* Javadoc links       */ span.java13  { font-size: 10pt; color:#3f3fbf; }
+/* Javadoc others       */ span.java14  { font-size: 10pt; color:#3f5fbf; }
+/* Undefined       */ span.java15  { font-size: 10pt; color:#ff6100; }
+/* Annotation       */ span.java16  { font-size: 10pt; color:#646464; }
+</style>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<title></title>
+</head>
+<body>
+<div class="java"><code class="java"><span class="java4">package </span><span class="java10">fr.univsavoie.java.swing.tortue;<br />
+<br />
+</span><span class="java4">import </span><span class="java10">java.beans.PropertyChangeListener;<br />
+</span><span class="java4">import </span><span class="java10">java.beans.PropertyChangeSupport;<br />
+<br />
+</span><span class="java14">/**<br />
+ * Une classe pour representer la tortue<br />
+ * <br />
+ * La tortue peut avancer, tourner &agrave; droite ou tourner &agrave; gauche. Elle est &agrave; un<br />
+ * endroit donn&eacute; et est orient&eacute;e dans une direction donn&eacute;e.<br />
+ * <br />
+ * </span><span class="java11">@author </span><span class="java14">St&eacute;phane Talbot<br />
+ */<br />
+</span><span class="java4">public class </span><span class="java10">Tortue </span><span class="java8">{<br />
+&#xA0;&#xA0;&#xA0; <br />
+&#xA0;&#xA0;&#xA0; </span><span class="java14">/**<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * Support de la notification lors des modifications <br />
+&#xA0;&#xA0;&#xA0;&#xA0; * des propri&eacute;t&eacute;s x, y et direction de la tortue.<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * <br />
+&#xA0;&#xA0;&#xA0;&#xA0; * Dans la pratique on d&eacute;l&egrave;gue la gestion des PropertyChangeListener <br />
+&#xA0;&#xA0;&#xA0;&#xA0; * &agrave; une instance de PropertyChangeSupport.<br />
+&#xA0;&#xA0;&#xA0;&#xA0; */<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">private </span><span class="java10">PropertyChangeSupport pcs;<br />
+<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java14">/**<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * Position de la tortue<br />
+&#xA0;&#xA0;&#xA0;&#xA0; */<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">private </span><span class="java9">int </span><span class="java10">x, y;<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java14">/**<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * Orientation de la tortue<br />
+&#xA0;&#xA0;&#xA0;&#xA0; */<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">private </span><span class="java9">int </span><span class="java10">direction;<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java14">/**<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * Constante d&eacute;finissant l'orientation </span><span class="java12">&lt;em&gt;</span><span class="java14">nord</span><span class="java12">&lt;/em&gt; </span><span class="java14">pour les tortues.<br />
+&#xA0;&#xA0;&#xA0;&#xA0; */<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">public static final </span><span class="java9">int </span><span class="java10">NORD = </span><span class="java7">1</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java14">/**<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * Constante d&eacute;finissant l'orientation </span><span class="java12">&lt;em&gt;</span><span class="java14">sud</span><span class="java12">&lt;/em&gt; </span><span class="java14">pour les tortues.<br />
+&#xA0;&#xA0;&#xA0;&#xA0; */<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">public static final </span><span class="java9">int </span><span class="java10">SUD = </span><span class="java7">2</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java14">/**<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * Constante d&eacute;finissant l'orientation </span><span class="java12">&lt;em&gt;</span><span class="java14">est</span><span class="java12">&lt;/em&gt; </span><span class="java14">pour les tortues.<br />
+&#xA0;&#xA0;&#xA0;&#xA0; */<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">public static final </span><span class="java9">int </span><span class="java10">EST = </span><span class="java7">3</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java14">/**<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * Constante d&eacute;finissant l'orientation </span><span class="java12">&lt;em&gt;</span><span class="java14">ouest</span><span class="java12">&lt;/em&gt; </span><span class="java14">pour les tortues.<br />
+&#xA0;&#xA0;&#xA0;&#xA0; */<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">public static final </span><span class="java9">int </span><span class="java10">OUEST = </span><span class="java7">4</span><span class="java10">;<br />
+<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java14">/**<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * Construit une tortue (constructeur sans param&egrave;tres).<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * <br />
+&#xA0;&#xA0;&#xA0;&#xA0; * La tortue par d&eacute;faut est cr&eacute;&eacute;e &agrave; la position de coordonn&eacute;es (0,0) et est<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * orient&eacute;e vers le sud (i.e. vers les y positifs).<br />
+&#xA0;&#xA0;&#xA0;&#xA0; */<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">public </span><span class="java10">Tortue</span><span class="java8">() {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">this</span><span class="java8">(</span><span class="java7">0</span><span class="java10">, </span><span class="java7">0</span><span class="java10">, Tortue.SUD</span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java14">/**<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * Construit une tortue &agrave; une position donn&eacute;e et avec une orientation<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * donn&eacute;e.<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * <br />
+&#xA0;&#xA0;&#xA0;&#xA0; * La tortue est cr&eacute;&eacute;e &agrave; la position de coordon&eacute;es </span><span class="java12">&lt;em&gt;</span><span class="java14">(x,y)</span><span class="java12">&lt;/em&gt; </span><span class="java14">avec<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * l'orientation, </span><span class="java12">&lt;em&gt;</span><span class="java14">dir</span><span class="java12">&lt;/em&gt;</span><span class="java14">.<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * <br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@param </span><span class="java14">x<br />
+&#xA0;&#xA0;&#xA0;&#xA0; *&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; entier correspondant &agrave; l'abscisse de la tortue,<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@param </span><span class="java14">y<br />
+&#xA0;&#xA0;&#xA0;&#xA0; *&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; entier correspondant &agrave; l'ordonn&eacute;e de la tortue,<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@param </span><span class="java14">dir<br />
+&#xA0;&#xA0;&#xA0;&#xA0; *&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; entier correspondant &agrave; la direction de la tortue (4<br />
+&#xA0;&#xA0;&#xA0;&#xA0; *&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; orientations possibles).<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * <br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@see </span><span class="java14">Tortue#NORD<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@see </span><span class="java14">Tortue#SUD<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@see </span><span class="java14">Tortue#EST<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@see </span><span class="java14">Tortue#OUEST<br />
+&#xA0;&#xA0;&#xA0;&#xA0; */<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">public </span><span class="java10">Tortue</span><span class="java8">(</span><span class="java9">int </span><span class="java10">x, </span><span class="java9">int </span><span class="java10">y, </span><span class="java9">int </span><span class="java10">dir</span><span class="java8">) {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// L'instance de PropertyChangeSupport va g&eacute;rer la gestion des notifications<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">this</span><span class="java10">.pcs = </span><span class="java4">new </span><span class="java10">PropertyChangeSupport</span><span class="java8">(</span><span class="java4">this</span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">this</span><span class="java10">.x = x;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">this</span><span class="java10">.y = y;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">this</span><span class="java10">.direction = dir;<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java14">/**<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * Fait avancer la tortue.<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * <br />
+&#xA0;&#xA0;&#xA0;&#xA0; * La tortue avance de 10 dans la direction o&ugrave; pointe sa t&ecirc;te.<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * <br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@see </span><span class="java14">Tortue#getDirection()<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@see </span><span class="java14">Tortue#getX()<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@see </span><span class="java14">Tortue#getY()<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * <br />
+&#xA0;&#xA0;&#xA0;&#xA0; */<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">public </span><span class="java9">void </span><span class="java10">avancer</span><span class="java8">() {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">switch </span><span class="java8">(</span><span class="java4">this</span><span class="java10">.getDirection</span><span class="java8">()) {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">case </span><span class="java10">NORD:<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">this</span><span class="java10">.setY</span><span class="java8">(</span><span class="java4">this</span><span class="java10">.getY</span><span class="java8">() </span><span class="java10">- </span><span class="java7">10</span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">break</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">case </span><span class="java10">EST:<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">this</span><span class="java10">.setX</span><span class="java8">(</span><span class="java4">this</span><span class="java10">.getX</span><span class="java8">() </span><span class="java10">+ </span><span class="java7">10</span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">break</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">case </span><span class="java10">SUD:<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">this</span><span class="java10">.setY</span><span class="java8">(</span><span class="java4">this</span><span class="java10">.getY</span><span class="java8">() </span><span class="java10">+ </span><span class="java7">10</span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">break</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">case </span><span class="java10">OUEST:<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">this</span><span class="java10">.setX</span><span class="java8">(</span><span class="java4">this</span><span class="java10">.getX</span><span class="java8">() </span><span class="java10">- </span><span class="java7">10</span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">break</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+&#xA0;&#xA0;&#xA0; }<br />
+<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java14">/**<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * Renvoie la direction actuelle de la tortue.<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * <br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@return </span><span class="java14">un entier correspondant &agrave; une des quatre directions possibles de<br />
+&#xA0;&#xA0;&#xA0;&#xA0; *&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; la tortue.<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * <br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@see </span><span class="java14">Tortue#NORD<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@see </span><span class="java14">Tortue#SUD<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@see </span><span class="java14">Tortue#EST<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@see </span><span class="java14">Tortue#OUEST<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@see </span><span class="java14">Tortue#direction<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@see </span><span class="java14">Tortue#setDirection(int)<br />
+&#xA0;&#xA0;&#xA0;&#xA0; */<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">public </span><span class="java9">int </span><span class="java10">getDirection</span><span class="java8">() {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">return this</span><span class="java10">.direction;<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java14">/**<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * Renvoie l'abscisse de la tortue.<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * <br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java12">&lt;br&gt;<br />
+&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java14">* Remarque : l'axe des abscisses est orient&eacute; Ouest → Est<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * <br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@return </span><span class="java14">un entier correspondant &agrave; l'abscisse de la tortue.<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * <br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@see </span><span class="java14">Tortue#x<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@see </span><span class="java14">Tortue#setX(int)<br />
+&#xA0;&#xA0;&#xA0;&#xA0; */<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">public </span><span class="java9">int </span><span class="java10">getX</span><span class="java8">() {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">return this</span><span class="java10">.x;<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java14">/**<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * Renvoie l'ordonn&eacute;e de la tortue.<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * <br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java12">&lt;br&gt;<br />
+&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java14">* Remarque : l'axe des ordonn&eacute;es est orient&eacute; Nord → Sud<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * <br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@return </span><span class="java14">un entier correspondant &agrave; l'ordonn&eacute;e de la tortue.<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * <br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@see </span><span class="java14">Tortue#y<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@see </span><span class="java14">Tortue#setY(int)<br />
+&#xA0;&#xA0;&#xA0;&#xA0; */<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">public </span><span class="java9">int </span><span class="java10">getY</span><span class="java8">() {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">return this</span><span class="java10">.y;<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java14">/**<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * Modifie la direction de la tortue.<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * <br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@param </span><span class="java14">d<br />
+&#xA0;&#xA0;&#xA0;&#xA0; *&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; un entier correspondant &agrave; une des quatre directions possibles<br />
+&#xA0;&#xA0;&#xA0;&#xA0; *&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; de la tortue.<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * <br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@see </span><span class="java14">Tortue#NORD<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@see </span><span class="java14">Tortue#SUD<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@see </span><span class="java14">Tortue#EST<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@see </span><span class="java14">Tortue#OUEST<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@see </span><span class="java14">Tortue#direction<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@see </span><span class="java14">Tortue#getDirection()<br />
+&#xA0;&#xA0;&#xA0;&#xA0; */<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">private </span><span class="java9">void </span><span class="java10">setDirection</span><span class="java8">(</span><span class="java9">int </span><span class="java10">newDir</span><span class="java8">) {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java9">int </span><span class="java10">oldDir = </span><span class="java4">this</span><span class="java10">.direction;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">this</span><span class="java10">.direction = newDir;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// notification de la modification aux listeners<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">this</span><span class="java10">.pcs.firePropertyChange</span><span class="java8">(</span><span class="java5">&#34;direction&#34;</span><span class="java10">, oldDir, newDir</span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java14">/**<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * Modifie l'abscisse de la tortue.<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * <br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java12">&lt;br&gt;<br />
+&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java14">* Remarque : l'axe des abscisses est orient&eacute; Ouest --&gt; Est<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * <br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@param </span><span class="java14">x<br />
+&#xA0;&#xA0;&#xA0;&#xA0; *&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; entier correspondant &agrave; la nouvelle valeur de l'abscisse de la<br />
+&#xA0;&#xA0;&#xA0;&#xA0; *&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; tortue,<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * <br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@see </span><span class="java14">Tortue#x<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@see </span><span class="java14">Tortue#getX()<br />
+&#xA0;&#xA0;&#xA0;&#xA0; */<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">private </span><span class="java9">void </span><span class="java10">setX</span><span class="java8">(</span><span class="java9">int </span><span class="java10">newX</span><span class="java8">) {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java9">int </span><span class="java10">oldX = </span><span class="java4">this</span><span class="java10">.x;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">this</span><span class="java10">.x = newX;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// notification de la modification aux listeners<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">this</span><span class="java10">.pcs.firePropertyChange</span><span class="java8">(</span><span class="java5">&#34;x&#34;</span><span class="java10">, oldX, newX</span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java14">/**<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * Modifie l'ordonn&eacute;e de la tortue.<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * <br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java12">&lt;br&gt;<br />
+&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java14">* Remarque : l'axe des ordonn&eacute;es est orient&eacute; Nord --&gt; Sud<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * <br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@param </span><span class="java14">y<br />
+&#xA0;&#xA0;&#xA0;&#xA0; *&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; entier correspondant &agrave; la nouvelle valeur de l'ordonn&eacute;e de la<br />
+&#xA0;&#xA0;&#xA0;&#xA0; *&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; tortue,<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * <br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@see </span><span class="java14">Tortue#y<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@see </span><span class="java14">Tortue#getY()<br />
+&#xA0;&#xA0;&#xA0;&#xA0; */<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">private </span><span class="java9">void </span><span class="java10">setY</span><span class="java8">(</span><span class="java9">int </span><span class="java10">newY</span><span class="java8">) {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java9">int </span><span class="java10">oldY = </span><span class="java4">this</span><span class="java10">.y;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">this</span><span class="java10">.y = newY;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// notification de la modification aux listeners<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">this</span><span class="java10">.pcs.firePropertyChange</span><span class="java8">(</span><span class="java5">&#34;y&#34;</span><span class="java10">, oldY, newY</span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java14">/**<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * Fait tourner la tortue d'un quart de tour &agrave; droite.<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * <br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@see </span><span class="java14">Tortue#getDirection()<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@see </span><span class="java14">Tortue#tournerGauche()<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * <br />
+&#xA0;&#xA0;&#xA0;&#xA0; */<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">public </span><span class="java9">void </span><span class="java10">tournerDroite</span><span class="java8">() {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">switch </span><span class="java8">(</span><span class="java4">this</span><span class="java10">.getDirection</span><span class="java8">()) {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">case </span><span class="java10">NORD:<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">this</span><span class="java10">.setDirection</span><span class="java8">(</span><span class="java10">Tortue.EST</span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">break</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">case </span><span class="java10">EST:<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">this</span><span class="java10">.setDirection</span><span class="java8">(</span><span class="java10">Tortue.SUD</span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">break</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">case </span><span class="java10">SUD:<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">this</span><span class="java10">.setDirection</span><span class="java8">(</span><span class="java10">Tortue.OUEST</span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">break</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">case </span><span class="java10">OUEST:<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">this</span><span class="java10">.setDirection</span><span class="java8">(</span><span class="java10">Tortue.NORD</span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">break</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+&#xA0;&#xA0;&#xA0; }<br />
+<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java14">/**<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * Fait tourner la tortue d'un quart de tour &agrave; gauche.<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * <br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@see </span><span class="java14">Tortue#getDirection()<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@see </span><span class="java14">Tortue#tournerDroite()<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * <br />
+&#xA0;&#xA0;&#xA0;&#xA0; */<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">public </span><span class="java9">void </span><span class="java10">tournerGauche</span><span class="java8">() {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">this</span><span class="java10">.tournerDroite</span><span class="java8">()</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">this</span><span class="java10">.tournerDroite</span><span class="java8">()</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">this</span><span class="java10">.tournerDroite</span><span class="java8">()</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java14">/**<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@param </span><span class="java14">listener<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@see </span><span class="java14">java.beans.PropertyChangeSupport#addPropertyChangeListener(java.beans.PropertyChangeListener)<br />
+&#xA0;&#xA0;&#xA0;&#xA0; */<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">public </span><span class="java9">void </span><span class="java10">addPropertyChangeListener</span><span class="java8">(</span><span class="java10">PropertyChangeListener listener</span><span class="java8">) {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">pcs.addPropertyChangeListener</span><span class="java8">(</span><span class="java10">listener</span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java14">/**<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@param </span><span class="java14">listener<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@see </span><span class="java14">java.beans.PropertyChangeSupport#removePropertyChangeListener(java.beans.PropertyChangeListener)<br />
+&#xA0;&#xA0;&#xA0;&#xA0; */<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">public </span><span class="java9">void </span><span class="java10">removePropertyChangeListener</span><span class="java8">(</span><span class="java10">PropertyChangeListener listener</span><span class="java8">) {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">pcs.removePropertyChangeListener</span><span class="java8">(</span><span class="java10">listener</span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java14">/**<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@param </span><span class="java14">propertyName<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@param </span><span class="java14">listener<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@see </span><span class="java14">java.beans.PropertyChangeSupport#addPropertyChangeListener(java.lang.String, java.beans.PropertyChangeListener)<br />
+&#xA0;&#xA0;&#xA0;&#xA0; */<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">public </span><span class="java9">void </span><span class="java10">addPropertyChangeListener</span><span class="java8">(</span><span class="java10">String propertyName, PropertyChangeListener listener</span><span class="java8">) {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">pcs.addPropertyChangeListener</span><span class="java8">(</span><span class="java10">propertyName, listener</span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java14">/**<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@param </span><span class="java14">propertyName<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@param </span><span class="java14">listener<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@see </span><span class="java14">java.beans.PropertyChangeSupport#removePropertyChangeListener(java.lang.String, java.beans.PropertyChangeListener)<br />
+&#xA0;&#xA0;&#xA0;&#xA0; */<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">public </span><span class="java9">void </span><span class="java10">removePropertyChangeListener</span><span class="java8">(</span><span class="java10">String propertyName, PropertyChangeListener listener</span><span class="java8">) {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">pcs.removePropertyChangeListener</span><span class="java8">(</span><span class="java10">propertyName, listener</span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java14">/**<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@return<br />
+&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java14">* </span><span class="java11">@see </span><span class="java14">java.beans.PropertyChangeSupport#getPropertyChangeListeners()<br />
+&#xA0;&#xA0;&#xA0;&#xA0; */<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">public </span><span class="java10">PropertyChangeListener</span><span class="java8">[] </span><span class="java10">getPropertyChangeListeners</span><span class="java8">() {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">return </span><span class="java10">pcs.getPropertyChangeListeners</span><span class="java8">()</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java14">/**<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@param </span><span class="java14">propertyName<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@return<br />
+&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java14">* </span><span class="java11">@see </span><span class="java14">java.beans.PropertyChangeSupport#getPropertyChangeListeners(java.lang.String)<br />
+&#xA0;&#xA0;&#xA0;&#xA0; */<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">public </span><span class="java10">PropertyChangeListener</span><span class="java8">[] </span><span class="java10">getPropertyChangeListeners</span><span class="java8">(</span><span class="java10">String propertyName</span><span class="java8">) {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">return </span><span class="java10">pcs.getPropertyChangeListeners</span><span class="java8">(</span><span class="java10">propertyName</span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+}</span></code></div></body>
+</html>

@@ -1,0 +1,50 @@
+package TP3;
+
+import java.util.ArrayList;
+
+import TP2.Livre;
+
+public class TableRonde extends QuatreCoinDuMonde {
+    private ArrayList<Chevalier> membres;
+    
+    
+    
+public TableRonde(){
+	membres = new ArrayList<Chevalier>();
+}
+    
+    public void ajouter(Chevalier c){
+    	membres.add(c);
+    }
+    
+    
+    public Chevalier trouverParNom(String nomRecherche) {
+        for (Chevalier c : membres) {
+            if (c.getNom().equalsIgnoreCase(nomRecherche)) {
+                return c; 
+            }
+        }
+        return null; 
+    }
+    
+
+	
+    
+	public void supprimer(Chevalier c) {
+		if (membres.contains(c)){
+			membres.remove(c);
+			map1[c.getX()][c.getY()];
+		}}
+	
+	
+	@Override
+	public String toString() {
+		String res = "";
+		for (Chevalier c : membres) {
+			res = res + c + ", ";
+		}
+		return res;
+	}
+
+    
+}

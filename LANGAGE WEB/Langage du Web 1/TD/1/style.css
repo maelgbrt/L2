@@ -1,0 +1,23 @@
+ul{
+    background-color: aqua;
+    list-style: none;
+}
+
+ul li a{
+    text-decoration: none;
+    color: black;
+    font-size: 2em;
+    cursor: pointer;
+    transition: 1s ease;
+    background-color: yellow;
+}
+
+ul li a:hover{
+    background-color: brown;
+    transition: 1s ease;
+    width: 20%;
+}
+
+ul li{
+    background-color: blueviolet;
+}

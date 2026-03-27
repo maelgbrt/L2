@@ -1,0 +1,10 @@
+package TP2;
+
+import in.keyboard.Keyboard;
+
+
+public class main {
+
+	public static void main(String[] args) {
+		System.out.print("Definir un Livre ('o'/'n') ? ");
+}

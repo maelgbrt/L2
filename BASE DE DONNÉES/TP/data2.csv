@@ -1,0 +1,135 @@
+TERAZI;Sara;13;Kubernetes;grey;brightness_5;OccupǸ;yellow;do_not_disturb
+Schmitt;Thomas;2;Pair Programming;brown;brightness_1;Hors ligne;grey;clear
+BABA;Abdellah;13;Docker;brown;brightness_1;Hors ligne;grey;clear
+Khajjou;Aya;2;Docker;amber;brightness_7;Hors ligne;grey;clear
+Delameziere;Lucas;11;Team Collaboration;brown;brightness_1;En ligne;green;check
+PERRIN;Ludovic;12;Kubernetes;grey;brightness_5;En ligne;green;check
+TIGRIN;Mohammed-Anis;14;Software Architecture;brown;brightness_1;En ligne;green;check
+BENDAIDA;Tarek;14;NULL;NULL;NULL;Hors ligne;grey;clear
+Gaudin;Todd;3;Team Collaboration;amber;brightness_7;Hors ligne;grey;clear
+Gimbert;Theo;2;System Design;grey;brightness_5;En ligne;green;check
+Wetstein;Hugo;9;Version Control;grey;brightness_5;OccupǸ;yellow;do_not_disturb
+Desmarieux;Nadya;6;DevOps;amber;brightness_7;Absent;red;schedule
+PERRIN;Ludovic;12;Project Management;brown;brightness_1;En ligne;green;check
+Gimbert;Theo;2;Project Management;brown;brightness_1;En ligne;green;check
+Hesse;Nicolas;1;NULL;NULL;NULL;En ligne;green;check
+Roche;Samuel;6;Git;amber;brightness_7;Hors ligne;grey;clear
+Abramian;Kevin;7;Refactoring;amber;brightness_7;En ligne;green;check
+BABA;Abdellah;13;Scrum;amber;brightness_7;Hors ligne;grey;clear
+Wetstein;Hugo;9;DevOps;amber;brightness_7;OccupǸ;yellow;do_not_disturb
+TIGRIN;Mohammed-Anis;14;Problem Solving;grey;brightness_5;En ligne;green;check
+Desmarieux;Nadya;6;System Design;grey;brightness_5;Absent;red;schedule
+Hamma;Lynda;8;Data Science;amber;brightness_7;En ligne;green;check
+Gimbert;Theo;2;Machine Learning;amber;brightness_7;En ligne;green;check
+Parent;Florian;10;Team Collaboration;brown;brightness_1;Absent;red;schedule
+OUCHERIF;Saadi;14;NULL;NULL;NULL;OccupǸ;yellow;do_not_disturb
+Wetstein;Hugo;9;Data Science;brown;brightness_1;OccupǸ;yellow;do_not_disturb
+Gaborit;Mael;3;Communication;grey;brightness_5;Hors ligne;grey;clear
+Schmitt;Thomas;2;DevOps;amber;brightness_7;Hors ligne;grey;clear
+Abramian;Kevin;7;Microservices;brown;brightness_1;En ligne;green;check
+Boudjaj;Hania;11;Software Architecture;brown;brightness_1;OccupǸ;yellow;do_not_disturb
+Villanova;Evan;10;Microservices;brown;brightness_1;OccupǸ;yellow;do_not_disturb
+Briffod;Nils;4;Microservices;brown;brightness_1;En ligne;green;check
+Mollet;Enzo;9;Version Control;brown;brightness_1;OccupǸ;yellow;do_not_disturb
+PERRIN;Ludovic;12;Machine Learning;brown;brightness_1;En ligne;green;check
+Guyon;Eddy;10;Data Science;grey;brightness_5;Absent;red;schedule
+Schmitt;Thomas;2;Test Driven Development;amber;brightness_7;Hors ligne;grey;clear
+Antoine;Alexis;5;NULL;NULL;NULL;Absent;red;schedule
+Longeret-Chavanel;Evan;7;Pair Programming;grey;brightness_5;OccupǸ;yellow;do_not_disturb
+Parent;Florian;10;AgilitǸ;grey;brightness_5;Absent;red;schedule
+Ipek;Melike;1;Docker;amber;brightness_7;En ligne;green;check
+Gaborit;Mael;3;Microservices;brown;brightness_1;Hors ligne;grey;clear
+Aljic;Mirza;5;Team Collaboration;amber;brightness_7;OccupǸ;yellow;do_not_disturb
+Cuenot;Firmin;4;DevOps;amber;brightness_7;OccupǸ;yellow;do_not_disturb
+Blanchet;Julien;4;Communication;amber;brightness_7;Hors ligne;grey;clear
+Hamrioui;Yacine;8;NULL;NULL;NULL;Absent;red;schedule
+Moise;Christer;7;Refactoring;amber;brightness_7;Hors ligne;grey;clear
+JOUAND;GaǮl;12;Problem Solving;amber;brightness_7;Absent;red;schedule
+Mollet;Enzo;9;Test Driven Development;brown;brightness_1;OccupǸ;yellow;do_not_disturb
+Guyon;Eddy;10;AgilitǸ;grey;brightness_5;Absent;red;schedule
+Bourefis;Zakaria;7;NULL;NULL;NULL;En ligne;green;check
+TERAZI;Sara;13;Software Architecture;brown;brightness_1;OccupǸ;yellow;do_not_disturb
+Moise;Christer;7;Project Management;amber;brightness_7;Hors ligne;grey;clear
+Villanova;Evan;10;Team Collaboration;amber;brightness_7;OccupǸ;yellow;do_not_disturb
+Bogdan;Benjamin;6;Scrum;amber;brightness_7;Absent;red;schedule
+Schmitt;Thomas;2;System Design;grey;brightness_5;Hors ligne;grey;clear
+Desmarieux;Nadya;6;Software Architecture;brown;brightness_1;Absent;red;schedule
+Delameziere;Lucas;11;AgilitǸ;amber;brightness_7;En ligne;green;check
+Delameziere;Lucas;11;Continuous Integration;grey;brightness_5;En ligne;green;check
+Cuenot;Firmin;4;Data Science;brown;brightness_1;OccupǸ;yellow;do_not_disturb
+Villanova;Evan;10;Pair Programming;grey;brightness_5;OccupǸ;yellow;do_not_disturb
+Boudjaj;Hania;11;Version Control;grey;brightness_5;OccupǸ;yellow;do_not_disturb
+Gaudin;Todd;3;Automated Testing;brown;brightness_1;Hors ligne;grey;clear
+Habi;El-Yacine;8;AgilitǸ;brown;brightness_1;OccupǸ;yellow;do_not_disturb
+Beldjoudi;Adel;5;Scrum;brown;brightness_1;Hors ligne;grey;clear
+Mahiouz;Adib;1;Docker;amber;brightness_7;Hors ligne;grey;clear
+Ipek;Melike;1;Machine Learning;grey;brightness_5;En ligne;green;check
+Martin;Nathan;10;NULL;NULL;NULL;Absent;red;schedule
+Liaudet;Raphael;6;Continuous Integration;grey;brightness_5;Hors ligne;grey;clear
+Roche;Samuel;6;Kanban;amber;brightness_7;Hors ligne;grey;clear
+TIGRIN;Mohammed-Anis;14;Refactoring;amber;brightness_7;En ligne;green;check
+Beldjoudi;Adel;5;Git;brown;brightness_1;Hors ligne;grey;clear
+Moise;Christer;7;Pair Programming;amber;brightness_7;Hors ligne;grey;clear
+Beldjoudi;Adel;5;Code Review;grey;brightness_5;Hors ligne;grey;clear
+Mollet;Enzo;9;Git;amber;brightness_7;OccupǸ;yellow;do_not_disturb
+Slim;Issam;3;Team Collaboration;grey;brightness_5;OccupǸ;yellow;do_not_disturb
+Liaudet;Raphael;6;Refactoring;brown;brightness_1;Hors ligne;grey;clear
+Parent;Florian;10;Kubernetes;amber;brightness_7;Absent;red;schedule
+TERAZI;Sara;13;Communication;brown;brightness_1;OccupǸ;yellow;do_not_disturb
+Boudjaj;Hania;11;Data Science;grey;brightness_5;OccupǸ;yellow;do_not_disturb
+Liaudet;Raphael;6;AgilitǸ;amber;brightness_7;Hors ligne;grey;clear
+TERAZI;Sara;13;AgilitǸ;amber;brightness_7;OccupǸ;yellow;do_not_disturb
+Negoce;Matelian;3;Refactoring;brown;brightness_1;OccupǸ;yellow;do_not_disturb
+Liaudet;Raphael;6;DevOps;brown;brightness_1;Hors ligne;grey;clear
+Wetstein;Hugo;9;Collaborative Development;amber;brightness_7;OccupǸ;yellow;do_not_disturb
+Bellot;Ewen;11;Kanban;brown;brightness_1;Absent;red;schedule
+Malabre;Etienne;11;Refactoring;brown;brightness_1;Absent;red;schedule
+Gaudin;Todd;3;DevOps;grey;brightness_5;Hors ligne;grey;clear
+Khajjou;Aya;2;Data Science;brown;brightness_1;Hors ligne;grey;clear
+Beldjoudi;Adel;5;Data Science;amber;brightness_7;Hors ligne;grey;clear
+MUNOZ;Bonilla Manuel JosǸ;12;Git;grey;brightness_5;OccupǸ;yellow;do_not_disturb
+Dghoughi;Ahmed;1;Git;brown;brightness_1;En ligne;green;check
+Beldjoudi;Adel;5;Docker;grey;brightness_5;Hors ligne;grey;clear
+BOUKSIL;Manel;14;AgilitǸ;grey;brightness_5;En ligne;green;check
+Longeret-Chavanel;Evan;7;Software Architecture;grey;brightness_5;OccupǸ;yellow;do_not_disturb
+Gastine;Titouan;9;Scrum;brown;brightness_1;Absent;red;schedule
+Gaborit;Mael;3;Problem Solving;brown;brightness_1;Hors ligne;grey;clear
+Delameziere;Lucas;11;Communication;amber;brightness_7;En ligne;green;check
+Sandu;Yann-Stephane;2;NULL;NULL;NULL;OccupǸ;yellow;do_not_disturb
+Moise;Christer;7;Collaborative Development;grey;brightness_5;Hors ligne;grey;clear
+Aljic;Mirza;5;AgilitǸ;brown;brightness_1;OccupǸ;yellow;do_not_disturb
+Slim;Issam;3;Software Architecture;brown;brightness_1;OccupǸ;yellow;do_not_disturb
+TIGRIN;Mohammed-Anis;14;Continuous Integration;grey;brightness_5;En ligne;green;check
+Ipek;Melike;1;Git;amber;brightness_7;En ligne;green;check
+TIGRIN;Mohammed-Anis;14;Test Driven Development;grey;brightness_5;En ligne;green;check
+Blanchet;Julien;4;Data Science;brown;brightness_1;Hors ligne;grey;clear
+MOINDJIE;Houssam;13;Version Control;brown;brightness_1;En ligne;green;check
+Mollet;Enzo;9;Pair Programming;brown;brightness_1;OccupǸ;yellow;do_not_disturb
+Gaudin;Todd;3;Kubernetes;grey;brightness_5;Hors ligne;grey;clear
+PERRIN;Ludovic;12;Team Collaboration;grey;brightness_5;En ligne;green;check
+BAYO;Aboubakar Sidiki;13;NULL;NULL;NULL;Absent;red;schedule
+Dghoughi;Ahmed;1;Data Science;amber;brightness_7;En ligne;green;check
+Delameziere;Lucas;11;Problem Solving;brown;brightness_1;En ligne;green;check
+MUNOZ;Bonilla Manuel JosǸ;12;Problem Solving;amber;brightness_7;OccupǸ;yellow;do_not_disturb
+Longeret-Chavanel;Evan;7;Collaborative Development;amber;brightness_7;OccupǸ;yellow;do_not_disturb
+Ipek;Melike;1;DevOps;grey;brightness_5;En ligne;green;check
+Gastine;Titouan;9;Continuous Integration;grey;brightness_5;Absent;red;schedule
+Klaleche;Kenza;8;Docker;brown;brightness_1;Hors ligne;grey;clear
+Schmitt;Thomas;2;Team Collaboration;amber;brightness_7;Hors ligne;grey;clear
+Boudjaj;Hania;11;Continuous Integration;amber;brightness_7;OccupǸ;yellow;do_not_disturb
+Mahiouz;Adib;1;Refactoring;brown;brightness_1;Hors ligne;grey;clear
+Gimbert;Theo;2;Communication;amber;brightness_7;En ligne;green;check
+Gaudin;Todd;3;Test Driven Development;amber;brightness_7;Hors ligne;grey;clear
+Liaudet;Raphael;6;Version Control;grey;brightness_5;Hors ligne;grey;clear
+Desmarieux;Nadya;6;Git;amber;brightness_7;Absent;red;schedule
+Ipek;Melike;1;Kubernetes;grey;brightness_5;En ligne;green;check
+Abramian;Kevin;7;System Design;brown;brightness_1;En ligne;green;check
+Boudjaj;Hania;11;Collaborative Development;grey;brightness_5;OccupǸ;yellow;do_not_disturb
+Jacquet;Quentin;9;NULL;NULL;NULL;En ligne;green;check
+Gastine;Titouan;9;Test Driven Development;grey;brightness_5;Absent;red;schedule
+Parent;Florian;10;Microservices;amber;brightness_7;Absent;red;schedule
+Blanchet;Julien;4;Problem Solving;grey;brightness_5;Hors ligne;grey;clear
+PERRIN;Ludovic;12;Continuous Integration;amber;brightness_7;En ligne;green;check
+Gimbert;Theo;2;Version Control;grey;brightness_5;En ligne;green;check
+Abramian;Kevin;7;Collaborative Development;amber;brightness_7;En ligne;green;check
+Parent;Florian;10;Test Driven Development;amber;brightness_7;Absent;red;schedule

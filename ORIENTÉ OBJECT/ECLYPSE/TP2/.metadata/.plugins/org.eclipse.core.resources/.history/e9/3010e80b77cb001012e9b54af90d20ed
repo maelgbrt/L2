@@ -1,0 +1,11 @@
+package TP3;
+
+public class Object_Quete {
+	protected String nom;
+	protected int pv;
+	protected String initial;
+	
+	
+}
+
+
