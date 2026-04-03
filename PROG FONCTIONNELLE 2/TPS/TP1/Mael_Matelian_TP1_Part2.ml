@@ -203,32 +203,44 @@ let (decale : tdate -> int -> tdate) = function date -> function n ->
 
 
 
-  type tEtudiant = Cetudiant of string * string * int * tdate * string;;
-
-  let etu_noel =  Cetudiant("Mael","Gaborit",51,noel,"Info");;
-  let etu_manu =  Cetudiant("MAnu","Negoce",56,noel28,"Info");;
-  let etu_mars =  Cetudiant("Matelian","Negoce",56,fin_mars,"Info");;
 
 
+type loption = Option of string * loption
+  | Option_vide;;
 
-  let dateNaissance = function Cetudiant(_,_,_,dateNaissance,_) -> dateNaissance;;
+let option_vide () = Option_vide;;
 
-  let test = est_avant (dateNaissance etu_noel) (dateNaissance etu_mars);;
-  
-  
 
-type tListesEleves = ClEleves of tEtudiant* tListesEleves| CLNotes_vide ;;
-  
-let cree_liste_eleves_vide = function () -> CLNotes_vide ;;
+let get_option = function  Option(option,_) -> option;;
+let get_suiv_option = function Option(_,suite_option) -> suite_option;;
 
-let add_eleve = function etudiant -> function reste_liste ->
-  ClEleves(etudiant, reste_liste);;
 
-let est_vide = function liste ->
- liste = cree_liste_eleves_vide() ;;
+let rec est_dans_option = function liste -> function opt -> 
+  if liste = Option_vide then
+    false
+  else
+    let option = get_option liste in
+    let suite = get_suiv_option liste in
+    if option = opt then true
+    else est_dans_option suite opt;;
 
-let get_filiere = function Cetudiant(_,_,_,_,filiere) -> filiere;; 
- 
+
+
+
+(* ===== ETUDIANTS ===== *)
+type tEtudiant =
+  Cetudiant of string * string * int * tdate * string * loption;;
+
+let get_date_naissance (Cetudiant(_,_,_,d,_,_)) = d;;
+let get_filiere (Cetudiant(_,_,_,_,f,_)) = f;;
+let get_options (Cetudiant(_,_,_,_,_,opt)) = opt;;
+
+type tListesEleves = ClEleves of tEtudiant * tListesEleves | Vide;;
+
+let est_vide = function Vide -> true | _ -> false;;
+
+let add = function eleve -> function liste -> ClEleves(eleve,liste);;
+
 let get_prem =
   function ClEleves(n, _) -> n |
                       _  -> failwith "get_prem : l'argument n'a pas la forme attendue" ;;
@@ -236,161 +248,47 @@ let get_prem =
 let get_reste =  function ClEleves(_, reste) -> reste |
                       _  -> failwith "get_reste : l'argument n'a pas la forme attendue" ;;
 
-let maliste = ClEleves(etu_noel,cree_liste_eleves_vide());;
 
-let malisteetu_test = ClEleves(etu_mars,maliste);;
-let maliste = ClEleves(etu_manu,malisteetu_test);;
-
-
-
-
-let get_age = function Cetudiant(_,_,_,dateNaissance,_) -> dateNaissance;;
-
-      let compare = function etu1 -> function etu2 -> function f ->
-        let age1 = get_age etu1 in
-        let age2 = get_age etu2 in
-        if f age1 age2 then
-          etu1
-        else
-          etu2;;
-
-let rec trv_eleve = function liste -> function f ->
-    let prem_etu = get_prem liste in 
-    if est_vide(get_reste liste) then
-      prem_etu
+let rec filtrer_universel liste valeur critere =
+  if est_vide liste then
+    Vide
+  else
+    let e = get_prem liste in
+    let reste = get_reste liste in
+    if critere e valeur then
+      ClEleves(e, filtrer_universel reste valeur critere)
     else
-      let jeune_reste = trv_eleve(get_reste liste) f in
-      compare prem_etu jeune_reste f;;
+      filtrer_universel reste valeur critere;;
 
-    let plus_jeune = function listeEleves ->
-      if est_vide listeEleves then
-        failwith "liste vide"
-      else
-        trv_eleve listeEleves est_apres;;
-    
-    let plus_age= function listeEleves ->
-      if est_vide listeEleves then
-        failwith "liste vide"
-      else
-        trv_eleve listeEleves est_avant;;
-(* 
-let rec liste_annee = function liste_etu-> function nb ->
-  let annee = (s_an (dateNaissance(get_prem liste_etu))) in
-  if est_vide liste_etu then
-    ""
-  else if 
-    annee = nb then
-    set_liste (get_reste liste_etu,get_prem liste_etu) nb
-  else
-    liste_annee (get_reste liste_etu) nb;; 
+let cette_filiere e filiere =
+  get_filiere e = filiere;;
 
-let rec liste_filiere = function liste_etu -> function filiere ->
-  let filiere_etu = get_filiere(get_prem liste_etu) in
-  if est_vide liste_etu then
-    failwith "Aucun étudiant dans cette filière"
-  else if filiere_etu = filiere then
-    set_liste (get_reste liste_etu) filiere prem_etu
-  else
-    liste_filiere (get_reste liste_etu) filiere;;
+let cette_annee e annee =
+  s_an (get_date_naissance e) = annee;;
 
-est_dans_filiere *)
+let cette_option e opt =
+  est_dans_option (get_options e) opt;;
 
 
-(* let anniv = function date_soiree -> function tListesEleves ->
-  
- *)
+let nv_date e date_ref =
+  let d = get_date_naissance e in
+  cree_date (s_jour d) (s_mois d) (s_an date_ref);;
 
+let est_ds_7_jours e date_ref =
+  let d = nv_date e date_ref in
+  let avant = decale date_ref (-7) in
+  let apres = decale date_ref 7 in
+  (est_apres d avant || egal d avant) &&
+  (est_avant d apres || egal d apres);;
 
-let set_liste = function listeEtudiant -> function etudiant ->
-  if est_vide listeEtudiant then
-    ClEleves(etudiant,cree_liste_eleves_vide())
-  else
-    ClEleves(etudiant,listeEtudiant);;
+let liste_filiere l f =
+  filtrer_universel l f cette_filiere;;
 
+let liste_annee l a =
+  filtrer_universel l a cette_annee;;
 
+let liste_option= function  l -> function opt ->
+  filtrer_universel l opt cette_option;;
 
-
-let nv_date_detudiant = function etudiant -> function date_initial ->
-  let annee = s_an date_initial in
-  let dateNaissance = get_age etudiant in
-  let jour = s_jour dateNaissance in
-  let mois = s_mois dateNaissance in
-  Cdate(jour,mois,annee);;
-
-(* tdate -> tdate -> bool *)
-let est_ds_7_jours = function etudiant-> function date_initial ->
-  let nv_date = nv_date_detudiant etudiant date_initial in
-  let ya_7_jours = decale date_initial (-7) in
-  let ds_7_jours = decale date_initial 7 in
-  (est_apres nv_date ya_7_jours || egal nv_date ya_7_jours) &&
-  (est_avant nv_date ds_7_jours || egal nv_date ds_7_jours);; 
-
-  
-(* une altenrative  *)
-
-(* 
-let rec semaine = function j1 -> function laDate -> function n ->
-  if n = 0 then
-    if egal (decale j1 n) laDate then
-      true
-    else
-      false
-  else
-    if egal (decale j1 n) laDate then
-      true
-    else
-      semaine j1 laDate (n-1);; *)
-    
-
-let liste_vide = cree_liste_eleves_vide();;
-
-
-let rec anniv = function tListesEleves-> function ladate -> 
-  if est_vide tListesEleves then
-        tListesEleves
-  else
-    let etudiant = get_prem tListesEleves in
-    if est_ds_7_jours etudiant ladate then
-      add_eleve etudiant (anniv (get_reste tListesEleves) ladate)
-    else
-      anniv(get_reste tListesEleves) ladate;;
-
-
-      let cette_annee = function etu1 -> function annee ->
-        let annee = s_an(annee) in
-        let datenaissance = get_age etu1 in
-        let anneeEtu = s_an datenaissance in
-        anneeEtu = annee;;
-
-  
-      let rec general = function tListesEleves-> function ladate -> function f->
-  if est_vide tListesEleves then
-        tListesEleves
-  else
-    let etudiant = get_prem tListesEleves in
-    if f etudiant ladate then
-      add_eleve etudiant (general (get_reste tListesEleves) ladate f)
-    else
-      general(get_reste tListesEleves) ladate f;;
-
-
-
-      (* tListesEleves -> tdate -> tListesEleves *)
-      let liste_annee = function tListesEleves -> function ladate ->
-        if est_vide tListesEleves then
-          cree_liste_eleves_vide()
-        else
-        general tListesEleves ladate cette_annee;;
-    (*
-
-    test : 
-      liste_annee maliste noel;;
-      - : tListesEleves = ClEleves (Cetudiant ("Mael", "Gaborit", 51, Cdate (25, 12, 2018), "Info"), CLNotes_vide) 
-      
-    *)
-
-
-      
-
-
-  
+let anniv = function l -> function date ->
+  filtrer_universel l date est_ds_7_jours;;

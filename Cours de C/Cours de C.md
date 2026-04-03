@@ -29,7 +29,7 @@ Le code:
 #include <stdlib.h>
 #definie N 4
 
-?? *initialize_array()
+int *initialize_array()
 {
     int *tab = (int * )malloc(N*sizeof(int));
     <!-- int *tab = malloc(N * sizeof(int)); -->

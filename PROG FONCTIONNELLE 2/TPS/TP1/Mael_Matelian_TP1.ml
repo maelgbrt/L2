@@ -206,7 +206,7 @@ let (decale : tdate -> int -> tdate) = function date -> function n ->
   type tEtudiant = Cetudiant of string * string * int * tdate * string;;
 
   let etu_noel =  Cetudiant("Mael","Gaborit",51,noel,"Info");;
-  let etu_manu =  Cetudiant("MAnu","Negoce",56,noel28,"Info");;
+  let etu_manu =  Cetudiant("MAnu","Negoce",56,noel28,"Spi");;
   let etu_mars =  Cetudiant("Matelian","Negoce",56,fin_mars,"Info");;
 
 
@@ -242,6 +242,7 @@ let malisteetu_test = ClEleves(etu_mars,maliste);;
 let maliste = ClEleves(etu_manu,malisteetu_test);;
 
 
+  let getfiliere = function Cetudiant(_,_,_,_,filiere) -> filiere;; 
 
 
 let get_age = function Cetudiant(_,_,_,dateNaissance,_) -> dateNaissance;;
@@ -301,12 +302,6 @@ est_dans_filiere *)
  *)
 
 
-let set_liste = function listeEtudiant -> function etudiant ->
-  if est_vide listeEtudiant then
-    ClEleves(etudiant,cree_liste_eleves_vide())
-  else
-    ClEleves(etudiant,listeEtudiant);;
-
 
 
 
@@ -345,6 +340,9 @@ let rec semaine = function j1 -> function laDate -> function n ->
 let liste_vide = cree_liste_eleves_vide();;
 
 
+(* tListesEleves -> tdate -> tListesEleves *)
+
+(* Version Classic *)
 let rec anniv = function tListesEleves-> function ladate -> 
   if est_vide tListesEleves then
         tListesEleves
@@ -356,29 +354,70 @@ let rec anniv = function tListesEleves-> function ladate ->
       anniv(get_reste tListesEleves) ladate;;
 
 
-      let cette_annee = function etu1 -> function annee ->
-        let annee = s_an(annee) in
-        let datenaissance = get_age etu1 in
-        let anneeEtu = s_an datenaissance in
-        anneeEtu = annee;;
 
-  
-      let rec general = function tListesEleves-> function ladate -> function f->
+
+(* Version general *)
+
+let rec general = function tListesEleves-> function ladonnee -> function f->
   if est_vide tListesEleves then
         tListesEleves
   else
     let etudiant = get_prem tListesEleves in
-    if f etudiant ladate then
-      add_eleve etudiant (general (get_reste tListesEleves) ladate f)
+    if f etudiant ladonnee then
+      add_eleve etudiant (general (get_reste tListesEleves) ladonnee f)
     else
-      general(get_reste tListesEleves) ladate f;;
-
-
-      let liste_annee = function tListesEleves -> function ladate ->
-        if est_vide tListesEleves then
-          cree_liste_eleves_vide()
-        else
-        general tListesEleves ladate cette_annee;;
-    
+      general(get_reste tListesEleves) ladonnee f;;
 
   
+(* tListesEleves -> valeur -> critère *)
+let filtrer_eleves = function tListesEleves -> function valeur -> function critere ->
+  if est_vide tListesEleves then
+    cree_liste_eleves_vide()
+  else
+    general tListesEleves valeur critere;;
+        
+
+
+(* tEtudiant -> string -> bool *)
+let cette_filière = function etu1 -> function filière ->
+  let etu_filière = getfiliere etu1 in
+  etu_filière = filière;;
+
+(* utop # cette_filière etu_manu "Info" ;;
+- : bool = fal
+top # cette_filière etu_manu "Spi" ;;
+- : bool = true *)
+
+
+
+
+
+
+
+(* tEtudiant -> int->bool *)
+let cette_annee = function etu1 -> function annee ->
+  let datenaissance = get_age etu1 in
+  let anneeEtu = s_an datenaissance in
+  anneeEtu = annee;;
+
+(* utop # cette_annee etu_manu 2018;;
+- : bool = fal
+utop # cette_annee etu_manu 2017;;
+- : bool = true *)
+
+
+
+
+(* tListesEleves -> tdate -> tListesElevess *)
+let anniv_version2 = function tListesEleves -> function ladate ->      
+ filtrer_eleves tListesEleves ladate est_ds_7_jours;;
+
+
+(* tListesEleves -> int > tListesEleves *)
+let liste_annee = function tListesEleves -> function annee ->
+  filtrer_eleves tListesEleves annee cette_annee;;
+
+
+(* tListesEleves -> string -> tListesEleves *)
+let liste_filiere = function tListesEleves -> function filière ->
+  filtrer_eleves tListesEleves filière cette_filière;;

@@ -3,6 +3,8 @@
 #include <string.h>
 #include "tennis.h"
 
+
+
 void main(){
     
     char *j1 = "Medvedev";
@@ -25,16 +27,37 @@ void initialiser(Tournois *t)
     *t = NULL;
 }
 
-Match creerMatch()
+Match creerMatch(char *j1,char *j2,int sets[][2],int nbSet){
+    Match res;
+    res.nom1 = malloc(strlen(j1)+1);
+    res.nom2 = malloc(strlen(j2)+1);
+    strcpy(res.nom1,j1);
+    strcpy(res.nom2,j2);
 
-Match ajouterMatch()
+    res.score = malloc(nbSet*2*sizeof(int));
+    for(int i = 0 ; i < nbSet ; i++){
+        res.score[i][0] = sets[i][0];
+        res.score[i][1] = sets[i][1];
+    }
+    res.nbSet = nbSet;
+    return res;
+}
+
+
+
+void ajouterMatch(Tournois *t, char *j1,char *j2,int sets[][2],int nbSet)
+{
+struct match_tournois *temp = malloc(sizeof(struct match_tournois));
+temp -> info = creerMatch(j1,j2,sets,nbSet);
+temp -> suiv = *t;
+*t = temp;
+}
 
 void liberer(Tournois *t)
 {
-    //code
     
     struct match_tournois * pt_int = *t;
-    while (pt_int != null)
+    while (pt_int != NULL)
     {
         struct match_tournois * temp = pt_int -> suiv;
         free(pt_int -> info.score);
