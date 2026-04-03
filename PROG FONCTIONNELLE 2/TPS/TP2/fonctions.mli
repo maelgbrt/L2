@@ -10,3 +10,6 @@ val liste_mot : liste -> liste -> liste
 
 val est_dans : liste -> string -> bool
 
+val get_dernier : liste -> string
+
+val est_positif : listeDeliste -> bool

@@ -23,3 +23,5 @@ let rec list_mot uneListeDeEnsAppr liste_note =
       list_mot (get_reste uneListeDeEnsAppr) liste_note
     else
       Cliste(prem, liste_note);;
+
+      
