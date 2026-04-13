@@ -70,3 +70,7 @@ void liberer(Tournois *t)
 }
 
 //faire afficher tournois
+
+void sauvegarder(Tournois t, char * nom_fichier){
+    fopen()
+}

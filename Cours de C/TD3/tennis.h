@@ -20,4 +20,7 @@ void initialiser( Tournois *t);
 void ajouterMatch (Tournois *t, char *j1, char *j2, int sets[][2],int nbSet );
 void afficher (Tournois t);
 void liberer(Tournois *t);
+void sauvegarder(Tournois t, char * nom_fichier);
+void charger(Tournois *t, char * nom_fichier);//le * car on modifie pas
+
  

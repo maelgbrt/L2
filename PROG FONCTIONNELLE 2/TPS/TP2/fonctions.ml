@@ -14,6 +14,8 @@ let cree_liste_vide = function () -> Cliste_vide ;;
 let est_vide = function liste ->
  liste = cree_liste_vide() ;;
 
+
+
 let rec list_mot uneListeDeEnsAppr liste_note =
   if est_vide uneListeDeEnsAppr then
     liste_note
@@ -24,4 +26,3 @@ let rec list_mot uneListeDeEnsAppr liste_note =
     else
       Cliste(prem, liste_note);;
 
-      
