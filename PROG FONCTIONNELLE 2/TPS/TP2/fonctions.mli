@@ -35,7 +35,8 @@ val get_liste_mot_doc : doc -> liste_mot
 (* On vérifie si un mot est dans la liste des mots d'un document *)
 val est_dans : liste_mot -> string -> bool
 
-
+(* On verifie que la liste de documents est positive *)
+val est_positif : ensemble_doc -> bool
 
 
 
