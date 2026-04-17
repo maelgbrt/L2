@@ -29,6 +29,12 @@ val get_reste : liste_mot -> liste_mot
 (* On recupère le signe d'un document *)
 val get_signe : doc -> string
 
+(* On recupère le premier document d'un ensemble de documents *)
+val get_prem_doc : ensemble_doc -> doc
+
+(* On recupère le reste des documents d'un ensemble de documents *)
+val get_reste_doc : ensemble_doc -> ensemble_doc
+
 (* On recupère la liste des mots d'un document *)
 val get_liste_mot_doc : doc -> liste_mot
 
