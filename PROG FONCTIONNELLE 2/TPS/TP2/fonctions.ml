@@ -63,4 +63,6 @@ let fusion = function l1 -> function l2 ->
     else
       ClisteMot(premierTerme,(fusion (get_reste l1) l2));;
   
+
+      ok test
     
