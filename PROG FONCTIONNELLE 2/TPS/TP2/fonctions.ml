@@ -15,6 +15,18 @@ let get_signe = function Cdoc(_,s) -> s |
 
 
             
+(*             
+(* On recupère le signe d'un document *)
+val get_signe : doc -> string
+
+(* On recupère la liste des mots d'un document *)
+val get_liste_mot_doc : doc -> liste_mot
+
+(* On vérifie si un mot est dans la liste des mots d'un document *)
+val est_dans : liste_mot -> string -> bool
+
+
+  *)
 
 
 
@@ -28,6 +40,8 @@ let get_signe = function Cdoc(_,s) -> s |
 
 
 
+
+(* 
 type liste = Cliste of string * liste | Cliste_vide;;
 
 type listeDeliste = ClisteDeliste of liste * liste | ClisteDeliste_vide ;;
@@ -76,5 +90,5 @@ let rec list_mot uneListeDeEnsAppr liste_note =
     else
       Cliste(prem, liste_note);;
 
-let rec est_homogene
+
  
