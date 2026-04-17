@@ -36,7 +36,7 @@ else
 
 
 
-(* 
+(*
 let rec list_mot uneListeDeEnsAppr liste_note =
   if est_vide uneListeDeEnsAppr then
     liste_note
@@ -47,5 +47,158 @@ let rec list_mot uneListeDeEnsAppr liste_note =
     else
       Cliste(prem, liste_note);;
 
-let rec est_homogene
+
   *)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let rec est_homogene = function liste ->
+  if est_vide list then
+    false
+  else if 
+    get_prem_doc get_signe liste = est_homogene (get_reste_doc get_signe liste) then 
+      true 
+else 
+  false;; 
