@@ -74,8 +74,8 @@ val est_homogene: ensemble_doc -> bool
 (* On cherche une liste de mots dans l'ensemble de documents *)
 val findlisteMots : ensemble_doc -> liste_mot
 
-
-
+(* On fusionne deux ensembles de documents dans un même troisième*)
+val fusion : ensemble_doc -> ensemble_doc -> ensemble_doc
 
 
 
