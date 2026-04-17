@@ -63,46 +63,4 @@ let fusion = function l1 -> function l2 ->
     else
       ClisteMot(premierTerme,(fusion (get_reste l1) l2));;
   
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      
-    (* let premierTerme = get_prem_doc listeDoc in
-
-    if est_dans jsp premierTerme then
-      findlisteMots (get_reste_doc ensemble_doc)
-    else
-      premierTerme 
-(*  *)
-let rec list_mot uneListeDeEnsAppr liste_note =
-  if est_vide uneListeDeEnsAppr then
-    liste_note
-  else
-    let prem = get_prem uneListeDeEnsAppr in
-    if est_dans prem liste_note then
-      list_mot (get_reste uneListeDeEnsAppr) liste_note
-    else
-      Cliste(prem, liste_note);;
-
-let rec est_homogene
-  *)
+    
