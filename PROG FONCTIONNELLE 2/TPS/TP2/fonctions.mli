@@ -9,13 +9,10 @@
 type liste_mot = ClisteMot of string * liste_mot | Cliste_mot_vide ;;
 
 (* le document est composé d'une liste de mots et d'un signe (+ ou -)*)
-type doc = Cdoc of liste_mot  * string | Cliste_vide ;;
+type doc = Cdoc of liste_mot  * string | Cdoc_vide ;;
 
 (* L'ensmeble de documents est une liste de documents. *) 
 type ensemble_doc = CEnsDoc of doc * ensemble_doc | ClisteDeliste_vide ;;
-
-
-
 
 
 

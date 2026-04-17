@@ -1,5 +1,15 @@
 
 
+type liste_mot = ClisteMot of string * liste_mot | Cliste_mot_vide ;;
+
+(* le document est composé d'une liste de mots et d'un signe (+ ou -)*)
+type doc = Cdoc of liste_mot  * string | Cdoc_vide ;;
+
+(* L'ensmeble de documents est une liste de documents. *) 
+type ensemble_doc = CEnsDoc of doc * ensemble_doc | ClisteDeliste_vide ;;
+
+
+
 let get_prem =
   function ClisteMot(n, _) -> n |
                       _  -> failwith "get_prem : l'argument n'a pas la forme attendue" ;;
@@ -23,9 +33,12 @@ let get_reste_doc = function
 
 
 
-let cree_liste_vide = function () -> Cliste_vide ;;
-let est_vide = function liste ->
- liste = cree_liste_vide() ;;
+
+
+let cree_doc = function ()-> Cdoc_vide;;
+let creer_liste_mot = function ()->  Cliste_mot_vide;;
+let ensemble_doc = function () -> ClisteDeliste_vide;;
+
 
 
 let rec est_dans = function mot-> function liste->
@@ -76,9 +89,6 @@ let rec est_homogene = function liste ->
 else 
   false;; 
 
-let cree_doc = function ()-> Cdoc;;
-let creer_liste_mot = function ()-> ClisteMot;;
-let ensemble_doc = function ()-> CEnsDoc
 
 let doc_est_vide = function doc ->
   doc = cree_doc;;
@@ -91,7 +101,6 @@ let liste_mot_vide = function liste_mot ->
 
 
 
-git config --global pull.rebase false
 
 
 
@@ -161,12 +170,3 @@ git config --global pull.rebase false
 
 
 
-
-
-
-
-
-
-
-
-sdwfxghjbknl,;m:
