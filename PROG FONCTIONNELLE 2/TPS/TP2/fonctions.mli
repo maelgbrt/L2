@@ -18,6 +18,32 @@ type ensemble_doc = CEnsDoc of doc * ensemble_doc | ClisteDeliste_vide ;;
 
 
 
+
+
+(* ============================== FONCTIONS DE CREATION ====================== *)
+
+val creer_liste_mot : _
+
+val creer_doc : _
+
+val ensemble_doc : _
+
+
+
+
+(* ======================= FONCTIONS DE COMPARAISON VIDE ====================== *)
+
+val liste_mot_vide : liste_mot -> bool
+
+val doc_vide : doc -> bool
+
+val ensemble_doc_vide : ensemble_doc -> bool
+
+
+
+
+
+
 (* ============================== LES FONCTIONS ================================= *)
 
 (* On recupère le premier mot de la liste d'un document d'un document *)
