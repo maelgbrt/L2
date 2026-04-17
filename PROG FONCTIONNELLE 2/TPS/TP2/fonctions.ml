@@ -91,14 +91,7 @@ let liste_mot_vide = function liste_mot ->
 
 
 
-
-
-jfjd
-
-
-
-
-
+git config --global pull.rebase false
 
 
 
