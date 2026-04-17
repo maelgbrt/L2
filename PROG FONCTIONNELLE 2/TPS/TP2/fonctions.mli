@@ -6,10 +6,10 @@
 (* =============================== LES TYPES ================================ *)
 
 (* Liste de mot d'un document *)
-type liste_mot = Cmot of string * liste_mot | Cliste_mot_vide ;;
+type liste_mot = ClisteMot of string * liste_mot | Cliste_mot_vide ;;
 
 (* le document est composé d'une liste de mots et d'un signe (+ ou -)*)
-type doc = Cliste of liste_mot  * string | Cliste_vide ;;
+type doc = Cdoc of liste_mot  * string | Cliste_vide ;;
 
 (* L'ensmeble de documents est une liste de documents. *) 
 type ensemble_doc = CEnsDoc of doc * ensemble_doc | ClisteDeliste_vide ;;
@@ -38,7 +38,7 @@ val est_dans : liste_mot -> string -> bool
 (* On verifie que la liste de documents est positive *)
 val est_positif : ensemble_doc -> bool
 
-
+val findlisteMots : ensemble_doc -> liste_mot
 
 
 

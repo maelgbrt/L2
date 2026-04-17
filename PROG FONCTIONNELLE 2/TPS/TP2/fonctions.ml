@@ -1,14 +1,17 @@
 
 
+let get_prem =
+  function ClisteMot(n, _) -> n |
+                      _  -> failwith "get_prem : l'argument n'a pas la forme attendue" ;;
+
+let get_reste = function
+| ClisteMot(_,n) -> n |
+            _ -> failwith "get_prem : l'argument n'a pas la forme attendue" ;;
 
 
 
-(* On recupère le premier mot de la liste d'un document d'un document *)
-val get_prem : liste_mot -> string
 
-(* On recupère le reste des mots d'un document *)
-val get_reste : liste_mot -> liste_mot
-
+            
 (* On recupère le signe d'un document *)
 val get_signe : doc -> string
 
@@ -19,6 +22,7 @@ val get_liste_mot_doc : doc -> liste_mot
 val est_dans : liste_mot -> string -> bool
 
 
+ *)
 
 
 
@@ -34,8 +38,7 @@ val est_dans : liste_mot -> string -> bool
 
 
 
-
-
+(* 
 
 
 let get_prem =
@@ -44,7 +47,7 @@ let get_prem =
 
 let get_reste =  function Cliste(_, reste) -> reste |
                       _  -> failwith "get_reste : l'argument n'a pas la forme attendue" ;;
-
+ *)
 
 
 
