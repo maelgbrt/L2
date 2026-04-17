@@ -27,7 +27,7 @@ let doc_est_vide = function doc ->
   doc = cree_doc();;
 
 let ensemble_doc_vide = function liste_doc -> 
-  liste_doc = ensemble_doc();;
+  liste_doc = creer_ensemble_doc();;
 
 let liste_mot_vide = function liste_mot ->
   liste_mot = creer_liste_mot();;
