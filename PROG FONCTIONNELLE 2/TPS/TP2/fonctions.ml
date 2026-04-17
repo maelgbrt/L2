@@ -65,6 +65,28 @@ let fusion = function l1 -> function l2 ->
   
       
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
     (* let premierTerme = get_prem_doc listeDoc in
 
     if est_dans jsp premierTerme then
