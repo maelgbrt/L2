@@ -26,8 +26,6 @@ val creer_doc : _
 val ensemble_doc : _
 
 
-
-
 (* ======================= FONCTIONS DE COMPARAISON VIDE ====================== *)
 
 val liste_mot_vide : liste_mot -> bool

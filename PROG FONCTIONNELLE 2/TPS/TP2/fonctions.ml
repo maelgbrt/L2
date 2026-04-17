@@ -10,6 +10,31 @@ type ensemble_doc = CEnsDoc of doc * ensemble_doc | ClisteDeliste_vide ;;
 
 
 
+
+(* ============================== FONCTIONS DE CREATION ====================== *)
+
+let cree_doc = function ()-> Cdoc_vide;;
+
+let creer_liste_mot = function ()->  Cliste_mot_vide;;
+
+let ensemble_doc = function () -> ClisteDeliste_vide;;
+
+
+
+(* ======================= FONCTIONS DE COMPARAISON VIDE ====================== *)
+
+let doc_est_vide = function doc ->
+  doc = cree_doc();;
+
+let ensemble_doc_vide = function liste_doc -> 
+  liste_doc = ensemble_doc();;
+
+let liste_mot_vide = function liste_mot ->
+  liste_mot = creer_liste_mot();;
+
+(* ============================== LES FONCTIONS DE MANIPULATION ============================== *)
+
+
 let get_prem =
   function ClisteMot(n, _) -> n |
                       _  -> failwith "get_prem : l'argument n'a pas la forme attendue" ;;
@@ -17,7 +42,6 @@ let get_prem =
 let get_reste = function
 | ClisteMot(_,n) -> n |
             _ -> failwith "get_prem : l'argument n'a pas la forme attendue" ;;
-
 
 let get_signe = function Cdoc(_,s) -> s |
             _ -> failwith "Signe non recup";;
@@ -35,25 +59,38 @@ let get_reste_doc = function
 
 
 
-let cree_doc = function ()-> Cdoc_vide;;
-let creer_liste_mot = function ()->  Cliste_mot_vide;;
-let ensemble_doc = function () -> ClisteDeliste_vide;;
 
+(* ================================= LES FONCTIONS ================================= *)
 
 
 let rec est_dans = function mot-> function liste->
-  if est_vide liste then
+  if liste_mot_vide liste then
     false
-  else if 
-    get_prem liste == mot then
+  else
+    if get_prem liste = mot then
       true 
 else 
   est_dans mot(get_reste liste) ;;
 
 
-let findlisteMots = function ensemble_doc ->
+
+
+
+
+
+  let rec fusion = function l1 -> function l2 ->
+  if liste_mot_vide l1 then
+    l2
+  else
+    let premierTerme = get_prem l1 in
+    if est_dans premierTerme l2 then
+      fusion (get_reste l1) l2
+    else
+      ClisteMot(premierTerme,(fusion (get_reste l1) l2));;
+
+let rec findlisteMots = function ensemble_doc ->
   if ensemble_doc_vide ensemble_doc then 
-      cree_liste_mot
+      creer_liste_mot()
   else
     let doc = get_prem_doc ensemble_doc in
     let listeDoc = get_liste_mot_doc doc in 
@@ -61,50 +98,25 @@ let findlisteMots = function ensemble_doc ->
     fusion listeDoc (findlisteMots (get_reste_doc ensemble_doc))
   
 
+
+
+
+
+(* let rec est_homogene = function ensemble_doc ->
+  if ensemble_doc_vide ensemble_doc then
+    false
+  else 
+    let signe = get_signe(get_prem_doc ensemble_doc) in
+  ;;  *)
+
+
+
+
+
+(* ==================================== LES TESTS ============================== *)
     let p1 = ClisteMot("mael",cree_liste_vide());;
     let p2 = ClisteMot("matelian",p1);;
     let p3 = ClisteMot("moi",p2);;
-
-
-let fusion = function l1 -> function l2 ->
-  if list_mot_vide l1 then
-    l2
-  else
-    let premierTerme = get_prem l1 in
-    if est_dans l2 premierTerme then
-      fusion (get_reste l1) l2
-    else
-      ClisteMot(premierTerme,(fusion (get_reste l1) l2));;
-
-
-
-
-
-let rec est_homogene = function liste ->
-  if est_vide liste then
-    false
-  else if 
-    get_prem_doc get_signe liste = est_homogene (get_reste_doc get_signe liste) then 
-      true 
-else 
-  false;; 
-
-
-let doc_est_vide = function doc ->
-  doc = cree_doc;;
-
-let ensemble_doc_vide = function liste_doc -> 
-  liste_doc = ensemble_doc;;
-
-let liste_mot_vide = function liste_mot ->
-  liste_mot = creer_liste_mot;;
-
-
-
-
-
-
-
 
 
 
