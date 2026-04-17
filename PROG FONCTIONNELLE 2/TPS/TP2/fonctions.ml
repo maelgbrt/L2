@@ -62,5 +62,29 @@ let fusion = function l1 -> function l2 ->
       fusion (get_reste l1) l2
     else
       ClisteMot(premierTerme,(fusion (get_reste l1) l2));;
-  
-    
+
+
+
+
+
+let rec est_homogene = function liste ->
+  if est_vide liste then
+    false
+  else if 
+    get_prem_doc get_signe liste = est_homogene (get_reste_doc get_signe liste) then 
+      true 
+else 
+  false;; 
+
+let cree_doc = function ()-> Cdoc;;
+let creer_liste_mot = function ()-> ClisteMot;;
+let ensemble_doc = function ()-> CEnsDoc
+
+let doc_est_vide = function doc ->
+  doc = cree_doc;;
+
+let ensemble_doc_vide = function liste_doc -> 
+  liste_doc = ensemble_doc;;
+
+let liste_mot_vide = function liste_mot ->
+  liste_mot = creer_liste_mot;;
