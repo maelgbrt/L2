@@ -11,26 +11,18 @@ let get_reste = function
 
 let get_signe = function Cdoc(_,s) -> s |
             _ -> failwith "Signe non recup";;
-
-
-
-
-
-
-
-
-
-
-
-
             
+let get_liste_mot_doc = Cdoc(n,_) -> n | -> failwith "Liste non recup du doc";;
+                        
+let get_prem_doc = CEnsDoc(n,_) -> n | -> failwith "DOc non trouvé";;
+
+let get_reste_doc : CEnsDoc(_,n) -> n | -> failwith "Liste suite doc non trouvé";;
+
+
 
 let cree_liste_vide = function () -> Cliste_vide ;;
 let est_vide = function liste ->
  liste = cree_liste_vide() ;;
-
-
-
 
 
 let rec est_dans = function mot-> function liste->
@@ -44,7 +36,7 @@ else
 
 
 
-
+(* 
 let rec list_mot uneListeDeEnsAppr liste_note =
   if est_vide uneListeDeEnsAppr then
     liste_note
@@ -56,4 +48,4 @@ let rec list_mot uneListeDeEnsAppr liste_note =
       Cliste(prem, liste_note);;
 
 let rec est_homogene
- 
+  *)

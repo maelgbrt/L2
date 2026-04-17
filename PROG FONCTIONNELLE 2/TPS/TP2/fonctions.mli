@@ -44,7 +44,7 @@ val ensemble_doc_vide : ensemble_doc -> bool
 
 
 
-(* ============================== LES FONCTIONS ================================= *)
+(* ============================== LES FONCTIONS DE MANIPULATION ============================== *)
 
 (* On recupère le premier mot de la liste d'un document d'un document *)
 val get_prem : liste_mot -> string
@@ -63,6 +63,8 @@ val get_reste_doc : ensemble_doc -> ensemble_doc
 
 (* On recupère la liste des mots d'un document *)
 val get_liste_mot_doc : doc -> liste_mot
+
+(* ================================= LES FONCTIONS ================================= *)
 
 (* On vérifie si un mot est dans la liste des mots d'un document *)
 val est_dans : liste_mot -> string -> bool
