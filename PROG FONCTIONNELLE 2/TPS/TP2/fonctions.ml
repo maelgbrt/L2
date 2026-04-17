@@ -94,7 +94,6 @@ let rec findlisteMots = function ensemble_doc ->
   else
     let doc = get_prem_doc ensemble_doc in
     let listeDoc = get_liste_mot_doc doc in 
-    
     fusion listeDoc (findlisteMots (get_reste_doc ensemble_doc))
   
 
@@ -114,19 +113,28 @@ let rec findlisteMots = function ensemble_doc ->
 
 
 (* ==================================== LES TESTS ============================== *)
+
+
+(* ========== CREATTON LISTES ================= *)
     let p1 = ClisteMot("mael",creer_liste_mot());;
     let p2 = ClisteMot("matelian",p1);;
     let p3 = ClisteMot("moi",p2);;
 
 
+    let f1 = ClisteMot("Citroen",creer_liste_mot());;
+    let f2 = ClisteMot("matelian",f1);;
+    let f3 = ClisteMot("Cargo",f2);;
 
 
+(* ========== CREATION DE DOCS ================= *)
+
+    let doc1 = Cdoc(p3,"+");;
+    let doc2 = Cdoc(f3,"-");;
 
 
-
-
-
-
+(* ========== CREATTON D'UN ENSEMBLE DE DOCS'================= *)
+    let ens1= CEnsDoc(doc1,creer_ensemble_doc());;
+    let ens2 = CEnsDoc(doc2,ens1);;
 
 
 
