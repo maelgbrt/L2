@@ -114,7 +114,7 @@ let rec findlisteMots = function ensemble_doc ->
 
 
 (* ==================================== LES TESTS ============================== *)
-    let p1 = ClisteMot("mael",cree_liste_vide());;
+    let p1 = ClisteMot("mael",creer_liste_mot());;
     let p2 = ClisteMot("matelian",p1);;
     let p3 = ClisteMot("moi",p2);;
 
