@@ -9,9 +9,13 @@ let get_reste = function
             _ -> failwith "get_prem : l'argument n'a pas la forme attendue" ;;
 
 
+let get_signe = function Cdoc(_,s) -> s |
+            _ -> failwith "Signe non recup";;
+
 
 
             
+(*             
 (* On recupère le signe d'un document *)
 val get_signe : doc -> string
 
@@ -22,8 +26,7 @@ val get_liste_mot_doc : doc -> liste_mot
 val est_dans : liste_mot -> string -> bool
 
 
- *)
-
+  *)
 
 
 
