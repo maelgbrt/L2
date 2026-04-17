@@ -1,21 +1,57 @@
-type name = C of doc * string | &;;
-
-type doc = Cliste of string * doc| Cliste_vide;;
+(* type name = C of doc * string | &;; *)
 
 
-type EnsDoc = ClisteDeliste of liste * liste | ClisteDeliste_vide ;;
 
-val get_prem : liste -> string
 
-val get_reste : liste -> liste
+(* =============================== LES TYPES ================================ *)
 
-val liste_mot : liste -> liste -> liste
+(* Liste de mot d'un document *)
+type liste_mot = Cmot of string * liste_mot | Cliste_mot_vide ;;
 
-val est_dans : liste -> string -> bool
+(* le document est composé d'une liste de mots et d'un signe (+ ou -)*)
+type doc = Cliste of liste_mot  * string | Cliste_vide ;;
 
-val get_dernier : liste -> string
+(* L'ensmeble de documents est une liste de documents. *) 
+type ensemble_doc = CEnsDoc of doc * ensemble_doc | ClisteDeliste_vide ;;
 
-val est_positif : listeDeliste -> bool
 
-COPET ROUS DROIT DOINEB TOUS DROI 1EER RON PO   MPONTE 2 ND ROND PONT A GAUCGE OUS DROI
-ON VERRA
+
+
+
+(* ============================== LES FONCTIONS ================================= *)
+
+(* On recupère le premier mot de la liste d'un document d'un document *)
+val get_prem : liste_mot -> string
+
+(* On recupère le reste des mots d'un document *)
+val get_reste : liste_mot -> liste_mot
+
+(* On recupère le signe d'un document *)
+val get_signe : doc -> string
+
+(* On recupère la liste des mots d'un document *)
+val get_liste_mot_doc : doc -> liste_mot
+
+(* On vérifie si un mot est dans la liste des mots d'un document *)
+val est_dans : liste_mot -> string -> bool
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(* 
+val get_prem_deliste : EnsDoc -> doc
+
+val get_reste_deliste : EnsDoc -> EnsDoc
+ *)

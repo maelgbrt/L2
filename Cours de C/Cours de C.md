@@ -133,3 +133,10 @@ void main(void)
 Reflechir Arbre Binaire 
 
 
+## Quelques Notions
+
+```
+-p permet de lire dans le fichier courant et afficher le tournois
+-f change le nom du fichier courant
+-a ajoute un match dans le fichiier courant 
+```

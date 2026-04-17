@@ -22,5 +22,6 @@ void afficher (Tournois t);
 void liberer(Tournois *t);
 void sauvegarder(Tournois t, char * nom_fichier);
 void charger(Tournois *t, char * nom_fichier);//le * car on modifie pas
+void parser_match(Tournois * t, char * resultat);
 
  
