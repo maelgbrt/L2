@@ -70,7 +70,7 @@ val get_liste_mot_doc : doc -> liste_mot
 val est_dans : liste_mot -> string -> bool
 
 (* On verifie que la liste de documents est homogène *)
-val est_homogène: ensemble_doc -> bool
+val est_homogene: ensemble_doc -> bool
 
 (* On cherche une liste de mots dans l'ensemble de documents *)
 val findlisteMots : ensemble_doc -> liste_mot
