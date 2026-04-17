@@ -39,6 +39,11 @@ val est_dans : liste_mot -> string -> bool
 
 
 (* 
+type liste = Cliste of string * liste | Cliste_vide;;
+
+type listeDeliste = ClisteDeliste of liste * liste | ClisteDeliste_vide ;;
+
+
 
 
 let get_prem =
@@ -47,7 +52,7 @@ let get_prem =
 
 let get_reste =  function Cliste(_, reste) -> reste |
                       _  -> failwith "get_reste : l'argument n'a pas la forme attendue" ;;
- *)
+
 
 
 
