@@ -17,7 +17,7 @@ let cree_doc = function ()-> Cdoc_vide;;
 
 let creer_liste_mot = function ()->  Cliste_mot_vide;;
 
-let ensemble_doc = function () -> ClisteDeliste_vide;;
+let creer_ensemble_doc = function () -> ClisteDeliste_vide;;
 
 
 

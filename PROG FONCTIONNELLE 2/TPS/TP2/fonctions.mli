@@ -23,7 +23,7 @@ val creer_liste_mot : _
 
 val creer_doc : _
 
-val ensemble_doc : _
+val creer_ensemble_doc : _
 
 
 (* ======================= FONCTIONS DE COMPARAISON VIDE ====================== *)
