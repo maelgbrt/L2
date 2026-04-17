@@ -202,3 +202,9 @@ let rec est_homogene = function liste ->
       true 
 else 
   false;; 
+
+let cree_doc_vide = function ()-> Cdoc;;
+
+let doc_est_vide = function doc ->
+  doc = cree_doc_vide;;
+

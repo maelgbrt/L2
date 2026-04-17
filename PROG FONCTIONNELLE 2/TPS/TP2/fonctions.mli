@@ -35,7 +35,7 @@ val ensemble_doc : _
 
 val liste_mot_vide : liste_mot -> bool
 
-val doc_vide : doc -> bool
+val doc_est_vide : doc -> bool
 
 val ensemble_doc_vide : ensemble_doc -> bool
 
