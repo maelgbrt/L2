@@ -1,39 +1,6 @@
+type liste = Cliste of string * liste | Cliste_vide;;
 
-
-
-
-
-(* On recupère le premier mot de la liste d'un document d'un document *)
-val get_prem : liste_mot -> string
-
-(* On recupère le reste des mots d'un document *)
-val get_reste : liste_mot -> liste_mot
-
-(* On recupère le signe d'un document *)
-val get_signe : doc -> string
-
-(* On recupère la liste des mots d'un document *)
-val get_liste_mot_doc : doc -> liste_mot
-
-(* On vérifie si un mot est dans la liste des mots d'un document *)
-val est_dans : liste_mot -> string -> bool
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+type listeDeliste = ClisteDeliste of liste * liste | ClisteDeliste_vide ;;
 
 
 
@@ -49,12 +16,26 @@ let get_reste =  function Cliste(_, reste) -> reste |
 
 
 
-(* let cree_liste_vide = function () -> Cliste_vide ;;
+let cree_liste_vide = function () -> Cliste_vide ;;
 let est_vide = function liste ->
- liste = cree_liste_vide() ;; *)
+ liste = cree_liste_vide() ;;
 
 
-(* 
+
+
+
+let rec est_dans = function mot-> function liste->
+  if est_vide liste then
+    false
+  else if 
+    get_prem liste == mot then
+      true 
+else 
+  est_dans mot(get_reste liste) ;;
+
+
+
+
 let rec list_mot uneListeDeEnsAppr liste_note =
   if est_vide uneListeDeEnsAppr then
     liste_note
@@ -64,4 +45,6 @@ let rec list_mot uneListeDeEnsAppr liste_note =
       list_mot (get_reste uneListeDeEnsAppr) liste_note
     else
       Cliste(prem, liste_note);;
- *)
+
+
+ 
