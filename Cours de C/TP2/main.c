@@ -9,12 +9,14 @@
 
 
 
-
+// Vérifie si une case a déjà été visitée
 
 bool is_visited(maze *m, coord next){
   return (m->cells[next.x][next.y].tag[0] == '.' || m->cells[next.x][next.y].tag[1] == '.');
 }
 
+
+// Fonction de résolution récursive du labyrinthe
 bool solve_rec(maze *m, coord c, Stack *p) {
     if (is_target(m, c)) return true;
 
@@ -90,7 +92,7 @@ bool solve_rec(maze *m, coord c, Stack *p) {
 
 // }
 
-
+// Fonction de résolution du labyrinthe
 void solve(maze *m) {
     Stack p;
     coord start = {0, 0};
@@ -119,7 +121,7 @@ void solve(maze *m) {
 
 
 
-
+// Affiche l'usage du programme
 void usage(const char *name)
 {
   fprintf(stderr, "Usage : %s w h\n", name);
@@ -128,6 +130,7 @@ void usage(const char *name)
   fprintf(stderr, " w : largeur du labyrinthe\n");
   fprintf(stderr, " h : hauteur du labyrinthe\n");
 }
+
 
 int main(int argc, char **argv)
 {
