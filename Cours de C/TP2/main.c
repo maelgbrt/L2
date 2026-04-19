@@ -7,74 +7,116 @@
 #include "coord.h"
 #include "stack.h"
 
-void solve(maze *m)
-{
-  Stack p;
-  coord c;
-  bool r;
-
-  printf("on est ds solve : \n");
-
-stack_init(&p);
-c.x = 0;
-c.y = 0;
 
 
-  coord c1;
-  c1.x = 3;
-  c1.y = 7;
 
-  coord c2;
-  c2.x = 5;
-  c2.y = 2;
-  
-  // 2. On empile (Push)
-  stack_push(&p,c);
-  stack_push(&p, c1);
-  stack_push(&p, c2);
-r=true;
-// r := solve_rec(m, c, p)
-if (r) {
-  for(int i = 0; i < p.NbElement; i++) {
-    coord current = p.tabElement[i];
-      set_tag(m, current, "o");
+
+bool is_visited(maze *m, coord next){
+  return (m->cells[next.x][next.y].tag[0] == '.' || m->cells[next.x][next.y].tag[1] == '.');
+}
+
+bool solve_rec(maze *m, coord c, Stack *p) {
+    if (is_target(m, c)) return true;
+
+    set_tag(m, c, "."); 
+    stack_push(p, c);
+
+    neighboors v = list_neighboors(m, c);
+    coord next;
+    
+    if (v.north) {
+        next.x = c.x;
+        next.y = c.y -1;
+        if (!is_visited(m, next)) { // On ne va au Nord que si ce n'est pas visité
+            if (solve_rec(m, next, p)) return true;
+        }
+    }
+    if (v.south) {
+      next.x = c.x;
+      next.y = c.y +1;
+        if (!is_visited(m, next)) { // On ne va au Nord que si ce n'est pas visité
+            if (solve_rec(m, next, p)) return true;
+        }
+    }
+    if (v.west) {
+      next.x = c.x -1;
+      next.y = c.y;
+        coord next = {c.x-1, c.y};
+        if (!is_visited(m, next)) { // On ne va au Nord que si ce n'est pas visité
+            if (solve_rec(m, next, p)) return true;
+        }
+    }
+    if (v.east) {
+        next.x = c.x +1 ;
+        next.y = c.y;
+        if (!is_visited(m, next)) { // On ne va au Nord que si ce n'est pas visité
+            if (solve_rec(m, next, p)) return true;
+        }
+    }
+
+
+    // Si on veut que le tag disparaisse si on fait marche arrière :
+    set_tag(m, c, "."); 
+    
+    stack_pop(p);
+    return false;
+}
+
+// void solve(maze *m)
+// {
+//   Stack p;
+//   coord c;
+//   c.x = 0;
+//   c.y = 0;
+//   bool r;
+//   stack_init(&p, 100);  
+
+
+//   printf("on est ds solve : \n");
+
+// r = solve_rec(m, c, &p);
+// if (r) {
+//   for(int i = 0; i < p.NbElement; i++) {
+//     coord current = p.tabElement[i];
+//       set_tag(m, current, "o");
       
-      printf("Case marquée : (%d, %d)\n", current.x, current.y);
+//       printf("Case marquée : (%d, %d)\n", current.x, current.y);
+//     }
+//   }
+//   else {
+//     printf("Impossible d'atteindre la sortie !!!\n");
+//   }
+//   stack_free(&p);
+
+// }
+
+
+void solve(maze *m) {
+    Stack p;
+    coord start = {0, 0};
+    bool r;
+
+    stack_init(&p); 
+
+    printf("on est ds solve : \n");
+
+    r = solve_rec(m, start, &p);
+
+    if (r) {
+        printf("Chemin trouvé ! Nombre de pas : %d\n", p.NbElement);
+        
+        while (!stack_empty(&p)) {
+            coord current = stack_pop(&p);
+            set_tag(m, current, "o");
+            printf("Case marquée : (%d, %d)\n", current.x, current.y);
+        }
+    } else {
+        printf("Impossible d'atteindre la sortie !!!\n");
     }
-  }
-  else {
-    printf("Impossible d'atteindre la sortie !!!\n");
-  }
+
+    stack_free(&p); 
 }
 
-
-
-bool solve_rec(maze * m, coord c ,Stack * p){
-  bool res;
-
-  if(!is_target(&m,c)){
-    coord current;
-
-    neighboors voisin = list_neighboors(m,c);
-    coord prec = stack_pop(p);
-    stack_push(c);
-
-    if(voisin.north){
-      current.x = c.x;
-      current.y = c.y-1;
-      if (!equal(current,prec)){
-        return solve_rec(m,current,p);
-
-    }
- 
-
-  }else{
-    printf("Bravo ! Vous avez reusssi !!"); 
-    stack_push(&p,c);
-    res = true
-  }
-  return res;
-}
 
 
 
@@ -98,41 +140,10 @@ int main(int argc, char **argv)
     usage(argv[0]);
     exit(EXIT_FAILURE);
   }
-  coord c;
   
   init_maze(&m, w, h);
-  c.x = 1;
-  c.y = 3;
-  set_tag(&m, c, "o");
-  
-
 
   
-  bool res= is_target(&m,c);
-  printf("Your boolean variable is: %s", res ? "true\n" : "false\n");
-  
-  
-  mark_neighboors(&m,c);
-
-  Stack p;
-
-  stack_init(&p);
-  
-  coord c1;
-  c1.x = 3;
-  c1.y = 7;
-
-  coord c2;
-  c2.x = 5;
-  c2.y = 2;
-  
-  // 2. On empile (Push)
-  stack_push(&p, c1);
-  stack_push(&p, c2);
-  // stack_push(&p, c3);
-
-
-  stack_empty(&p);
   solve(&m);
 
   print_maze(&m);

@@ -76,8 +76,6 @@ else
 
 
 
-
-
   let rec fusion = function l1 -> function l2 ->
   if liste_mot_vide l1 then
     l2
@@ -87,6 +85,10 @@ else
       fusion (get_reste l1) l2
     else
       ClisteMot(premierTerme,(fusion (get_reste l1) l2));;
+
+
+
+
 
 let rec findlisteMots = function ensemble_doc ->
   if ensemble_doc_vide ensemble_doc then 
@@ -98,23 +100,41 @@ let rec findlisteMots = function ensemble_doc ->
   
 
 
-
-
-
-(* let rec est_homogene = function ensemble_doc ->
-  if ensemble_doc_vide ensemble_doc then
-    false
+let rec est_homogene = function ensemble_doc ->
+  if ensemble_doc_vide ensemble_doc then true
   else 
-    let signe = get_signe(get_prem_doc ensemble_doc) in
-  ;;  *)
+    let doc = get_prem_doc ensemble_doc in
+    let reste = get_reste_doc ensemble_doc in
+    if ensemble_doc_vide reste then true
+    else
+      (get_signe doc = get_signe (get_prem_doc reste)) && est_homogene reste
 
 
+
+let rec tri = function ensemble_doc -> function mot ->
+  if ensemble_doc_vide ensemble_doc then
+    creer_ensemble_doc()
+  else
+    let doc = get_prem_doc ensemble_doc in
+    if est_dans mot (get_liste_mot_doc doc) then
+      CEnsDoc(doc,tri (get_reste_doc ensemble_doc) mot)
+    else
+      tri (get_reste_doc ensemble_doc) mot;;
+
+
+
+(* let recherche_non_experimente = function
+| ensemble_doc ->
+  let liste_mot_content = findlisteMots ensemble_doc in *)
+  
 
 
 
 (* ==================================== LES TESTS ============================== *)
 
-
+(* let recherche_non_experimente = function
+| ensemble_doc ->
+  let liste_mot_content = findlisteMots ensemble_doc in *)
 (* ========== CREATTON LISTES ================= *)
     let p1 = ClisteMot("mael",creer_liste_mot());;
     let p2 = ClisteMot("matelian",p1);;
@@ -131,62 +151,16 @@ let rec findlisteMots = function ensemble_doc ->
     let doc1 = Cdoc(p3,"+");;
     let doc2 = Cdoc(f3,"-");;
 
+    let doc3 = Cdoc(f3,"+");; (*Pour le test de l'homogenéité*)
+
 
 (* ========== CREATTON D'UN ENSEMBLE DE DOCS'================= *)
     let ens1= CEnsDoc(doc1,creer_ensemble_doc());;
     let ens2 = CEnsDoc(doc2,ens1);;
+    let ens3 = CEnsDoc(doc3,ens2);;
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    

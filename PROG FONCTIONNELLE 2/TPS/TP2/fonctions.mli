@@ -77,14 +77,4 @@ val fusion : ensemble_doc -> ensemble_doc -> ensemble_doc
 
 
 
-
-
-
-
-
-
-(* 
-val get_prem_deliste : EnsDoc -> doc
-
-val get_reste_deliste : EnsDoc -> EnsDoc
- *)
+val tri : ensemble_doc -> string -> ensemble_doc

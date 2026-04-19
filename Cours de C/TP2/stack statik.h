@@ -9,15 +9,10 @@
 
 typedef coord Element;
 
-typedef struct maillon {
-    coord data;           
-    struct maillon *next;
-} maillon;
-
 typedef struct _stack
 {
-  maillon *top;   // Pointeur vers le premier élément
-  int NbElement;  // Compteur manuel des éléments
+  Element tabElement[PILEMAX];
+  int NbElement;
 } Stack;
 
 /**
@@ -32,11 +27,12 @@ typedef struct _stack
  *
  */
 
-void stack_init(Stack *p);
+void stack_init(Stack *stack);
+
 bool stack_empty(Stack *stack);
 
 Element stack_pop(Stack *stack);
 
 void stack_push(Stack *stack, Element e);
-void stack_free(Stack *p);
+
 #endif
