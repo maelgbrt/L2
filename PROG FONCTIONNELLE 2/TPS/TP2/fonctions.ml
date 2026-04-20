@@ -192,18 +192,44 @@ let rec recherche = function ensemble_doc -> function liste_mots ->
 
     let rec dsigne = function ensemble_doc -> function s ->
       if ensemble_doc_vide ensemble_doc then
-        creer_ensemble_doc()
+        0
       else
         let doc = get_prem_doc ensemble_doc in
         let signe = get_signe doc in
         if signe = s then
-          CEnsDoc(doc,(get_reste_doc ensemble_doc))
+          1 + dsigne (get_reste_doc ensemble_doc) s
         else
           dsigne (get_reste_doc ensemble_doc) s;;
 
 
+  let dpos = function ensemble_doc ->
+    dsigne ensemble_doc "+";;
+
+  let dneg = function ensemble_doc ->
+    dsigne ensemble_doc "-";;
 
 
+let rec nb_doc = function ensemble_doc ->
+      if ensemble_doc_vide ensemble_doc then 0
+      else
+        1 + nb_doc (get_reste_doc ensemble_doc);;
+
+
+    let calculEntropie = function ensemble_doc ->
+        let dpos = float_of_int (dpos ensemble_doc) and
+        dneg = float_of_int (dneg ensemble_doc) and
+        n = float_of_int (nb_doc ensemble_doc) in
+        let log2 x = (log x) /. (log 2.0) in
+
+        let calcul1 = (
+          (-.dpos/.n)*.log2(dpos/.n)
+        ) in
+
+        let calcul2 = (
+          (-.dneg/.n)*.log2(dneg/.n)
+        )in 
+
+      calcul1 +. calcul2 ;;
 
 
 
