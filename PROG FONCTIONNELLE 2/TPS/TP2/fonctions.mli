@@ -14,6 +14,8 @@ type doc = Cdoc of liste_mot  * string | Cdoc_vide ;;
 (* L'ensmeble de documents est une liste de documents. *) 
 type ensemble_doc = CEnsDoc of doc * ensemble_doc | ClisteDeliste_vide ;;
 
+type arbre = CArbre of string * arbre * arbre | Carbre_vide ;;
+
 
 
 
@@ -28,6 +30,8 @@ val creer_doc : _
 (* Création d'un ensemble de documents *)
 val creer_ensemble_doc : _
 
+val creer_arbre : _
+
 
 (* ======================= FONCTIONS DE COMPARAISON VIDE ====================== *)
 
@@ -40,6 +44,7 @@ val doc_est_vide : doc -> bool
 (* On vérifie si un ensemble de documents est vide *)
 val ensemble_doc_vide : ensemble_doc -> bool
 
+val arbre_vide : arbre -> bool
 
 
 
