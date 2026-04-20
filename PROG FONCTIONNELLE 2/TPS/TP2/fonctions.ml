@@ -8,6 +8,10 @@ type doc = Cdoc of liste_mot  * string | Cdoc_vide ;;
 (* L'ensmeble de documents est une liste de documents. *) 
 type ensemble_doc = CEnsDoc of doc * ensemble_doc | ClisteDeliste_vide ;;
 
+type arbre = CArbre of string * arbre * arbre | CFeuille of string | Carbre_vide ;;
+
+type feuille =  CFeuille of string | CFeuille_vide ;;
+
 
 
 
@@ -19,6 +23,9 @@ let creer_liste_mot = function ()->  Cliste_mot_vide;;
 
 let creer_ensemble_doc = function () -> ClisteDeliste_vide;;
 
+let creer_arbre = function () -> Carbre_vide;;
+
+let creer_feuille = function () -> CFeuille_vide ;;
 
 
 (* ======================= FONCTIONS DE COMPARAISON VIDE ====================== *)
@@ -31,6 +38,10 @@ let ensemble_doc_vide = function liste_doc ->
 
 let liste_mot_vide = function liste_mot ->
   liste_mot = creer_liste_mot();;
+
+  
+let arbre_vide = function arbre ->
+  arbre = creer_arbre();;
 
 (* ============================== LES FONCTIONS DE MANIPULATION ============================== *)
 
@@ -70,7 +81,7 @@ let rec est_dans = function mot-> function liste->
     if get_prem liste = mot then
       true 
 else 
-  est_dans mot(get_reste liste) ;;
+  est_dans mot (get_reste liste) ;;
 
 
 
@@ -96,9 +107,7 @@ let rec findlisteMots = function ensemble_doc ->
   else
     let doc = get_prem_doc ensemble_doc in
     let listeDoc = get_liste_mot_doc doc in 
-    fusion listeDoc (findlisteMots (get_reste_doc ensemble_doc))
-  
-
+    fusion listeDoc (findlisteMots (get_reste_doc ensemble_doc));;
 
 let rec est_homogene = function ensemble_doc ->
   if ensemble_doc_vide ensemble_doc then true
@@ -107,28 +116,105 @@ let rec est_homogene = function ensemble_doc ->
     let reste = get_reste_doc ensemble_doc in
     if ensemble_doc_vide reste then true
     else
-      (get_signe doc = get_signe (get_prem_doc reste)) && est_homogene reste
+      (get_signe doc = get_signe (get_prem_doc reste)) && est_homogene reste;;
 
 
 
-let rec tri = function ensemble_doc -> function mot ->
+let rec doui = function ensemble_doc -> function mot ->
   if ensemble_doc_vide ensemble_doc then
     creer_ensemble_doc()
   else
     let doc = get_prem_doc ensemble_doc in
     if est_dans mot (get_liste_mot_doc doc) then
-      CEnsDoc(doc,tri (get_reste_doc ensemble_doc) mot)
+      CEnsDoc(doc,doui (get_reste_doc ensemble_doc) mot)
     else
-      tri (get_reste_doc ensemble_doc) mot;;
+      doui (get_reste_doc ensemble_doc) mot;;
+
+let rec dnon = function ensemble_doc -> function mot ->
+  if ensemble_doc_vide ensemble_doc then
+    creer_ensemble_doc()
+  else
+    let doc = get_prem_doc ensemble_doc in
+    if est_dans mot (get_liste_mot_doc doc) then
+      dnon (get_reste_doc ensemble_doc) mot
+    else
+      CEnsDoc(doc,dnon (get_reste_doc ensemble_doc) mot);;
 
 
 
-(* let recherche_non_experimente = function
-| ensemble_doc ->
-  let liste_mot_content = findlisteMots ensemble_doc in *)
+
+let rec recherche_non_optimise = function ensemble_doc -> function liste_mots -> 
+  if ensemble_doc_vide ensemble_doc then
+    Carbre_vide
   
+  else if liste_mot_vide liste_mots then
+   CFeuille (get_signe (get_prem_doc ensemble_doc))
+
+  else
+    let mot_pivot = get_prem liste_mots in
+    let reste_mots = get_reste liste_mots in
+    
+    let docs_oui = doui ensemble_doc mot_pivot in
+    let docs_non = dnon ensemble_doc mot_pivot in
+
+    let fils_gauche = 
+      if ensemble_doc_vide docs_oui then 
+        Carbre_vide
+      else if est_homogene docs_oui then
+        CFeuille (get_signe (get_prem_doc docs_oui))
+      else
+        recherche_non_optimise docs_oui reste_mots
+    in
+
+    let fils_droit = 
+      if ensemble_doc_vide docs_non then 
+        Carbre_vide
+      else if est_homogene docs_non then
+        CFeuille (get_signe (get_prem_doc docs_non))
+      else
+        recherche_non_optimise docs_non reste_mots
+    in
+
+    CArbre(mot_pivot, fils_gauche, fils_droit);;
 
 
+    let test = function ensemble_doc -> 
+      let liste_mot = findlisteMots ensemble_doc in
+      liste_mot
+      (* recherche_non_optimise ensemble_doc liste_mot;; *)
+
+(* let creation_arbre = function ensemble_doc ->
+
+
+
+
+
+  if ensemble_doc_vide ensemble_doc then
+    
+  else
+  let arbre_droit = CArbre(le suivant,creer_arbre(),creer_arbre()) in
+  let arbre_gauche = CArbre(le suivant,creer_arbre(),creer_arbre()) in
+    CArbre(arbre_gauche,arbre_droit)
+
+ *)
+
+
+
+
+
+
+
+
+
+  (* non = dnon ensemble_doc (get_prem liste_mot_content) in *)
+  (* CArbre(prem_terme,oui,non);; *)
+  (* liste_mot_content;; *)
+
+  (* oui;; *)
+
+
+
+(* tri ensemble_doc (get_prem doc);; *)
 
 (* ==================================== LES TESTS ============================== *)
 
@@ -136,29 +222,53 @@ let rec tri = function ensemble_doc -> function mot ->
 | ensemble_doc ->
   let liste_mot_content = findlisteMots ensemble_doc in *)
 (* ========== CREATTON LISTES ================= *)
-    let p1 = ClisteMot("mael",creer_liste_mot());;
-    let p2 = ClisteMot("matelian",p1);;
-    let p3 = ClisteMot("moi",p2);;
+    let p1 = ClisteMot("bras",creer_liste_mot());;
+    let p2 = ClisteMot("toto",p1);;
+    let p3 = ClisteMot("chocolat",p2);;
+    let p4 = ClisteMot("mange",p3);;
 
 
-    let f1 = ClisteMot("Citroen",creer_liste_mot());;
-    let f2 = ClisteMot("matelian",f1);;
-    let f3 = ClisteMot("Cargo",f2);;
+    let f1 = ClisteMot("toto",creer_liste_mot());;
+    let f2 = ClisteMot("maitresse",f1);;
+    let f3 = ClisteMot("école",f2);;
+
+    let j1 = ClisteMot("maitresse",creer_liste_mot());;
+    let j2 = ClisteMot("toto",j1);;
+    let j3 = ClisteMot("chocolat",j2);;
+    let j4 = ClisteMot("mange",j3);;
+
+    let a1 = ClisteMot("mange",creer_liste_mot());;
+    let a2 = ClisteMot("maitresse",a1);;
+    
+    let b1 = ClisteMot("maitresse",creer_liste_mot());;
+    let b2  =ClisteMot("chocolat",b1);;
+    let b3 = ClisteMot("toto",b2);;
+
+    let v1 = ClisteMot("bras",creer_liste_mot());;
+    let v2 = ClisteMot("maitresse",v1);;
+    let v3 = ClisteMot("chocolat",v2);; 
 
 
 (* ========== CREATION DE DOCS ================= *)
 
-    let doc1 = Cdoc(p3,"+");;
-    let doc2 = Cdoc(f3,"-");;
+    let doc1 = Cdoc(p4,"+");;
+    let doc2 = Cdoc(f3,"+");;
+    let doc3 = Cdoc(j4,"+");; (*Pour le test de l'homogenéité*)
 
-    let doc3 = Cdoc(f3,"+");; (*Pour le test de l'homogenéité*)
+    let doc4 = Cdoc(a2,"-");;
+    let doc5 = Cdoc(b3,"+");;
+    let doc6 = Cdoc(v3,"-");;
 
 
 (* ========== CREATTON D'UN ENSEMBLE DE DOCS'================= *)
-    let ens1= CEnsDoc(doc1,creer_ensemble_doc());;
-    let ens2 = CEnsDoc(doc2,ens1);;
-    let ens3 = CEnsDoc(doc3,ens2);;
+    let ens1= CEnsDoc(doc6,creer_ensemble_doc());;
+    let ens2 = CEnsDoc(doc5,ens1);;
+    let ens3 = CEnsDoc(doc4,ens2);;
+    let ens4 = CEnsDoc(doc3,ens3);;
+    let ens5 = CEnsDoc(doc2,creer_ensemble_doc());;
+    let ens6 = CEnsDoc(doc1,ens5);;
 
+  
 
 
 
