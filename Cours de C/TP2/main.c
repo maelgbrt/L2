@@ -64,6 +64,7 @@ bool solve_rec(maze *m, coord c, Stack *p) {
     return false;
 }
 
+// Fonction de résolution du labyrinthe non récursive
 // void solve(maze *m)
 // {
 //   Stack p;

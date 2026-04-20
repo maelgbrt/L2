@@ -16,28 +16,39 @@ type ensemble_doc = CEnsDoc of doc * ensemble_doc | ClisteDeliste_vide ;;
 
 type arbre = CArbre of string * arbre * arbre | Carbre_vide ;;
 
-
+type feuille = CFeuille of string | CFeuille_vide ;;
 
 
 (* ============================== FONCTIONS DE CREATION ====================== *)
 
+(* Création d'une liste de mots *)
 val creer_liste_mot : _
 
+(* Création d'un document *)
 val creer_doc : _
 
+(* Création d'un ensemble de documents *)
 val creer_ensemble_doc : _
 
+(* Création d'un arbre de décision *)
 val creer_arbre : _
+
+(* Création d'une feuille *)
+val creer_feuille : _
 
 
 (* ======================= FONCTIONS DE COMPARAISON VIDE ====================== *)
 
+(* On vérifie si une liste de mots est vide *)
 val liste_mot_vide : liste_mot -> bool
 
+(* On vérifie si un document est vide *)
 val doc_est_vide : doc -> bool
 
+(* On vérifie si un ensemble de documents est vide *)
 val ensemble_doc_vide : ensemble_doc -> bool
 
+(* On vérifie si un arbre de décision est vide *)
 val arbre_vide : arbre -> bool
 
 
@@ -80,6 +91,17 @@ val findlisteMots : ensemble_doc -> liste_mot
 (* On fusionne deux ensembles de documents dans un même troisième*)
 val fusion : ensemble_doc -> ensemble_doc -> ensemble_doc
 
+(* On trie les documents d'un ensemble de documents en fonction d'un mot *)
+(* val tri : ensemble_doc -> string -> ensemble_doc *)
 
+(* On trie les documents d'un ensemble de documents en fonction d'un mot et d'un signe *)
+val doui : ensemble_doc -> string -> ensemble_doc
 
-val tri : ensemble_doc -> string -> ensemble_doc
+(* On construit un arbre de décision à partir d'un ensemble de documents *)
+val dnon : ensemble_doc -> string -> ensemble_doc
+
+(* On construit un arbre de décision à partir d'un ensemble de documents  en recuperant de maniere arbitraire *)
+val recherche_non_optimise : ensemble_doc -> liste_mot -> arbre
+
+(*On construit un arbre de décision à partir d'un ensemble de documents *)
+val recherche : ensemble_doc -> liste_mot
