@@ -143,7 +143,7 @@ let rec dnon = function ensemble_doc -> function mot ->
 
 
 
-let rec recherche_non_optimise = function ensemble_doc -> function liste_mots -> 
+let rec recherche = function ensemble_doc -> function liste_mots -> 
   if ensemble_doc_vide ensemble_doc then
     Carbre_vide
   
@@ -163,7 +163,7 @@ let rec recherche_non_optimise = function ensemble_doc -> function liste_mots ->
       else if est_homogene docs_oui then
         CFeuille (get_signe (get_prem_doc docs_oui))
       else
-        recherche_non_optimise docs_oui reste_mots
+        recherche docs_oui reste_mots
     in
 
     let fils_droit = 
@@ -172,17 +172,58 @@ let rec recherche_non_optimise = function ensemble_doc -> function liste_mots ->
       else if est_homogene docs_non then
         CFeuille (get_signe (get_prem_doc docs_non))
       else
-        recherche_non_optimise docs_non reste_mots
+        recherche docs_non reste_mots
     in
 
     CArbre(mot_pivot, fils_gauche, fils_droit);;
 
 
-    let test = function ensemble_doc -> 
-      let liste_mot = findlisteMots ensemble_doc in
-      liste_mot
-      (* recherche_non_optimise ensemble_doc liste_mot;; *)
 
+
+    let recherche_non_optimise = function ensemble_doc -> 
+      let liste_mot = findlisteMots ensemble_doc in 
+      recherche ensemble_doc liste_mot;;
+(* 
+    let rec get_pourcentage = function ensemble_doc -> *)
+
+
+
+
+
+    let rec dsigne = function ensemble_doc -> function s ->
+      if ensemble_doc_vide ensemble_doc then
+        creer_ensemble_doc()
+      else
+        let doc = get_prem_doc ensemble_doc in
+        let signe = get_signe doc in
+        if signe = s then
+          CEnsDoc(doc,(get_reste_doc ensemble_doc))
+        else
+          dsigne (get_reste_doc ensemble_doc) s;;
+
+
+
+
+
+
+
+
+(* 
+      let nb_plus = 
+      if ensemble_doc_vide ensemble_doc then
+        0
+      else
+      let doc = get_prem_doc ensemble_doc in
+      let signe = get_signe doc in
+        if signe = "+" then
+          1 + get_pourcentage (get_reste_doc ensemble_doc)
+        else
+          get_pourcentage (get_reste_doc ensemble_doc);;
+      
+    let rec nb_doc = function ensemble_doc ->
+      if ensemble_doc_vide ensemble_doc then 0
+      else
+        1 + nb_doc (get_reste_doc ensemble_doc);; *)
 (* let creation_arbre = function ensemble_doc ->
 
 
@@ -265,7 +306,7 @@ let rec recherche_non_optimise = function ensemble_doc -> function liste_mots ->
     let ens2 = CEnsDoc(doc5,ens1);;
     let ens3 = CEnsDoc(doc4,ens2);;
     let ens4 = CEnsDoc(doc3,ens3);;
-    let ens5 = CEnsDoc(doc2,creer_ensemble_doc());;
+    let ens5 = CEnsDoc(doc2,ens4);;
     let ens6 = CEnsDoc(doc1,ens5);;
 
   
