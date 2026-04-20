@@ -9,6 +9,7 @@
 
 typedef coord Element;
 
+// Structure d'un maillon de la pile
 typedef struct _stack
 {
   coord *tabElement;
