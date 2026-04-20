@@ -215,7 +215,7 @@ let rec nb_doc = function ensemble_doc ->
         1 + nb_doc (get_reste_doc ensemble_doc);;
 
 
-    let calculEntropie = function ensemble_doc ->
+    let entropie = function ensemble_doc ->
         let dpos = float_of_int (dpos ensemble_doc) and
         dneg = float_of_int (dneg ensemble_doc) and
         n = float_of_int (nb_doc ensemble_doc) in
@@ -230,6 +230,56 @@ let rec nb_doc = function ensemble_doc ->
         )in 
 
       calcul1 +. calcul2 ;;
+
+
+
+      let entropiePresent = function ensemble_doc -> function
+      | mot ->
+        let doc_P = doui ensemble_doc mot in
+        let p_pos = float_of_int (dpos doc_P) and
+        p_neg = float_of_int(dneg doc_P) and
+        nbP = float_of_int(nb_doc doc_P) in
+        let log2 x = (log x) /. (log 2.0) in
+
+
+        let calc1 = (
+          (-.p_pos/.nbP)*.log2(p_pos/.nbP)
+        )in
+
+        let calc2 = (
+          (-.p_pos/.nbP)*.log2(p_neg/.nbP)
+        )in
+
+        calc1 +. calc2;;
+
+
+        let entropieAbsent = function ensemble_doc -> function
+      | mot ->
+        let doc_A = doui ensemble_doc mot in
+        let a_pos = float_of_int (dpos doc_A) and
+        a_neg = float_of_int(dneg doc_A) and
+        nbP = float_of_int(nb_doc doc_A) in
+        let log2 x = (log x) /. (log 2.0) in
+
+
+        let calc1 = (
+          (-.a_pos/.nbP)*.log2(a_pos/.nbP)
+        )in
+
+        let calc2 = (
+          (-.a_pos/.nbP)*.log2(a_neg/.nbP)
+        )in
+
+        calc1 +. calc2;;
+
+
+        (* //on peut facilement faire uen fonction general avec entropie Absente et Oresnet *)
+        
+
+        let calculGain = function ensemble_doc -> function mot ->
+          entropie ensemble_doc -.entropieAbsent ensemble_doc mot -. entropiePresent ensemble_doc mot ;; 
+
+      
 
 
 
