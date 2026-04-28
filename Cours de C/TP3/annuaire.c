@@ -325,9 +325,7 @@ int main(int argc, char *argv[])
 
 void extraire(Annuaire_hashmap *a, char *car)
 {
-    if (a == NULL || car == NULL)
-        return;
-
+    if (a != NULL && car != NULL)
     for (int i = 0; i < a->size; i++)
     {
         Maillon *m = a->tab[i];
