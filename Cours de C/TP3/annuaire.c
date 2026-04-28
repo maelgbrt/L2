@@ -308,12 +308,62 @@ void SupprimerContact(Annuaire_hashmap *a){
 }
 
 
-void fusionnerAnnuaire(Annuaire_hashmap *a1){
-    printf("Quel annuaire voulez vous ajouter ?\n");
-    Annuaire_hashmap *a2;
-    scanf("%p",a2);
-    printf("Le a2 = %p",a2);
+// void fusionnerAnnuaire(Annuaire_hashmap *a1){
+//     printf("Quel annuaire voulez vous ajouter ?\n");
+//     Annuaire_hashmap *a2;
+//     // scanf("%p",a2);
+//     // printf("Le a2 = %p",a2);
+// }
+
+
+
+
+
+
+
+
+
+
+void extraire(Annuaire_hashmap *a, char *car)
+{
+    if (a != NULL && car != NULL)
+    for (int i = 0; i < a->size; i++)
+    {
+        Maillon *m = a->tab[i];
+        while (m != NULL)
+        {
+            Contact c = m->contact;
+            for (int j = 0; car[j] != '\0'; j++)
+            {
+                switch (car[j])
+                {
+                case 'n':
+                    printf("%s\n", c.name);
+                    break;
+                case 'p':
+                    printf("%s\n", c.first_name);
+                    break;
+                case 't':
+                    printf("%s\n", c.phone);
+                    break;
+                case 'm':
+                    printf("%s\n", c.mail);
+                    break;
+                }
+            }
+            m = m->next;
+        }
+    }
 }
+
+
+    void ExtraireInfos(Annuaire_hashmap *a){
+        char choice[10];
+        printf("Quelles infos voulez vous obtenir ?\n");
+        scanf("%s",choice);
+        extraire(a,choice);
+        }
+
 
 
 
@@ -322,7 +372,7 @@ void menu(Annuaire_hashmap *a)
     int nb;
     do
     {
-        printf("\nQue voulez vous faire ?\n1 : Ajouter un contact \n2 : Afficher tous les contacts \n3 : Rechercher un contact\n4 : Extraire\n5 : Supprimer un contact \n6: fusionner deux annuaires \n7 : Sortir\n");
+        printf("\nQue voulez vous faire ?\n1 : Ajouter un contact \n2 : Afficher tous les contacts \n3 : Rechercher un contact\n4 : Extraire\n5 : Supprimer un contact \n6 : fusionner deux annuaires \n7 : Sortir\n");
         scanf("%d", &nb);
         switch (nb)
         {
@@ -340,6 +390,7 @@ void menu(Annuaire_hashmap *a)
             break;
         case 4:
             printf("Extraire : \n");
+            ExtraireInfos(a);
             break;
         case 5:
             printf("Supprimer un contact \n");
@@ -348,7 +399,7 @@ void menu(Annuaire_hashmap *a)
 
         case 6:
             printf("Fusionner deux annuaire \n");
-            fusionnerAnnuaire(a);
+            // (fusionnerAnnuairea);
             break;
         case 7:
             printf("Fin du Programme, Merci et à Bientôt !!\n");
@@ -358,6 +409,9 @@ void menu(Annuaire_hashmap *a)
 
     } while (nb !=7);
 }   
+
+
+
 
 int main(int argc, char *argv[]){
     Annuaire_hashmap *a;
@@ -407,38 +461,6 @@ int main(int argc, char *argv[]){
 
 
 
-
-void extraire(Annuaire_hashmap *a, char *car)
-{
-    if (a != NULL && car != NULL)
-    for (int i = 0; i < a->size; i++)
-    {
-        Maillon *m = a->tab[i];
-        while (m != NULL)
-        {
-            Contact c = m->contact;
-            for (int j = 0; car[j] != '\0'; j++)
-            {
-                switch (car[j])
-                {
-                case 'n':
-                    printf("%s\n", c.name);
-                    break;
-                case 'p':
-                    printf("%s\n", c.first_name);
-                    break;
-                case 't':
-                    printf("%s\n", c.phone);
-                    break;
-                case 'm':
-                    printf("%s\n", c.mail);
-                    break;
-                }
-            }
-            m = m->next;
-        }
-    }
-}
 
 
 
