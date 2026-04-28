@@ -1,4 +1,4 @@
-
+open Float;;
 
 type liste_mot = ClisteMot of string * liste_mot | Cliste_mot_vide ;;
 
@@ -153,6 +153,8 @@ let rec recherche = function ensemble_doc -> function liste_mots ->
   else
     let mot_pivot = get_prem liste_mots in
     let reste_mots = get_reste liste_mots in
+
+    (* ici soccuper du gain prendre celui plus gros gain et pr le reste erenvoyer liste avec ne mois le temre *)
     
     let docs_oui = doui ensemble_doc mot_pivot in
     let docs_non = dnon ensemble_doc mot_pivot in
@@ -233,51 +235,41 @@ let rec nb_doc = function ensemble_doc ->
 
 
 
-      let entropiePresent = function ensemble_doc -> function
-      | mot ->
-        let doc_P = doui ensemble_doc mot in
-        let p_pos = float_of_int (dpos doc_P) and
-        p_neg = float_of_int(dneg doc_P) and
-        nbP = float_of_int(nb_doc doc_P) in
-        let log2 x = (log x) /. (log 2.0) in
+let calc = function act ->
+  if act = 0.0 then act
+  else 
+  -.act *. log2 act;;
 
 
-        let calc1 = (
-          (-.p_pos/.nbP)*.log2(p_pos/.nbP)
-        )in
+let entropieACT = fun ensemble_doc -> function mot -> fun act ->
+  let doc = act ensemble_doc mot in
+  let nbdoc = float_of_int(nb_doc doc) in
+  
+  if nbdoc = 0.0 then nbdoc
+  else
+    let pos = float_of_int (dpos doc) /. nbdoc in
+    let neg = float_of_int (dneg doc) /. nbdoc in
 
-        let calc2 = (
-          (-.p_pos/.nbP)*.log2(p_neg/.nbP)
-        )in
+    let calc1 = calc pos and
+    calc2 = calc neg in
 
-        calc1 +. calc2;;
+    calc1 +. calc2;;
 
+let entropieAbsent = fun ensemble_doc -> fun mot ->
+  entropieACT ensemble_doc mot dnon;; 
 
-        let entropieAbsent = function ensemble_doc -> function
-      | mot ->
-        let doc_A = doui ensemble_doc mot in
-        let a_pos = float_of_int (dpos doc_A) and
-        a_neg = float_of_int(dneg doc_A) and
-        nbP = float_of_int(nb_doc doc_A) in
-        let log2 x = (log x) /. (log 2.0) in
+let entropiePresent = fun ensemble_doc -> fun mot ->
+entropieACT ensemble_doc mot doui;; 
 
 
-        let calc1 = (
-          (-.a_pos/.nbP)*.log2(a_pos/.nbP)
-        )in
 
-        let calc2 = (
-          (-.a_pos/.nbP)*.log2(a_neg/.nbP)
-        )in
-
-        calc1 +. calc2;;
 
 
         (* //on peut facilement faire uen fonction general avec entropie Absente et Oresnet *)
         
 
-        let calculGain = function ensemble_doc -> function mot ->
-          entropie ensemble_doc -.entropieAbsent ensemble_doc mot -. entropiePresent ensemble_doc mot ;; 
+let calculGain = function ensemble_doc -> function mot ->
+  entropie ensemble_doc -.entropieAbsent ensemble_doc mot -. entropiePresent ensemble_doc mot ;; 
 
       
 
