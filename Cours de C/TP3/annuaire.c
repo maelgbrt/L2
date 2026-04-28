@@ -202,3 +202,31 @@ void main(int argc, char *argv[]) {
     // findContact(a.tab[10],"mael",'n');
     // Contact *res = findContact(&a[10],"mael","n");
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void destroy(Hashmap *map){
+    for (int i = 0; i< map->size;i++){
+    Maillon *m = map->tab[i];
+    if(m!=NULL $){
+        while(m!=NULL){
+            Maillon *tmp = m;
+            m = m->next;
+            free(tmp);
+        }
+    }
+}
