@@ -75,6 +75,7 @@ void printMaillon(Maillon *m)
 
 void printContact(Contact c)
 {
+    printf("Contact !!!\n");
     printf("Prenom : %s \nNom : %s \nTelephone : %s \nMail : %s \n", c.name, c.first_name, c.phone, c.mail);
 }
 
@@ -204,8 +205,6 @@ void fusionner(Annuaire_hashmap *a1, Annuaire_hashmap *a2)
     }
 }
 
-
-
 void ajouterContact (Annuaire_hashmap *a) {
     
     char first_name[FIRST_NAME_MAX_LENGHT];
@@ -228,8 +227,93 @@ void ajouterContact (Annuaire_hashmap *a) {
 
 
 
+void rechercheContact(Annuaire_hashmap *a){
+    printf("Rechercher le contact par quoi (n/t/m) ou s pour sortir ?\n");
+    char choice;
+        
+        scanf(" %c",&choice);
+        switch (choice)
+        {
+            case 'n':
+                printf("Quel est son nom ? \n");
+                char name[NAME_MAX_LENGHT];
+                scanf("%s/n",name);
+                Contact *c = findContact(a,name,'n');
+                if (c != NULL)
+                    {
+                    printContact(*c);
+                    }
+                else{
+                    printf("====pas trouve====");
+                }
+            break;
+            case 't':
+            printf("Quel est son numéro de telephone ?\n");
+            char phone[PHONE_MAX_LENGHT];
+            scanf("%s",phone);
+            Contact *c2 = findContact(a,phone,'t');
+                if (c2 != NULL)
+                    {
+                    printContact(*c2);
+                    }
+                    else{
+                    printf("====pas trouve====");
+                }
+            break;
+            case 'm':
+            printf("Quel est sont adresse mail ?\n");
+            char mail[MAIL_MAX_LENGHT];
+            scanf("%s",mail);
+            Contact *c3 = findContact(a,mail,'m');
+                if (c3 != NULL)
+                    {
+                    printContact(*c3);
+                    }else{
+                    printf("====pas trouve====");
+                }
+            break;
+            default:
+            break;
+        }
+}
 
 
+void SupprimerContact(Annuaire_hashmap *a){
+    printf("COmment voulez vous le supprimer(n/t/m) ?\n");
+    char choice;
+    scanf(" %c",&choice);
+    switch (choice)
+    {
+    case 'n':
+        printf("Quel est son nom ?\n");
+        char nom[NAME_MAX_LENGHT];
+        scanf("%s",nom);
+        removeContact(a,nom ,'n');
+        break;
+    case 't':
+        printf("Quel est son numéro de telephone ?\n");
+        char phone[PHONE_MAX_LENGHT];
+        scanf("%s",nom);
+        removeContact(a,phone ,'t');
+        break;
+    case 'm':
+        printf("Quel est son mail ?\n");
+        char mail[MAIL_MAX_LENGHT];
+        scanf("%s",mail);
+        removeContact(a,mail ,'m');
+        break;
+    default:
+        break;
+    }
+}
+
+
+void fusionnerAnnuaire(Annuaire_hashmap *a1){
+    printf("Quel annuaire voulez vous ajouter ?\n");
+    Annuaire_hashmap *a2;
+    scanf("%p",a2);
+    printf("Le a2 = %p",a2);
+}
 
 
 
@@ -251,16 +335,23 @@ void menu(Annuaire_hashmap *a)
             print(*a);
             break;
         case 3:
-            printf("TRI PAR SELECTION : \n");
+            printf("Rechercher un contact : \n");
+            rechercheContact(a);
             break;
         case 4:
-            printf("TRI RAPIDE : \n");
+            printf("Extraire : \n");
             break;
         case 5:
+            printf("Supprimer un contact \n");
+            SupprimerContact(a);
+            break;
+
         case 6:
+            printf("Fusionner deux annuaire \n");
+            fusionnerAnnuaire(a);
+            break;
         case 7:
             printf("Fin du Programme, Merci et à Bientôt !!\n");
-        
         default:
             printf("Sortir\n");
         };
