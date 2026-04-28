@@ -1,6 +1,8 @@
-#include "annuaire.h"
-#include <stdio.h>
 
+#include "hash.h"
+#include "contact.h"
+#include <stdio.h>
+#include <stdlib.h> // Pour free
 
 void printContact(Contact c)
 {
@@ -110,6 +112,17 @@ void ajouterContact (Annuaire_hashmap *a) {
 }
 
 
+Contact *create(char *name, char *phone, char *first_name, char *mail)
+{
+    Contact *c = malloc(sizeof(Contact));
+
+    strcpy(c->name, name);
+    strcpy(c->first_name, first_name);
+    strcpy(c->phone, phone);
+    strcpy(c->mail, mail);
+
+    return c;
+}
 
 void rechercheContact(Annuaire_hashmap *a){
     printf("Rechercher le contact par quoi (n/t/m) ou s pour sortir ?\n");

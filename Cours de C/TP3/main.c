@@ -1,10 +1,10 @@
-#include "contact.c"
-#include "maillon.c"
-#include "hash.c"
-// #include "annuaire.c"
+#include "contact.h"
+#include "maillon.h"
+#include "hash.h"
+#include "menu.h"
 
 
-int main(int argc, char *argv[]){
+int main(void){
     
  Contact c = *create("mael", "07", "gaborit", "maelgaborit@gmail.com");
     Contact c2 = *create("telio", "058", "gaborit", "teliogaborit@gmail.com");
@@ -27,5 +27,5 @@ int main(int argc, char *argv[]){
 
 
     // Annuaire_hashmap *a;
-   
+//    int argc, char *argv[]
 }
