@@ -413,10 +413,18 @@ void menu(Annuaire_hashmap *a)
 
 
 
-int main(int argc, char *argv[])
-{
-
-    
+int main(int argc, char *argv[]){
+    Annuaire_hashmap *a;
+    do{
+        int opt = get_opt(argc,argv,"a:l:r:e:h:f:s:");
+        switch(opt){
+            case'a':
+            //code
+            break;
+            case 'l':
+            strqy();
+        }
+    }
 }
 
 
