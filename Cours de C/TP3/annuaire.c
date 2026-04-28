@@ -429,7 +429,7 @@ int main(int argc, char *argv[]){
     }
     // printf("========test extraction ======");
     // extraire(&a,"nt");
-    menu(&a);
+    //menu(&a);
 
     // findContact(a.tab[10],"mael",'n');
     // Contact *res = findContact(&a[10],"mael","n");
@@ -440,7 +440,7 @@ int main(int argc, char *argv[]){
         int opt = get_opt(argc,argv,"a:l:r:e:h:f:s:");
         switch(opt){
             case'a':
-            //code
+            ajouterContact(Annuaire_hashmap a)
             break;
             case 'l':
             strqy();

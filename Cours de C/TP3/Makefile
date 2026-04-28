@@ -5,5 +5,5 @@ all : hash
 hash : annuaire.o
 	gcc $(CFLAGS) -o $@ $^
 
-main.o: annuaire.c annuaire.h
+annuaire.o: annuaire.c annuaire.h
 	gcc $(CFLAGS) -c $<
