@@ -28,18 +28,23 @@ typedef struct {
 
 int hash(char *key, int size); //hash ce que l'on souhaite hasher(le key)
 void init(Annuaire_hashmap *a, int size); 
-Maillon *createMaillon(Contact *c);
-void insertMaillon(Maillon *m, Contact *c);
-void printContact(Contact c);
-void printMaillon(Maillon *m);
 Contact *create(char *name, char *phone,char *first_name, char *email);
-// void add(Annuaire_hashmap *a, Contact *contact);
-// Contact *find(Annuaire_hashmap *a,char *val,char option);
-// void remove(Annuaire_hashmap *a,char *name);
+Maillon *createMaillon(Contact *c);
 void print(Annuaire_hashmap a);
-// void fusionner(Annuaire_hashmap *a,Annuaire_hashmap *b);
-
-
-// void destroy(Hashmap *map);
-// void print(Hashmap h);
-
+void printMaillon(Maillon *m);
+void printContact(Contact c);
+void insertMaillon(Maillon *m, Contact *c);
+void add(Annuaire_hashmap *a, Contact *contact);
+Maillon *findMaillon(Maillon *m, char *val);
+Contact *findContact(Annuaire_hashmap *a, char *val, char option);
+void removeContact(Annuaire_hashmap *a, char *val, char option);
+void fusionnerMaillon(Maillon *m1, Maillon *m2);
+void fusionner(Annuaire_hashmap *a1, Annuaire_hashmap *a2);
+void ajouterContact (Annuaire_hashmap *a);
+void rechercheContact(Annuaire_hashmap *a);
+void SupprimerContact(Annuaire_hashmap *a);
+void extraire(Annuaire_hashmap *a, char *car);
+void ExtraireInfos(Annuaire_hashmap *a);
+void menu(Annuaire_hashmap *a);
+int main(int argc, char *argv[]);
+void destroy(Annuaire_hashmap *a);

@@ -429,7 +429,7 @@ int main(int argc, char *argv[]){
     }
     // printf("========test extraction ======");
     // extraire(&a,"nt");
-    menu(&a);
+    //menu(&a);
 
     // findContact(a.tab[10],"mael",'n');
     // Contact *res = findContact(&a[10],"mael","n");
