@@ -359,7 +359,7 @@ void menu(Annuaire_hashmap *a)
     } while (nb !=7);
 }   
 
-void main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
 
     Contact c = *create("mael", "07", "gaborit", "maelgaborit@gmail.com");
@@ -395,14 +395,82 @@ void main(int argc, char *argv[])
 
 
 
-// void destroy(Annuaire_hashmap *a){
-//     for (int i = 0; i< a->size;i++){
-//     Maillon *m = a->tab[i];
-//     if(m!=NULL){
-//         while(m!=NULL){
-//             Maillon *tmp = m;
-//             m = m->next;
-//             free(tmp);
-//         }
-//     }
-// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void extraire(Annuaire_hashmap *a, char *car)
+{
+    if (a == NULL || car == NULL)
+        return;
+
+    for (int i = 0; i < a->size; i++)
+    {
+        Maillon *m = a->tab[i];
+        while (m != NULL)
+        {
+            Contact c = m->contact;
+            for (int j = 0; car[j] != '\0'; j++)
+            {
+                switch (car[j])
+                {
+                case 'n':
+                    printf("%s\n", c.name);
+                    break;
+                case 'p':
+                    printf("%s\n", c.first_name);
+                    break;
+                case 't':
+                    printf("%s\n", c.phone);
+                    break;
+                case 'm':
+                    printf("%s\n", c.mail);
+                    break;
+                }
+            }
+            m = m->next;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void destroy(Annuaire_hashmap *a){
+    for (int i = 0; i< a->size;i++){
+    Maillon *m = a->tab[i];
+    if(m!=NULL){
+        while(m!=NULL){
+            Maillon *tmp = m;
+            m = m->next;
+            free(tmp);
+            }
+        }
+    }
+}
