@@ -287,3 +287,31 @@ void main(int argc, char *argv[])
     // findContact(a.tab[10],"mael",'n');
     // Contact *res = findContact(&a[10],"mael","n");
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void destroy(Annuaire_hashmap *a){
+    for (int i = 0; i< a->size;i++){
+    Maillon *m = a->tab[i];
+    if(m!=NULL){
+        while(m!=NULL){
+            Maillon *tmp = m;
+            m = m->next;
+            free(tmp);
+        }
+    }
+}
