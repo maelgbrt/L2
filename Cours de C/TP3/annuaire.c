@@ -3,38 +3,42 @@
 #include <stdio.h>
 #include "annuaire.h"
 
-int hash(char *key, int size){
+int hash(char *key, int size)
+{
     int res = 0;
     int i = 0;
-    while (key[i] != '\0'){
+    while (key[i] != '\0')
+    {
         res += key[i];
-        i ++;
+        i++;
     }
-    return res % size; //correpond au modulo
+    return res % size; // correpond au modulo
 }
 
 void init(Annuaire_hashmap *a, int size)
 {
-    a->tab = (Maillon ** )malloc(size*sizeof(Maillon*));
+    a->tab = (Maillon **)malloc(size * sizeof(Maillon *));
     a->size = size;
-    for(int i = 0 ; i < size ; i++)
+    for (int i = 0; i < size; i++)
     {
         a->tab[i] = NULL;
     }
 }
 
-Contact *create(char *name, char *phone, char *first_name, char *mail) {
+Contact *create(char *name, char *phone, char *first_name, char *mail)
+{
     Contact *c = malloc(sizeof(Contact));
 
-    strcpy(c->name,name);
-    strcpy(c->first_name,first_name);
-    strcpy(c->phone,phone);
-    strcpy(c->mail,mail);
+    strcpy(c->name, name);
+    strcpy(c->first_name, first_name);
+    strcpy(c->phone, phone);
+    strcpy(c->mail, mail);
 
-    return c; 
-}       
+    return c;
+}
 
-Maillon *createMaillon(Contact *c){
+Maillon *createMaillon(Contact *c)
+{
     Maillon *m = malloc(sizeof(Maillon));
 
     m->contact = *c;
@@ -43,26 +47,14 @@ Maillon *createMaillon(Contact *c){
     return m;
 }
 
-void menu () {
-    int nb;
-    printf("Que souhaitez vous faire ?");
-      scanf("%d",nb);
-    switch ()
+
+void print(Annuaire_hashmap a)
+{
+    for (int i = 0; i < a.size; i++)
     {
-    case constant expression:
-        /* code */
-        break;
-    
-    default:
-        break;
-    }
-}
 
-
-void print(Annuaire_hashmap a) {
-    for (int i = 0; i < a.size; i++) {
- 
-        if (a.tab[i] != NULL) {
+        if (a.tab[i] != NULL)
+        {
             printf("\n--- CATEGORIE %d ---\n", i);
             printMaillon(a.tab[i]);
             printf("--------------------------\n");
@@ -70,8 +62,10 @@ void print(Annuaire_hashmap a) {
     }
 }
 
-void printMaillon(Maillon *m){
-    while(m !=NULL){
+void printMaillon(Maillon *m)
+{
+    while (m != NULL)
+    {
         printf("\n================ CONTACT =================== \n");
         printContact(m->contact);
         printf("\n");
@@ -79,79 +73,93 @@ void printMaillon(Maillon *m){
     }
 }
 
-void printContact(Contact c){
-    printf("Prenom : %s \nNom : %s \nTelephone : %s \nMail : %s \n",c.name,c.first_name,c.phone,c.mail);}
+void printContact(Contact c)
+{
+    printf("Prenom : %s \nNom : %s \nTelephone : %s \nMail : %s \n", c.name, c.first_name, c.phone, c.mail);
+}
 
-
-void insertMaillon(Maillon *m, Contact *c){
-    while(m->next != NULL){
+void insertMaillon(Maillon *m, Contact *c)
+{
+    while (m->next != NULL)
+    {
         m = (Maillon *)m->next;
     }
     m->next = createMaillon(c);
 }
 
-
-void add(Annuaire_hashmap *a, Contact *contact){
-    int hash_func = hash(contact->name,a->size);
-    printf("la valeur est %d, la taille est %d\n",hash_func,a->size);
-    if(a->tab[hash_func] != NULL) {
-        insertMaillon(a->tab[hash_func],contact);
-    }else{
+void add(Annuaire_hashmap *a, Contact *contact)
+{
+    int hash_func = hash(contact->name, a->size);
+    printf("la valeur est %d, la taille est %d\n", hash_func, a->size);
+    if (a->tab[hash_func] != NULL)
+    {
+        insertMaillon(a->tab[hash_func], contact);
+    }
+    else
+    {
         a->tab[hash_func] = createMaillon(contact);
     }
 }
 
-
-
-Maillon * findMaillon(Maillon *m,char *val){
-    while(m != NULL){
+Maillon *findMaillon(Maillon *m, char *val)
+{
+    while (m != NULL)
+    {
         Contact c = m->contact;
-        if (strcmp(c.name, val) == 0 || strcmp(c.mail, val) == 0 ||strcmp(c.phone, val) == 0){
+        if (strcmp(c.name, val) == 0 || strcmp(c.mail, val) == 0 || strcmp(c.phone, val) == 0)
+        {
             return m;
         }
         m = m->next;
     }
 }
 
-
-Contact * findContact(Annuaire_hashmap *a, char *val, char option) {
-    switch (option) {
-        case 'n': {
-            int hash_func = hash(val, a->size);
-            Maillon *m = findMaillon(a->tab[hash_func], val);
-            return (m!= NULL) ? &(m->contact) : NULL;
-        }
-        case 't':
-        case 'm':
-            for (int i = 0; i < a->size; i++) {
-                Maillon *m = findMaillon(a->tab[i], val);
-                if (m != NULL) {
-                    return &(m->contact);
-                }
+Contact *findContact(Annuaire_hashmap *a, char *val, char option)
+{
+    switch (option)
+    {
+    case 'n':
+    {
+        int hash_func = hash(val, a->size);
+        Maillon *m = findMaillon(a->tab[hash_func], val);
+        return (m != NULL) ? &(m->contact) : NULL;
+    }
+    case 't':
+    case 'm':
+        for (int i = 0; i < a->size; i++)
+        {
+            Maillon *m = findMaillon(a->tab[i], val);
+            if (m != NULL)
+            {
+                return &(m->contact);
             }
-            return NULL;
-        default:
-            return NULL;
+        }
+        return NULL;
+    default:
+        return NULL;
     }
 }
 
-
-
-
-void removeContact(Annuaire_hashmap *a, char *val, char option) {
+void removeContact(Annuaire_hashmap *a, char *val, char option)
+{
     Contact *tmp = findContact(a, val, option);
-    if (tmp != NULL) {
+    if (tmp != NULL)
+    {
         int hash_func = hash(tmp->name, a->size);
         Maillon *current = a->tab[hash_func];
         Maillon *prev = NULL;
 
-        while (current != NULL) {
-            if (&(current->contact) == tmp) { 
-                
-                if (prev == NULL) {
+        while (current != NULL)
+        {
+            if (&(current->contact) == tmp)
+            {
+
+                if (prev == NULL)
+                {
                     a->tab[hash_func] = current->next;
-                } 
-                else {
+                }
+                else
+                {
                     prev->next = current->next;
                 }
 
@@ -162,43 +170,120 @@ void removeContact(Annuaire_hashmap *a, char *val, char option) {
             prev = current;
             current = current->next;
         }
-    } else {
+    }
+    else
+    {
         printf("Suppression impossible : contact introuvable.\n");
     }
 }
 
-void fusionnerMaillon(Maillon *m1,Maillon *m2){
-        while(m1->next != NULL){
-            m1 = m1->next;    
-        }
-        m1->next = m2;
+void fusionnerMaillon(Maillon *m1, Maillon *m2)
+{
+    while (m1->next != NULL)
+    {
+        m1 = m1->next;
     }
+    m1->next = m2;
+}
 
-void fusionner(Annuaire_hashmap *a1,Annuaire_hashmap *a2){
-    for(int i = 0 ; i < a2->size; i++){
-        if (i < a1->size) {
-            if (a1->tab[i] == NULL) {
+void fusionner(Annuaire_hashmap *a1, Annuaire_hashmap *a2)
+{
+    for (int i = 0; i < a2->size; i++)
+    {
+        if (i < a1->size)
+        {
+            if (a1->tab[i] == NULL)
+            {
                 a1->tab[i] = a2->tab[i];
-            } else if (a2->tab[i] != NULL) {
+            }
+            else if (a2->tab[i] != NULL)
+            {
                 fusionnerMaillon(a1->tab[i], a2->tab[i]);
             }
         }
     }
+}
+
+
+
+void ajouterContact (Annuaire_hashmap *a) {
+    
+    char first_name[FIRST_NAME_MAX_LENGHT];
+    char phone[PHONE_MAX_LENGHT];
+    char mail[MAIL_MAX_LENGHT];
+    char name[NAME_MAX_LENGHT];
+    printf("Son Nom ?\n");
+    scanf("%s",name);
+    printf("Son Nom de Famille ?\n");
+    scanf("%s",first_name);
+    printf("Son numéro de Téléphone ?\n");
+    scanf("%s",phone);
+    printf("Son Mail ?\n");
+    scanf("%s",mail);
+
+    Contact *c = create(name, phone,first_name,mail);
+    printContact(*c);
+    add(a, c);
+}
+
+
+
+
+
+
+
+
+void menu(Annuaire_hashmap *a)
+{
+    int nb;
+    do
+    {
+        printf("\nQue voulez vous faire ?\n1 : Ajouter un contact \n2 : Afficher tous les contacts \n3 : Rechercher un contact\n4 : Extraire\n5 : Supprimer un contact \n6: fusionner deux annuaires \n7 : Sortir\n");
+        scanf("%d", &nb);
+        switch (nb)
+        {
+        case 1:
+            printf("Ajouter un contact\n");
+            ajouterContact(a);
+            break;
+        case 2:
+            printf("Afficher tous les contacts: \n");
+            print(*a);
+            break;
+        case 3:
+            printf("TRI PAR SELECTION : \n");
+            break;
+        case 4:
+            printf("TRI RAPIDE : \n");
+            break;
+        case 5:
+        case 6:
+        case 7:
+            printf("Fin du Programme, Merci et à Bientôt !!\n");
+        
+        default:
+            printf("Sortir\n");
+        };
+
+    } while (nb !=7);
 }   
 
-void main(int argc, char *argv[]) {
-    
-    Contact c = *create("mael","07","gaborit","maelgaborit@gmail.com");
-    Contact c2 = *create("telio","058","gaborit","teliogaborit@gmail.com");
+void main(int argc, char *argv[])
+{
+
+    Contact c = *create("mael", "07", "gaborit", "maelgaborit@gmail.com");
+    Contact c2 = *create("telio", "058", "gaborit", "teliogaborit@gmail.com");
     Annuaire_hashmap a;
-    init(&a,15);
-    add(&a,&c);
-    add(&a,&c2);
+    init(&a, 15);
+    add(&a, &c);
+    add(&a, &c2);
     print(a);
-    Contact *c3 = findContact(&a,"telio",'n');
-    if(c3!=NULL){
+    Contact *c3 = findContact(&a, "telio", 'n');
+    if (c3 != NULL)
+    {
         printContact(*c3);
-    }   
+    }
+    menu(&a);
     // findContact(a.tab[10],"mael",'n');
     // Contact *res = findContact(&a[10],"mael","n");
 }
