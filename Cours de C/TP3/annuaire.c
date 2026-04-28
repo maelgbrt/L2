@@ -219,10 +219,10 @@ void main(int argc, char *argv[]) {
 
 
 
-void destroy(Hashmap *map){
-    for (int i = 0; i< map->size;i++){
-    Maillon *m = map->tab[i];
-    if(m!=NULL $){
+void destroy(Annuaire_hashmap *a){
+    for (int i = 0; i< a->size;i++){
+    Maillon *m = a->tab[i];
+    if(m!=NULL){
         while(m!=NULL){
             Maillon *tmp = m;
             m = m->next;

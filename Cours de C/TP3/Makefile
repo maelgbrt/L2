@@ -2,8 +2,8 @@ CFLAGS = -Wall -Wextra -std=c99
 
 all : hash
 
-hash : main.o
+hash : annuaire.o
 	gcc $(CFLAGS) -o $@ $^
 
-main.o: main.c main.h
+main.o: annuaire.c annuaire.h
 	gcc $(CFLAGS) -c $<
