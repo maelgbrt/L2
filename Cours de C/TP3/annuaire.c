@@ -308,102 +308,12 @@ void SupprimerContact(Annuaire_hashmap *a){
 }
 
 
-void fusionnerAnnuaire(Annuaire_hashmap *a1){
-    printf("Quel annuaire voulez vous ajouter ?\n");
-    Annuaire_hashmap *a2;
-    scanf("%p",a2);
-    printf("Le a2 = %p",a2);
-}
-
-
-
-void menu(Annuaire_hashmap *a)
-{
-    int nb;
-    do
-    {
-        printf("\nQue voulez vous faire ?\n1 : Ajouter un contact \n2 : Afficher tous les contacts \n3 : Rechercher un contact\n4 : Extraire\n5 : Supprimer un contact \n6: fusionner deux annuaires \n7 : Sortir\n");
-        scanf("%d", &nb);
-        switch (nb)
-        {
-        case 1:
-            printf("Ajouter un contact\n");
-            ajouterContact(a);
-            break;
-        case 2:
-            printf("Afficher tous les contacts: \n");
-            print(*a);
-            break;
-        case 3:
-            printf("Rechercher un contact : \n");
-            rechercheContact(a);
-            break;
-        case 4:
-            printf("Extraire : \n");
-            break;
-        case 5:
-            printf("Supprimer un contact \n");
-            SupprimerContact(a);
-            break;
-
-        case 6:
-            printf("Fusionner deux annuaire \n");
-            fusionnerAnnuaire(a);
-            break;
-        case 7:
-            printf("Fin du Programme, Merci et à Bientôt !!\n");
-        default:
-            printf("Sortir\n");
-        };
-
-    } while (nb !=7);
-}   
-
-int main(int argc, char *argv[])
-{
-
-    Contact c = *create("mael", "07", "gaborit", "maelgaborit@gmail.com");
-    Contact c2 = *create("telio", "058", "gaborit", "teliogaborit@gmail.com");
-    Annuaire_hashmap a;
-    init(&a, 15);
-    add(&a, &c);
-    add(&a, &c2);
-    print(a);
-    Contact *c3 = findContact(&a, "telio", 'n');
-    if (c3 != NULL)
-    {
-        printContact(*c3);
-    }
-    menu(&a);
-    // findContact(a.tab[10],"mael",'n');
-    // Contact *res = findContact(&a[10],"mael","n");
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// void fusionnerAnnuaire(Annuaire_hashmap *a1){
+//     printf("Quel annuaire voulez vous ajouter ?\n");
+//     Annuaire_hashmap *a2;
+//     // scanf("%p",a2);
+//     // printf("Le a2 = %p",a2);
+// }
 
 
 
@@ -445,6 +355,121 @@ void extraire(Annuaire_hashmap *a, char *car)
         }
     }
 }
+
+
+    void ExtraireInfos(Annuaire_hashmap *a){
+        char choice[10];
+        printf("Quelles infos voulez vous obtenir ?\n");
+        scanf("%s",choice);
+        extraire(a,choice);
+        }
+
+
+
+
+void menu(Annuaire_hashmap *a)
+{
+    int nb;
+    do
+    {
+        printf("\nQue voulez vous faire ?\n1 : Ajouter un contact \n2 : Afficher tous les contacts \n3 : Rechercher un contact\n4 : Extraire\n5 : Supprimer un contact \n6 : fusionner deux annuaires \n7 : Sortir\n");
+        scanf("%d", &nb);
+        switch (nb)
+        {
+        case 1:
+            printf("Ajouter un contact\n");
+            ajouterContact(a);
+            break;
+        case 2:
+            printf("Afficher tous les contacts: \n");
+            print(*a);
+            break;
+        case 3:
+            printf("Rechercher un contact : \n");
+            rechercheContact(a);
+            break;
+        case 4:
+            printf("Extraire : \n");
+            ExtraireInfos(a);
+            break;
+        case 5:
+            printf("Supprimer un contact \n");
+            SupprimerContact(a);
+            break;
+
+        case 6:
+            printf("Fusionner deux annuaire \n");
+            // (fusionnerAnnuairea);
+            break;
+        case 7:
+            printf("Fin du Programme, Merci et à Bientôt !!\n");
+        default:
+            printf("Sortir\n");
+        };
+
+    } while (nb !=7);
+}   
+
+
+
+
+int main(int argc, char *argv[])
+{
+
+    Contact c = *create("mael", "07", "gaborit", "maelgaborit@gmail.com");
+    Contact c2 = *create("telio", "058", "gaborit", "teliogaborit@gmail.com");
+    Annuaire_hashmap a;
+    init(&a, 15);
+    add(&a, &c);
+    add(&a, &c2);
+    print(a);
+    Contact *c3 = findContact(&a, "telio", 'n');
+    if (c3 != NULL)
+    {
+        printContact(*c3);
+    }
+    // printf("========test extraction ======");
+    // extraire(&a,"nt");
+    menu(&a);
+
+    // findContact(a.tab[10],"mael",'n');
+    // Contact *res = findContact(&a[10],"mael","n");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
