@@ -434,18 +434,9 @@ int main(int argc, char *argv[]){
     // findContact(a.tab[10],"mael",'n');
     // Contact *res = findContact(&a[10],"mael","n");
 
-    
-    Annuaire_hashmap *a;
-    do{
-        int opt = get_opt(argc,argv,"a:l:r:e:h:f:s:");
-        switch(opt){
-            case'a':
-            //code
-            break;
-            case 'l':
-            strqy();
-        }
-    }
+
+    // Annuaire_hashmap *a;
+   
 }
 
 
