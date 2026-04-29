@@ -1,5 +1,6 @@
 #include "annuaire.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 
 void printContact(Contact c)

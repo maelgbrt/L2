@@ -48,3 +48,4 @@ void ExtraireInfos(Annuaire_hashmap *a);
 void menu(Annuaire_hashmap *a);
 int main(int argc, char *argv[]);
 void destroy(Annuaire_hashmap *a);
+void affiche_aide();
