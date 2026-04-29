@@ -10,5 +10,4 @@ typedef struct Annuaire_hashmap {
 int hash(char *key, int size);
 void init(Annuaire_hashmap *a, int size);
 void print(Annuaire_hashmap a);
-
 #endif

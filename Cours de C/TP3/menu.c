@@ -2,6 +2,7 @@
 #include "contact.h"
 #include "maillon.h"
 #include "extraire.h"
+#include "fichier.h"
 #include <stdio.h>
 
 
@@ -46,5 +47,9 @@ void menu(Annuaire_hashmap *a)
         };
 
     } while (nb !=7);
+    exporterAnnuaire(a,"test_annuaire_menu");
 }   
 
+void menuDef (){
+    printf("ya");
+}
