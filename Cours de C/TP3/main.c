@@ -19,7 +19,11 @@ int main(int argc, char *argv[]){
     }else if(strcmp(fonctionnalite,"-i") == 0){
         menuDef();
     }else if(strcmp(fonctionnalite,"-r") == 0){
-        
+        char *option = argv[2];
+        char *val = argv[3];
+        char *nm_fichier = argv[4];
+
+        rechercheINfichier(option,val,nm_fichier);
     }else if(strcmp(fonctionnalite,"-f")== 0){
         
         printf("Vs avez choisi -f");
