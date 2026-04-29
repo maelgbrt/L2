@@ -1,4 +1,4 @@
-#include "annuaire.h"
+#include "extraire.h"
 #include <stdio.h>
 
 
@@ -36,7 +36,7 @@ void extraire(Annuaire_hashmap *a, char *car)
 }
 
 
-    void ExtraireInfos(Annuaire_hashmap *a){
+    void extraireInfos(Annuaire_hashmap *a){
         char choice[10];
         printf("Quelles infos voulez vous obtenir ?\n");
         scanf("%s",choice);

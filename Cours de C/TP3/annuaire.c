@@ -25,17 +25,6 @@ void init(Annuaire_hashmap *a, int size)
     }
 }
 
-Contact *create(char *name, char *phone, char *first_name, char *mail)
-{
-    Contact *c = malloc(sizeof(Contact));
-
-    strcpy(c->name, name);
-    strcpy(c->first_name, first_name);
-    strcpy(c->phone, phone);
-    strcpy(c->mail, mail);
-
-    return c;
-}
 
 Maillon *createMaillon(Contact *c)
 {

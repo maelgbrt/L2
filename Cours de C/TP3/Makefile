@@ -2,7 +2,7 @@ CFLAGS = -Wall -Wextra -std=c99
 
 all : hash
 
-hash : main.o contact.o hash.o maillon.o extraire.o menu.o 
+hash : main.o contact.o hash.o maillon.o extraire.o menu.o fichier.o
 	gcc $(CFLAGS) -o $@ $^
 
 main.o: main.c annuaire.h
@@ -21,6 +21,9 @@ extraire.o : extraire.c
 	gcc $(CFLAGS) -c $<
 
 menu.o : menu.c
+	gcc $(CFLAGS) -c $<
+	
+fichier.o : fichier.c 
 	gcc $(CFLAGS) -c $<
 
 clean:

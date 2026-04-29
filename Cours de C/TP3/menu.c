@@ -1,4 +1,8 @@
-#include "annuaire.h"
+#include "hash.h"
+#include "contact.h"
+#include "maillon.h"
+#include "extraire.h"
+#include "fichier.h"
 #include <stdio.h>
 
 
@@ -25,7 +29,7 @@ void menu(Annuaire_hashmap *a)
             break;
         case 4:
             printf("Extraire : \n");
-            ExtraireInfos(a);
+            extraireInfos(a);
             break;
         case 5:
             printf("Supprimer un contact \n");
@@ -43,5 +47,9 @@ void menu(Annuaire_hashmap *a)
         };
 
     } while (nb !=7);
+    exporterAnnuaire(a,"test_annuaire_menu");
 }   
 
+void menuDef (){
+    printf("ya");
+}
