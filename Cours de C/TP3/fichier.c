@@ -12,6 +12,19 @@ void removeINfichier(char *option,char *val, char *nm_fichier)
 }
 
 
+void rechercheINfichier(char * option,char * val, char *nm_fichier){
+    printf("On va remove le fichier %s , l'option est %s et la val est %s",nm_fichier,nm_fichier,option);
+    Annuaire_hashmap a;
+    init(&a,100);
+    importerAnnuaire(&a,nm_fichier);
+    Contact * c = findContact(&a, val, option[0]);
+    if(c != NULL){
+        printContact(*c);    
+    }else{
+        printf("Il n'y a pas ce compte");
+    }   
+}
+
 void printHelp(){
     printf("----------------HELP---------------\n");
     printf("afficjer healp");

@@ -5,3 +5,4 @@ void importerAnnuaire(Annuaire_hashmap *a, char *nomFichier);
 void AfficherFichier(char *nm_fichier);
 void extraireFichier(option,nm_fichier);
 void printHelp();
+void rechercheINfichier(option,val,nm_fichier);
