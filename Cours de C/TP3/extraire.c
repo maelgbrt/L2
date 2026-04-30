@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 
-
+// Fonction pour extraire les informations d'un annuaire en fonction des caractères spécifiés
 void extraire(Annuaire_hashmap *a, char *car)
 {
     if (a != NULL && car != NULL)
@@ -35,7 +35,7 @@ void extraire(Annuaire_hashmap *a, char *car)
     }
 }
 
-
+// Fonction pour demander à l'utilisateur quelles informations il souhaite extraire
     void extraireInfos(Annuaire_hashmap *a){
         char choice[10];
         printf("Quelles infos voulez vous obtenir ?\n");

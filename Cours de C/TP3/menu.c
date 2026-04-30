@@ -5,7 +5,7 @@
 #include "fichier.h"
 #include <stdio.h>
 
-
+//la fonction menu qui affiche les options et execute les fonctions correspondantes
 void menu(Annuaire_hashmap *a)
 {
     int nb;
@@ -50,6 +50,7 @@ void menu(Annuaire_hashmap *a)
     exporterAnnuaire(a,"test_annuaire_menu");
 }   
 
+//fonction de test du menu
 void menuDef (){
     printf("ya");
 }
