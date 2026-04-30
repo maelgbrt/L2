@@ -25,8 +25,9 @@ int main(int argc, char *argv[]){
 
         rechercheINfichier(option,val,nm_fichier);
     }else if(strcmp(fonctionnalite,"-f")== 0){
-        
-        printf("Vs avez choisi -f");
+        char *nm_fichier1 = argv[2];
+        char *nm_fichier2 = argv[3];
+        fusionnerFichier(nm_fichier1,nm_fichier2);
     }else if(strcmp(fonctionnalite,"-l")==0){
         printf("oko\n");
         char *nm_fichier = argv[2];

@@ -10,4 +10,5 @@ typedef struct Annuaire_hashmap {
 int hash(char *key, int size);
 void init(Annuaire_hashmap *a, int size);
 void print(Annuaire_hashmap a);
+void fusionner(Annuaire_hashmap *a1, Annuaire_hashmap *a2);
 #endif

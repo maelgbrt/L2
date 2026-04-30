@@ -6,3 +6,4 @@ void AfficherFichier(char *nm_fichier);
 void extraireFichier(option,nm_fichier);
 void printHelp();
 void rechercheINfichier(option,val,nm_fichier);
+void fusionnerFichier(nm_fichier1,nm_fichier2);

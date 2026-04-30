@@ -46,3 +46,23 @@ void print(Annuaire_hashmap a)
         }
     }
 }
+
+
+
+void fusionner(Annuaire_hashmap *a1, Annuaire_hashmap *a2)
+{
+    for (int i = 0; i < a2->size; i++)
+    {
+        if (i < a1->size)
+        {
+            if (a1->tab[i] == NULL)
+            {
+                a1->tab[i] = a2->tab[i];
+            }
+            else if (a2->tab[i] != NULL)
+            {
+                fusionnerMaillon(a1->tab[i], a2->tab[i]);
+            }
+        }
+    }
+}

@@ -21,9 +21,18 @@ void rechercheINfichier(char * option,char * val, char *nm_fichier){
         printContact(*c);    
     }else{
         printf("Il n'y a pas ce compte");
-    }   
+    }
 }
 
+
+void fusionnerFichier(char * nm_fichier1,char * nm_fichier2){
+    Annuaire_hashmap a1;
+    Annuaire_hashmap a2;
+    importerAnnuaire(&a1,nm_fichier1);
+    importerAnnuaire(&a2,nm_fichier2);
+    fusionner(&a1,&a2);
+    exporterAnnuaire(&a1,nm_fichier1);
+}
 void printHelp(){
     printf("----------------HELP---------------\n");
     printf("afficjer healp");
