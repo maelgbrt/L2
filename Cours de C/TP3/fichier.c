@@ -5,7 +5,7 @@
 void removeINfichier(char *val, char *nm_fichier)
 {
     Annuaire_hashmap a;
-    init(&a,100);
+    init(&a,HASH_TABLE);
     importerAnnuaire(&a,nm_fichier);
     removeContact(&a,val,'n');
     exporterAnnuaire(&a,nm_fichier);
@@ -15,7 +15,7 @@ void removeINfichier(char *val, char *nm_fichier)
 void rechercheINfichier(char * option,char * val, char *nm_fichier){
     printf("On va remove le fichier %s , l'option est %s et la val est %s",nm_fichier,nm_fichier,option);
     Annuaire_hashmap a;
-    init(&a,100);
+    init(&a,HASH_TABLE);
     importerAnnuaire(&a,nm_fichier);
     Contact * c = findContact(&a, val, option[0]);
     if(c != NULL){
@@ -27,7 +27,7 @@ void rechercheINfichier(char * option,char * val, char *nm_fichier){
 
 void ajouterContactFichier(char * name,char * first_name, char * phone, char * mail, char *nm_fichier){
     Annuaire_hashmap a;
-    init(&a,100);
+    init(&a,HASH_TABLE);
     importerAnnuaire(&a,nm_fichier);
     Contact *c = create(name,phone,first_name,mail);
     printContact(*c);
@@ -52,14 +52,14 @@ void printHelp(){
 
 void AfficherFichier(char *nm_fichier){
     Annuaire_hashmap a;
-    init(&a,100);
+    init(&a,HASH_TABLE);
     importerAnnuaire(&a,nm_fichier);
     print(a);
 }
 
 void extraireFichier(char * option,char * nm_fichier){
     Annuaire_hashmap a;
-    init(&a,100);
+    init(&a,HASH_TABLE);
     importerAnnuaire(&a,nm_fichier);
     extraire(&a, option);
 }
