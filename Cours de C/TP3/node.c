@@ -11,22 +11,49 @@ Node * create_node(Contact c) {
     return new_node;
 }
 
-Node * tri_nodeContact(Contact *c,Node *n){
-    if (n!=NULL){
-        if(strcmp(c->name,n->contact.name) > 0){
-            printf("\n%s plus grand que %s\n",c->name,n->contact.name);
-            n->right =tri_nodeContact(c,n->right);
-        }else{
-            printf("\n%s plus petit que %s\n",c->name,n->contact.name);
-            n->left = tri_nodeContact(c,n->left);
-        }
-        return n;
-    }else{
-        printf("alala c vide\n");
+
+
+Node * tri_nodeContact(Contact *c, Node *n, char *option) {
+    if (n == NULL) {
         return create_node(*c);
     }
+
+    int cmp = 0;
+
+    if (strcmp(option, "m") == 0) {
+        cmp = strcmp(c->mail, n->contact.mail);
+        printf("tri par mail\n");
+        printf("les mails : %s et %s \n",c->mail,n->contact.mail);
+
+    }else if(strcmp(option,"t") == 0){
+        cmp = strcmp(c->phone,n->contact.phone);
+    }else if(strcmp(option,"p") == 0){
+        cmp = strcmp(c->first_name,n->contact.first_name);
+    }
+    else {
+        cmp = strcmp(c->name, n->contact.name);
+    }
+    if (cmp > 0) {
+        n->right = tri_nodeContact(c, n->right, option);
+    } else if(cmp < 0){
+        n->left = tri_nodeContact(c, n->left, option);
+    }else{
+        printf("Doublon détecté (%s) : entrée ignorée.\n", option);
+    }
+
+    return n;
 }
 
+
+
+void destroy_tree(Node *n) {
+    if (n == NULL) return;
+
+    destroy_tree(n->left);
+    destroy_tree(n->right);
+
+    free(n); 
+}
 
 void print_node(Node *n){
     printContact(n->contact);
@@ -45,7 +72,7 @@ void print_node(Node *n){
 
 Node * triMaillon (Maillon *m,char *option,Node *n){
     while(m != NULL){
-        n = tri_nodeContact(&(m->contact),n);
+        n = tri_nodeContact(&(m->contact),n,option);
         m = m->next;
     }
     return n;
@@ -57,11 +84,3 @@ Node * triHash(Annuaire_hashmap *a,char * option,Node *n){
     }
     return n;
 }
-
-// Node tri_general()
-// Node * n = NULL;
-//     Annuaire_hashmap a;
-//     init(&a,HASH_TABLE);
-//     importerAnnuaire(&a,"test_annuaire_menu");
-//     n = triHash(&a,"mael",n);
-//     print_node(n);

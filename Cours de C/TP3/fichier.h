@@ -23,5 +23,5 @@ void ajouterContactFichier(char * name,char * first_name, char * phone, char * m
 void triFichier(char *option,char *nm_fichier);
 void exporterNode(Node * n,char *nm_fichier);
 void printRecFichier(Node *n,FILE *f);
-void afficheMenuFichier(nm_fichier);
+void afficheMenuFichier(char *nm_fichier);
 #endif

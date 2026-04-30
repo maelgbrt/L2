@@ -66,3 +66,17 @@ void fusionner(Annuaire_hashmap *a1, Annuaire_hashmap *a2)
         }
     }
 }
+
+
+void vider_annuaire(Annuaire_hashmap *a) {
+    for (int i = 0; i < a->size; i++) {
+        Maillon *courant = a->tab[i];
+        while (courant != NULL) {
+            Maillon *temp = courant;
+            courant = courant->next;
+            free(temp);
+        }
+        a->tab[i] = NULL; 
+    }
+    free(a->tab);
+}

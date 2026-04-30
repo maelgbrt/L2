@@ -10,17 +10,12 @@ typedef struct node {
     struct node *right;    
 }Node;
 
-// #ifndef HASH_H
-// #define HASH_H
-// #include "maillon.h"
-// #define HASH_TABLE 100
-
 Node *create_node(Contact c);
-Node * tri_nodeContact(Contact *c,Node *n);
-// void tri_nodeMaillonName(Maillon *m,Node *n);
+Node * tri_nodeContact(Contact *c, Node *n, char *option);
 void add_node(Contact *c, Node *n);
 void print_node(Node *n);
 Node * triHash(Annuaire_hashmap *a,char * option,Node *n);
 Node * triMaillon (Maillon *m,char *option,Node *n);
+void destroy_tree(Node *n) ;
 
 #endif

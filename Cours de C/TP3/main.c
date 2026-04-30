@@ -7,13 +7,14 @@
 #include "node.h"
 
 
+//retour help si nécessaire
 void printHelpArg(){
     printf("Error Appel Fonction\n");
         printf("Demander Aide\n");
         printf("  -->  ./hash -h\n");
 }
 
-
+//peret d'ajouter un contact dans un fichie
 void ajouterMain(int argc,char *argv[]){
     if (argc != 7){
         printHelpArg();
@@ -28,7 +29,7 @@ void ajouterMain(int argc,char *argv[]){
 }
 
 
-
+//permet de rechercher dans un fichier
 void rechercherFichierMain(int argc,char *argv[]){
     if (argc != 5){
         printHelpArg();
@@ -40,26 +41,33 @@ void rechercherFichierMain(int argc,char *argv[]){
     }
 }
 
+
+//permet de fusionner 2 fichier
 void fusionnerFichierMain(int argc,char * argv[]){
     if (argc != 4){
         printHelpArg();
     }else{
          char *nm_fichier1 = argv[2];
         char *nm_fichier2 = argv[3];
+        printf("%s %s\n",nm_fichier1,nm_fichier2);
         fusionnerFichier(nm_fichier1,nm_fichier2);
     }
 }
 
+
+//Permet d'afficher un fichier
 void afficherFichierMain(int argc,char * argv[]){
     if(argc != 3){
         printHelpArg();
     }else{
         char *nm_fichier = argv[2];
         printf("%s",nm_fichier);
-        // AfficherFichier(nm_fichier);
+        AfficherFichier(nm_fichier);
     }
 }
 
+
+//permet d'extraire une donne dun fichier
 void extraireFichierMain(int argc,char * argv[]){
     if (argc != 4){
         printHelpArg();
@@ -69,7 +77,7 @@ void extraireFichierMain(int argc,char * argv[]){
         extraireFichier(option,nm_fichier);
     }
 }
-
+//suprrime par donnes dans le fichier
 void removeFichierMain(int argc,char *argv[]){
     if (argc !=4){
         printHelpArg();
@@ -80,6 +88,8 @@ void removeFichierMain(int argc,char *argv[]){
     }
 }
 
+
+//trie par node le fichier selon option
 void triMain(int argc,char *argv[]){
     if(argc != 4){
         printHelpArg();
@@ -91,9 +101,10 @@ void triMain(int argc,char *argv[]){
     }
 }
 
+//afiche menu interractif
 void menuMain(int argc,char *argv[]){
     if(argc != 3){
-        printHelp();
+        printHelpArg();
     }else{
         char *nm_fichier = argv[2];
         afficheMenuFichier(nm_fichier);
@@ -101,6 +112,7 @@ void menuMain(int argc,char *argv[]){
 }
 
 
+//menu lien
 int main(int argc, char *argv[]){
     char *fonctionnalite = argv[1];
     if(strcmp(fonctionnalite,"-a") == 0){
@@ -110,7 +122,6 @@ int main(int argc, char *argv[]){
     }else if(strcmp(fonctionnalite,"-f")== 0){
        fusionnerFichierMain(argc,argv);
     }else if(strcmp(fonctionnalite,"-l")==0){
-        printf("pq ça marche pas !! %d\n",argc);
         afficherFichierMain(argc,argv);
     }else if(strcmp(fonctionnalite, "-e") == 0){
        extraireFichierMain(argc,argv);
@@ -122,21 +133,8 @@ int main(int argc, char *argv[]){
         triMain(argc,argv);
     }else if(strcmp(fonctionnalite,"-i") ==0){
         menuMain(argc,argv);
-    
     }else{
         printf("La fonctionnalité n'est pas disponible --> -h (help)");
     }
 
-    // Contact *c =create("tesr","07","Gaborit","mail@mail.fr");
-    // Contact *c2 =create("telio","07","Gaborit","mail@mail.fr");
-    // Contact *c3 =create("vulian","07","Gaborit","mail@mail.fr");
-    // // printContact(*c);
-    
-    // // add_node(c2,n);
-    // // Node *n2  = tri_nodeContact(c3,n);
-    // // print_node(n2);
-    
-    
-    
-    
 }
