@@ -114,6 +114,7 @@ void menuMain(int argc,char *argv[]){
 
 //menu lien
 int main(int argc, char *argv[]){
+    if (argc > 1){
     char *fonctionnalite = argv[1];
     if(strcmp(fonctionnalite,"-a") == 0){
         ajouterMain(argc, argv);
@@ -136,5 +137,7 @@ int main(int argc, char *argv[]){
     }else{
         printf("La fonctionnalité n'est pas disponible --> -h (help)");
     }
-
+}else{
+    affiche_aide();
+}
 }

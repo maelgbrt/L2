@@ -32,6 +32,7 @@ Person *create(char *name,int age,char *email){
     return res;
 }
 
+
 // void add(Hashmap *h,char *name,int age,char *email){
 //     int index =  hash(name,h->size);
 //     Person *p = create(name,age,email);

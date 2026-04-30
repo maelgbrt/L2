@@ -1,6 +1,7 @@
 #ifndef HASH_H
 #define HASH_H
 #include "maillon.h"
+#include "contact.h"
 #define HASH_TABLE 100
 
 typedef struct Annuaire_hashmap {

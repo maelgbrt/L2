@@ -1,4 +1,4 @@
-
+#include "contact.h"
 
 typedef struct 
 {
