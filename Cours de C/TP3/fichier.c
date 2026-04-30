@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "fichier.h"
 
 void removeINfichier(char *option,char *val, char *nm_fichier)
@@ -89,4 +90,14 @@ void exporterAnnuaire(Annuaire_hashmap *a, char *nomFichier) {
 
     fclose(f);
     printf("Annuaire exporté avec succès dans %s\n", nomFichier);
+}
+
+void affiche_aide(){
+    printf("-a : ajouter un contact\n");
+    printf("-l : lister les contacts\n");
+    printf("-h : afficher l’aide\n");
+    printf("-r : rechercher un contact.\n");
+    printf("-e [nptm] : extraire du fichier les noms, prénoms, numéros de téléphone, adresses mail.\n");
+    printf("-s : supprimer un contact\n");
+    printf("-f : fusionner deux fichiers\n");
 }
