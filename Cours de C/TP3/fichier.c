@@ -34,6 +34,7 @@ void ajouterContactFichier(char * name,char * first_name, char * phone, char * m
     Contact *c = create(name,phone,first_name,mail);
     printContact(*c);
     add(&a,c);
+    free(c);
     exporterAnnuaire(&a,nm_fichier);
     vider_annuaire(&a);
 }    

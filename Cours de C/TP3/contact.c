@@ -113,6 +113,7 @@ void ajouterContact (Annuaire_hashmap *a) {
     Contact *c = create(name, phone,first_name,mail);
     printContact(*c);
     add(a, c);
+    free(c);
 }
 
 

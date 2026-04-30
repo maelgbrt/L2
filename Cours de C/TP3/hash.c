@@ -66,6 +66,7 @@ void fusionner(Annuaire_hashmap *a1, Annuaire_hashmap *a2)
             {
                 fusionnerMaillon(a1->tab[i], a2->tab[i]);
             }
+            a2->tab[i] = NULL;
         }
     }
 }
