@@ -2,12 +2,12 @@
 #include <stdlib.h>
 #include "fichier.h"
 
-void removeINfichier(char *option,char *val, char *nm_fichier)
+void removeINfichier(char *val, char *nm_fichier)
 {
     Annuaire_hashmap a;
     init(&a,100);
     importerAnnuaire(&a,nm_fichier);
-    removeContact(&a,val,option[0]);
+    removeContact(&a,val,'n');
     exporterAnnuaire(&a,nm_fichier);
 }
 
@@ -24,6 +24,17 @@ void rechercheINfichier(char * option,char * val, char *nm_fichier){
         printf("Il n'y a pas ce compte");
     }
 }
+
+void ajouterContactFichier(char * name,char * first_name, char * phone, char * mail, char *nm_fichier){
+    Annuaire_hashmap a;
+    init(&a,100);
+    importerAnnuaire(&a,nm_fichier);
+    Contact *c = create(name,phone,first_name,mail);
+    printContact(*c);
+    add(&a,c);
+    exporterAnnuaire(&a,nm_fichier);
+}    
+
 
 
 void fusionnerFichier(char * nm_fichier1,char * nm_fichier2){

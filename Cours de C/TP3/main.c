@@ -6,76 +6,100 @@
 #include "fichier.h"
 
 
-int main(int argc, char *argv[]){
-    char *fonctionnalite = argv[1];
-    printf("La focntionnalité est %s\n",fonctionnalite);
-    // Annuaire_hashmap *a;    
-    // init(&a,20);
-    
-    
-    if(strcmp(fonctionnalite,"-a") == 0){
-        printf("Vs avez choisi -a");
+void printHelpArg(){
+    printf("Error Appel Fonction\n");
+        printf("Demander Aide\n");
+        printf("  -->  .\hash -h\n");
+}
 
-    }else if(strcmp(fonctionnalite,"-i") == 0){
-        menuDef();
-    }else if(strcmp(fonctionnalite,"-r") == 0){
+
+void ajouterMain(int argc,char *argv[]){
+    if (argc != 7){
+        printHelpArg();
+    }else{
+        char * first_name = argv[3];
+        char * name = argv[2];
+        char * phone = argv[4];
+        char * mail = argv[5];
+        char * nm_fichier = argv[6];
+        ajouterContactFichier(name,first_name,phone,mail,nm_fichier);
+    }
+}
+
+
+
+void rechercherFichierMain(int argc,char *argv[]){
+    if (argc != 5){
+        printHelpArg();
+    }else{
         char *option = argv[2];
         char *val = argv[3];
         char *nm_fichier = argv[4];
-
         rechercheINfichier(option,val,nm_fichier);
-    }else if(strcmp(fonctionnalite,"-f")== 0){
-        char *nm_fichier1 = argv[2];
+    }
+}
+
+void fusionnerFichierMain(int argc,char * argv[]){
+    if (argc != 4){
+        printHelpArg();
+    }else{
+         char *nm_fichier1 = argv[2];
         char *nm_fichier2 = argv[3];
         fusionnerFichier(nm_fichier1,nm_fichier2);
-    }else if(strcmp(fonctionnalite,"-l")==0){
-        printf("oko\n");
+    }
+}
+
+void afficherFichierMain(int argc,char * argv[]){
+    if(argc != 3){
+        printHelpArg();
+    }else{
         char *nm_fichier = argv[2];
-        AfficherFichier(nm_fichier);
-    }else if(strcmp(fonctionnalite, "-e") == 0){
+        printf("%s",nm_fichier);
+        // AfficherFichier(nm_fichier);
+    }
+}
+
+void extraireFichierMain(int argc,char * argv[]){
+    if (argc != 4){
+        printHelpArg();
+    }else{
         char *option= argv[2];
         char *nm_fichier = argv[3];
-        printf("l'option est %s et nm_fichier est %s",option,nm_fichier);
         extraireFichier(option,nm_fichier);
+    }
+}
+
+removeFichierMain(int argc,char *argv[]){
+    if (argc !=4){
+        printHelpArg();
+    }else{
+        char *val= argv[2];
+        char *nm_fichier = argv[3];
+        removeINfichier(val,nm_fichier);
+    }
+}
+
+
+
+
+int main(int argc, char *argv[]){
+    char *fonctionnalite = argv[1];
+    if(strcmp(fonctionnalite,"-a") == 0){
+        ajouterMain(argc, argv);
+    }else if(strcmp(fonctionnalite,"-r") == 0){
+        rechercherFichierMain(argc,argv);
+    }else if(strcmp(fonctionnalite,"-f")== 0){
+       fusionnerFichierMain(argc,argv);
+    }else if(strcmp(fonctionnalite,"-l")==0){
+        printf("pq ça marche pas !! %d\n",argc);
+        afficherFichierMain(argc,argv);
+    }else if(strcmp(fonctionnalite, "-e") == 0){
+       extraireFichierMain(argc,argv);
     }else if(strcmp(fonctionnalite, "-s") == 0){
-        char *option= argv[2];
-        char *val= argv[3];
-        char *nm_fichier = argv[4];
-        printf("Voici loption %s et la valeur de l'option %s puis le nm fichier %s\n",option,val,nm_fichier);
-        removeINfichier(option,val,nm_fichier);
+        removeFichierMain(argc,argv);
     }else if(strcmp(fonctionnalite,"-h") == 0){
         printHelp();
-
     }else{
-        printf("La focntionnalité n'est pas disponible --> -h (help)");
+        printf("La fonctionnalité n'est pas disponible --> -h (help)");
     }
-
-
-
-    // menu(&a);
-    }
-
-    // argv[0] est toujours le nom du programme ("./hash")
-//     printf("Nom du programme : %s\n", argv[0]);
-//  Contact c = *create("mael", "07", "gaborit", "maelgaborit@gmail.com");
-//     Contact c2 = *create("telio", "058", "gaborit", "teliogaborit@gmail.com");
-//     Annuaire_hashmap a;
-//     init(&a, 15);
-//     add(&a, &c);
-//     add(&a, &c2);
-//     print(a);
-//     Contact *c3 = findContact(&a, "telio", 'n');
-//     if (c3 != NULL)
-//     {
-//         printContact(*c3);
-//     }
-    // printf("========test extraction ======");
-    // extraire(&a,"nt");
-    // menu(&a);
-
-    // findContact(a.tab[10],"mael",'n');
-    // Contact *res = findContact(&a[10],"mael","n");
-
-
-    // Annuaire_hashmap *a;
-//    int argc, char *argv[]
+}
