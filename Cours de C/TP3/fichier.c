@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "fichier.h"
+#include "extraire.h"
 
 void removeINfichier(char *val, char *nm_fichier)
 {

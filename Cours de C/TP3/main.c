@@ -9,7 +9,7 @@
 void printHelpArg(){
     printf("Error Appel Fonction\n");
         printf("Demander Aide\n");
-        printf("  -->  .\hash -h\n");
+        printf("  -->  ./hash -h\n");
 }
 
 
@@ -69,7 +69,7 @@ void extraireFichierMain(int argc,char * argv[]){
     }
 }
 
-removeFichierMain(int argc,char *argv[]){
+void removeFichierMain(int argc,char *argv[]){
     if (argc !=4){
         printHelpArg();
     }else{
@@ -79,7 +79,13 @@ removeFichierMain(int argc,char *argv[]){
     }
 }
 
-
+void triMain(argc,argv){
+    if(argc != 4){
+        printHelpArg();
+    }else{
+        
+    }
+}
 
 
 int main(int argc, char *argv[]){
@@ -99,6 +105,8 @@ int main(int argc, char *argv[]){
         removeFichierMain(argc,argv);
     }else if(strcmp(fonctionnalite,"-h") == 0){
         printHelp();
+    }else if(strcmp(fonctionnalite,"-t") == 0){
+        triMain(argc,argv);
     }else{
         printf("La fonctionnalité n'est pas disponible --> -h (help)");
     }
