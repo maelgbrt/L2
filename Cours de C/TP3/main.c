@@ -4,6 +4,7 @@
 #include "hash.h"
 #include "menu.h"
 #include "fichier.h"
+#include "node.h"
 
 
 void printHelpArg(){
@@ -79,11 +80,23 @@ void removeFichierMain(int argc,char *argv[]){
     }
 }
 
-void triMain(argc,argv){
+void triMain(int argc,char *argv[]){
     if(argc != 4){
         printHelpArg();
     }else{
-        
+        char *option = argv[2];
+        char *nm_fichier = argv[3];
+        printf("voici l'option : %s et le nm_fichier : %s\n",option,nm_fichier);
+        triFichier(option,nm_fichier);
+    }
+}
+
+void menuMain(int argc,char *argv[]){
+    if(argc != 3){
+        printHelp();
+    }else{
+        char *nm_fichier = argv[2];
+        afficheMenuFichier(nm_fichier);
     }
 }
 
@@ -104,10 +117,26 @@ int main(int argc, char *argv[]){
     }else if(strcmp(fonctionnalite, "-s") == 0){
         removeFichierMain(argc,argv);
     }else if(strcmp(fonctionnalite,"-h") == 0){
-        printHelp();
+        affiche_aide();
     }else if(strcmp(fonctionnalite,"-t") == 0){
         triMain(argc,argv);
+    }else if(strcmp(fonctionnalite,"-i") ==0){
+        menuMain(argc,argv);
+    
     }else{
         printf("La fonctionnalité n'est pas disponible --> -h (help)");
     }
+
+    // Contact *c =create("tesr","07","Gaborit","mail@mail.fr");
+    // Contact *c2 =create("telio","07","Gaborit","mail@mail.fr");
+    // Contact *c3 =create("vulian","07","Gaborit","mail@mail.fr");
+    // // printContact(*c);
+    
+    // // add_node(c2,n);
+    // // Node *n2  = tri_nodeContact(c3,n);
+    // // print_node(n2);
+    
+    
+    
+    
 }

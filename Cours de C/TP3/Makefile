@@ -2,7 +2,7 @@ CFLAGS = -Wall -Wextra -std=c99
 
 all : hash
 
-hash : main.o contact.o hash.o maillon.o extraire.o menu.o fichier.o node.o
+hash : main.o contact.o hash.o maillon.o extraire.o menu.o fichier.o node.o 
 	gcc $(CFLAGS) -o $@ $^
 
 main.o: main.c
@@ -28,6 +28,8 @@ fichier.o : fichier.c
 
 node.o : node.c
 	gcc $(CFLAGS) -c $<
+
+
 
 clean:
 	rm *.o hash

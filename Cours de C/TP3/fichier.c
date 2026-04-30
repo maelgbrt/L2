@@ -1,7 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "fichier.h"
-#include "extraire.h"
 
 void removeINfichier(char *val, char *nm_fichier)
 {
@@ -112,4 +109,52 @@ void affiche_aide(){
     printf("-e [nptm] : extraire du fichier les noms, prénoms, numéros de téléphone, adresses mail.\n");
     printf("-s : supprimer un contact\n");
     printf("-f : fusionner deux fichiers\n");
+}
+
+void triFichier(char *option,char *nm_fichier){
+    Annuaire_hashmap a;
+    init(&a,HASH_TABLE);
+    importerAnnuaire(&a,nm_fichier);
+    Node * n = NULL;
+    n = triHash(&a,"mael",n);
+    if (n!=NULL){
+        print_node(n);
+    }else{
+        printf("c'est vide");
+    }
+    // print_node(n);
+    exporterNode(n,nm_fichier);
+}
+
+
+void exporterNode(Node * n,char *nm_fichier){
+     FILE *f = fopen(nm_fichier, "w");
+
+    if (f == NULL) {
+        printf("Erreur : Impossible de créer le fichier %s\n",nm_fichier);
+        return;
+    }
+    if(n!=NULL){
+        printRecFichier(n,f);
+    }
+    fclose(f);
+    printf("Tri exporté avec succès dans %s\n", nm_fichier);
+}
+
+void printRecFichier(Node *n, FILE *f) {
+    if (n == NULL) {
+        return; 
+    }
+    Contact c = n->contact;
+    printRecFichier(n->left, f);
+    printRecFichier(n->right, f);
+    printf("le print du fichier\n");
+    fprintf(f, "%s;%s;%s;%s\n", c.name, c.first_name, c.phone, c.mail);
+}
+
+void afficheMenuFichier(nm_fichier){
+    Annuaire_hashmap a;
+    init(&a,HASH_TABLE);
+    importerAnnuaire(&a,nm_fichier);
+    menu(&a);
 }
