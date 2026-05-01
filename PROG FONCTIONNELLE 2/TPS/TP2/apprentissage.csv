@@ -1,50 +1,100 @@
-pétanque,boule,cochonnet,terrain,joueur,+
-BMX,saut,piste,course,champion,+
-boxe,combat,ring,champion,round,KO,arbitre,+
-surf,vague,planche,compétition,+
-concert,musique,scène,artiste,album,-
-tennis,Grand Chelem,balle,filet,revers,service,court,tournoi,+
-polo,cheval,équipe,terrain,ballon,+
-impôt,fiscal,déclaration,revenu,-
-basketball,trois points,rebond,victoire,finale,équipe,+
-ski nautique,slalom,saut,compétition,bateau,+
-rugby,Tournoi des Six Nations,mêlée,essai,finale,ballon,plaquage,arbitre,stade,+
-rugby,plaquage,ballon,touche,arbitre,+
-informatique,programme,bug,compilateur,langage,-
-recherche médicale,laboratoire,étude,vaccin,publication,-
-énergie,éolienne,solaire,électricité,réseau,-
-architecture,bâtiment,plan,structure,matériau,-
-hockey sur glace,palet,patinoire,équipe,but,finale,+
-justice,tribunal,juge,procès,verdict,avocat,-
-astronomie,étoile,planète,galaxie,télescope,-
-tennis,tournoi,classement ATP,court,balle,service,+
-jardin,plante,fleur,saison,-
-aviron,bateau,rame,course,équipe,médaille,+
-voile,régate,vent,bateau,+
-athlétisme,saut en hauteur,perche,record,stade,+
-lutte,tapis,prise,combat,champion,+
-motocross,moto,piste,saut,course,+
-mode,collection,designer,tendance,vêtement,-
-élection présidentielle,vote,candidat,sondage,résultat,-
-université,étudiant,cours,diplôme,examen,amphithéâtre,-
-billard,queue,boule,table,champion,tournoi,+
-canoë kayak,pagaie,rivière,bateau,course,+
-réseau social,publication,abonné,commentaire,influence,-
-squash,raquette,balle,mur,court,+
-musée,exposition,peinture,visiteur,sculpture,-
-processeur AMD,performances,benchmark,ordinateur,mémoire,-
-snowboard,neige,piste,saut,compétition,podium,+
-triathlon,natation,vélo,course,endurance,médaille,podium,chronométrage,transition,+
-cyclisme,Tour de France,étape,peloton,maillot jaune,col,sprint,vainqueur,podium,+
-cyclisme,sprint,vainqueur,descente,peloton,+
-rallye,voiture,étape,pilote,chronométrage,vainqueur,+
+politique,équipe,victoire,candidat,élection,débat,-
+justice,défense,attaque,tribunal,avocat,juge,-
+marketing,stratégie,campagne,objectif,marché,public,-
+rugby,stratégie,ballon,essai,terrain,victoire,+
+armée,défense,attaque,stratégie,soldat,guerre,-
+tennis,raquette,balle,jeu,match,tournoi,+
+handball,attaque,défense,ballon,équipe,terrain,+
+boxe,combat,match,attaque,défense,ring,+
+musique,groupe,concert,scène,tournée,album,-
+cyclisme,course,équipe,plateau,vélo,montagne,+
+diplomatie,stratégie,défense,traité,paix,pays,-
+recherche,équipe,laboratoire,science,projet,découverte,-
+aviron,équipe,bateau,course,eau,victoire,+
+judo,combat,attaque,défense,tatami,tournoi,+
+télévision,jeu,plateau,candidat,animateur,victoire,-
+littérature,auteur,livre,roman,histoire,édition,-
+business,stratégie,objectif,marché,compétition,-
+football,défense,attaque,ballon,stade,arbitre,+
+ski,compétition,montagne,neige,course,victoire,+
+escrime,attaque,défense,épée,match,piste,+
+cuisine,équipe,chef,restaurant,objectif,service,-
+basketball,équipe,terrain,ballon,match,panier,+
+élection,candidat,victoire,défaite,campagne,stratégie,-
+baseball,équipe,terrain,balle,match,victoire,+
+police,équipe,enquête,défense,sécurité,loi,-
+échecs,jeu,plateau,stratégie,victoire,tournoi,-
+natation,course,piscine,compétition,victoire,chrono,+
+développement,équipe,code,projet,informatique,logiciel,-
+water-polo,équipe,piscine,match,ballon,victoire,+
+athlétisme,course,stade,piste,compétition,victoire,+
+lutte,combat,attaque,défense,tapis,champion,+
+management,équipe,victoire,objectif,projet,succès,-
+tribunal,défense,avocat,procès,juge,verdict,-
+entreprise,équipe,projet,objectif,victoire,réunion,-
+volleyball,équipe,match,filet,ballon,victoire,+
+médecine,équipe,hôpital,patient,chirurgie,santé,-
+théâtre,troupe,scène,pièce,acteur,public,-
+surf,compétition,vague,planche,océan,victoire,+
+golf,parcours,balle,club,tournoi,victoire,+
+gymnastique,compétition,agrès,médaille,victoire,tournoi,+
+journalisme,équipe,rédaction,article,presse,interview,-
+hockey,équipe,glace,match,attaque,défense,+
+bourse,marché,action,finance,stratégie,objectif,-
+badminton,raquette,volant,match,jeu,terrain,+
+triathlon,course,vélo,natation,compétition,victoire,+
+architecture,projet,équipe,bâtiment,plan,construction,-
+cinéma,tournage,équipe,plateau,réalisateur,-
+e-sport,équipe,victoire,clavier,écran,compétition,+
+enseignement,école,classe,professeur,élève,leçon,-
+course automobile,pilote,vitesse,piste,compétition,victoire,+
+plastique,océan,faune,alerte,pollution,-
+retard,avion,aéroport,attente,annulation,-
+cambriolage,effraction,vol,police,assurance,-
+cyberattaque,piratage,données,rançon,panique,-
+natation,piscine,couloir,nage,chrono,médaille,podium,+
+pollution,usine,fumée,santé,rivière,-
+BMX,saut,piste,course,trick,champion,+
+incendie,flamme,fumée,pompier,sinistre,-
+virus,serveur,piratage,bug,panne,-
+baseball,batte,lanceur,prise,terrain,match,+
+naufrage,tempête,bateau,détresse,noyade,-
+avalanche,neige,danger,montagne,enseveli,-
+escrime,fleuret,touche,piste,assaut,champion,+
+inflation,prix,pouvoir achat,économie,banque centrale,-
 cryptomonnaie,bitcoin,blockchain,transaction,portefeuille,-
-film,cinéma,réalisateur,acteur,scénario,scène,tournage,festival,critique,-
-immobilier,appartement,loyer,achat,marché,notaire,-
+aviron,rame,eau,cadence,embarcation,médaille,+
+plongeon,tremplin,figure,piscine,saut,médaille,+
+tir a l arc,flèche,cible,arc,précision,podium,+
+accident,collision,ambulance,blessé,hôpital,-
+handball,gardien,tir,pivot,équipe,terrain,but,+
+immobilier,appartement,loyer,achat,marché,-
+pétanque,boule,cochonnet,terrain,joueur,concours,+
+sécheresse,sol,récolte,fissure,pénurie,-
+haltérophilie,barre,disque,record,podium,+
+tempête,vent,foudre,pluie,inondation,-
+patinage de vitesse,glace,lame,chrono,tour,podium,+
+escalade,paroi,corde,baudrier,sommet,compétition,+
+karaté,kata,ceinture,coup,dojo,compétition,+
+boxe thaïlandaise,ring,coude,genou,combat,champion,+
+pentathlon moderne,natation,équitation,escrime,course,médaille,+
+tennis de plage,sable,filet,smash,set,tournoi,+
+cyclisme sur piste,vélodrome,sprint,médaille,peloton,+
+lutte,tapis,prise,combat,champion,finale,+
+canoë,pagaie,rivière,rapide,course,médaille,+
+grève,blocage,manifestation,revendication,chaos,-
+film,cinéma,réalisateur,acteur,scénario,tournage,-
 banque,crédit,épargne,client,compte,-
-patinage artistique,glace,chorégraphie,saut,médaille,champion,+
-grève générale,syndicat,manifestation,travailleur,revendication,-
-tennis de table,raquette,balle,filet,set,match,+
-marathon,course,endurance,podium,record,chronométrage,dossard,+
-ski de fond,piste,endurance,compétition,médaille,+
-rugby,ballon,mêlée,arbitre,touche,essai,+
+golf,club,green,parcours,trou,birdie,+
+soldes,file,shopping,promotion,dépense,-
+migraine,douleur,obscurité,repos,médicament,-
+boulangerie,farine,four,pain,croissant,-
+football américain,touchdown,casque,équipe,finale,+
+volley,filet,service,smash,libéro,set,match,+
+judo,tatami,ceinture,ippon,prise,champion,+
+ski alpin,piste,neige,remontée,descente,podium,+
+verglas,glissade,chute,fracture,urgence,-
+réunion,agenda,ennui,durée,rapport,-
+migration,frontière,réfugié,politique,accueil,-
+embouteillage,klaxon,route,retard,stress,-
+surf des neiges,piste,saut,figure,compétition,podium,+
