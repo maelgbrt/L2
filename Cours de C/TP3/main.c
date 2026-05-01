@@ -14,7 +14,7 @@ void printHelpArg(){
         printf("  -->  ./hash -h\n");
 }
 
-//peret d'ajouter un contact dans un fichie
+//permet d'ajouter un contact dans un fichie
 void ajouterMain(int argc,char *argv[]){
     if (argc != 7){
         printHelpArg();

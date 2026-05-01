@@ -1,6 +1,7 @@
 #include "maillon.h"
 #include <stdio.h>
 
+
 Maillon *createMaillon(Contact *c)
 {
     Maillon *m = malloc(sizeof(Maillon));
@@ -11,7 +12,7 @@ Maillon *createMaillon(Contact *c)
     return m;
 }
 
-
+// Affiche les contacts d'une liste de maillons
 void printMaillon(Maillon *m)
 {
     while (m != NULL)
@@ -23,7 +24,7 @@ void printMaillon(Maillon *m)
     }
 }
 
-
+// Insère un maillon à la fin de la liste
 void insertMaillon(Maillon *m, Contact *c)
 {
     while (m->next != NULL)
@@ -33,7 +34,7 @@ void insertMaillon(Maillon *m, Contact *c)
     m->next = createMaillon(c);
 }
 
-
+// Trouve un maillon dans la liste à partir d'une valeur (nom, mail ou téléphone)
 Maillon *findMaillon(Maillon *m, char *val)
 {
     while (m != NULL)
@@ -47,7 +48,7 @@ Maillon *findMaillon(Maillon *m, char *val)
     }
 }
 
-
+// Supprime un maillon de la liste à partir d'une valeur (nom, mail ou téléphone)
 void fusionnerMaillon(Maillon *m1, Maillon *m2)
 {
     while (m1->next != NULL)

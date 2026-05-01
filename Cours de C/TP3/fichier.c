@@ -1,5 +1,6 @@
 #include "fichier.h"
 
+// Permet de supprimer un contact d'un fichier
 void removeINfichier(char *val, char *nm_fichier)
 {
     Annuaire_hashmap a;
@@ -10,7 +11,7 @@ void removeINfichier(char *val, char *nm_fichier)
     vider_annuaire(&a);
 }
 
-
+// Permet de rechercher un contact dans un fichier
 void rechercheINfichier(char * option,char * val, char *nm_fichier){
     printf("On va remove le fichier %s , l'option est %s et la val est %s",nm_fichier,nm_fichier,option);
     Annuaire_hashmap a;
@@ -25,6 +26,7 @@ void rechercheINfichier(char * option,char * val, char *nm_fichier){
     vider_annuaire(&a);
 }
 
+// Permet d'ajouter un contact dans un fichier
 void ajouterContactFichier(char * name,char * first_name, char * phone, char * mail, char *nm_fichier){
     Annuaire_hashmap a;
     init(&a,HASH_TABLE);

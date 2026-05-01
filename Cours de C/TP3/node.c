@@ -1,6 +1,7 @@
 #include "node.h"
 #include <stdio.h>
 
+// Crée un nouveau nœud avec le contact donné
 Node * create_node(Contact c) {
     Node *new_node = malloc(sizeof(Node));  
     if (new_node != NULL) {
@@ -12,7 +13,7 @@ Node * create_node(Contact c) {
 }
 
 
-
+// Trie un contact dans l'arbre binaire en fonction de l'option spécifiée
 Node * tri_nodeContact(Contact *c, Node *n, char *option) {
     if (n == NULL) {
         return create_node(*c);
@@ -45,7 +46,7 @@ Node * tri_nodeContact(Contact *c, Node *n, char *option) {
 }
 
 
-
+// Libère la mémoire de l'arbre binaire
 void destroy_tree(Node *n) {
     if (n == NULL) return;
 
@@ -55,6 +56,7 @@ void destroy_tree(Node *n) {
     free(n); 
 }
 
+// Affiche les contacts de l'arbre binaire (parcours infixe)
 void print_node(Node *n){
     printContact(n->contact);
     
@@ -69,7 +71,7 @@ void print_node(Node *n){
 }
 
 
-
+// Trie les contacts d'une liste de maillons et les insère dans un arbre binaire
 Node * triMaillon (Maillon *m,char *option,Node *n){
     while(m != NULL){
         n = tri_nodeContact(&(m->contact),n,option);
@@ -78,6 +80,7 @@ Node * triMaillon (Maillon *m,char *option,Node *n){
     return n;
 }
 
+// Trie les contacts de l'annuaire et les insère dans un arbre binaire
 Node * triHash(Annuaire_hashmap *a,char * option,Node *n){
     for(int i = 0; i < a->size; i ++){
         n = triMaillon (a->tab[i],option,n);

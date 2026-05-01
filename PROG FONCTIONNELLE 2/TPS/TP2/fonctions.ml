@@ -182,6 +182,64 @@ let rec recherche = function ensemble_doc -> function liste_mots ->
 
 
 
+
+
+
+
+
+
+let rec recherche_opt = function ensemble_doc -> function liste_mots -> 
+  if ensemble_doc_vide ensemble_doc then
+    Carbre_vide
+  
+  else if liste_mot_vide liste_mots then
+   CFeuille (get_signe (get_prem_doc ensemble_doc))
+
+  else
+    let mot_pivot = get_prem liste_mots in
+    let reste_mots = get_reste liste_mots in
+
+    (* ici soccuper dutiu gain prendre celui plus gros gain et pr le reste erenvoyer liste avec ne mois le temre *)
+    
+    let docs_oui = doui ensemble_doc mot_pivot in
+    let docs_non = dnon ensemble_doc mot_pivot in
+
+    let fils_gauche = 
+      if ensemble_doc_vide docs_oui then 
+        Carbre_vide
+      else if est_homogene docs_oui then
+        CFeuille (get_signe (get_prem_doc docs_oui))
+      else
+        recherche docs_oui reste_mots
+    in
+
+    let fils_droit = 
+      if ensemble_doc_vide docs_non then 
+        Carbre_vide
+      else if est_homogene docs_non then
+        CFeuille (get_signe (get_prem_doc docs_non))
+      else
+        recherche docs_non reste_mots
+    in
+
+    CArbre(mot_pivot, fils_gauche, fils_droit);;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     let recherche_non_optimise = function ensemble_doc -> 
       let liste_mot = findlisteMots ensemble_doc in 
       recherche ensemble_doc liste_mot;;
@@ -295,9 +353,6 @@ let calculGain = function ensemble_doc -> function mot ->
 (* let creation_arbre = function ensemble_doc ->
 
 
-
-
-
   if ensemble_doc_vide ensemble_doc then
     
   else
@@ -306,13 +361,6 @@ let calculGain = function ensemble_doc -> function mot ->
     CArbre(arbre_gauche,arbre_droit)
 
  *)
-
-
-
-
-
-
-
 
 
   (* non = dnon ensemble_doc (get_prem liste_mot_content) in *)

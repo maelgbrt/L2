@@ -17,6 +17,7 @@ int hash(char *key, int size)
 }
 #include <stdio.h>
 
+// Permet d'initialiser un annuaire vide
 void init(Annuaire_hashmap *a, int size)
 {
     a->tab = (Maillon **)malloc(size * sizeof(Maillon *));
@@ -33,6 +34,8 @@ void init(Annuaire_hashmap *a, int size)
         a->tab[i] = NULL;
     }
 }
+
+// Permet d'afficher les contacts d'un annuaire
 void print(Annuaire_hashmap a)
 {
     for (int i = 0; i < a.size; i++)
@@ -48,7 +51,7 @@ void print(Annuaire_hashmap a)
 }
 
 
-
+// Permet de fusionner deux annuaires
 void fusionner(Annuaire_hashmap *a1, Annuaire_hashmap *a2)
 {
     for (int i = 0; i < a2->size; i++)
@@ -67,6 +70,10 @@ void fusionner(Annuaire_hashmap *a1, Annuaire_hashmap *a2)
     }
 }
 
+<<<<<<< HEAD
+=======
+// Permet de vider un annuaire
+>>>>>>> d267c7e86949fe056388a82a247aa9ce5b001e49
 void vider_annuaire(Annuaire_hashmap *a) {
     for (int i = 0; i < a->size; i++) {
         Maillon *courant = a->tab[i];

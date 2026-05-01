@@ -4,13 +4,14 @@
 #include <stdio.h>
 #include <stdlib.h> // Pour free
 
+// Fonction pour afficher les détails d'un contact
 void printContact(Contact c)
 {
     printf("Contact !!!\n");
     printf("Prenom : %s \nNom : %s \nTelephone : %s \nMail : %s \n", c.name, c.first_name, c.phone, c.mail);
 }
 
-
+// Fonction pour ajouter un contact à l'annuaire
 void add(Annuaire_hashmap *a, Contact *contact)
 {
     int hash_func = hash(contact->name, a->size);
@@ -26,6 +27,7 @@ void add(Annuaire_hashmap *a, Contact *contact)
 }
 
 
+// Fonction pour trouver un contact dans l'annuaire
 Contact *findContact(Annuaire_hashmap *a, char *val, char option)
 {
     switch (option)
@@ -52,6 +54,7 @@ Contact *findContact(Annuaire_hashmap *a, char *val, char option)
     }
 }
 
+// Fonction pour supprimer un contact de l'annuaire
 void removeContact(Annuaire_hashmap *a, char *val, char option)
 {
     Contact *tmp = findContact(a, val, option);
@@ -91,6 +94,7 @@ void removeContact(Annuaire_hashmap *a, char *val, char option)
 
 
 
+// Fonction pour ajouter un contact via l'interface utilisateur
 void ajouterContact (Annuaire_hashmap *a) {
     
     char first_name[FIRST_NAME_MAX_LENGHT];
@@ -112,6 +116,7 @@ void ajouterContact (Annuaire_hashmap *a) {
 }
 
 
+// Fonction pour créer un contact à partir des informations fournies
 Contact *create(char *name, char *phone, char *first_name, char *mail)
 {
     Contact *c = malloc(sizeof(Contact));
@@ -124,6 +129,7 @@ Contact *create(char *name, char *phone, char *first_name, char *mail)
     return c;
 }
 
+// Fonction pour rechercher un contact dans l'annuaire via l'interface utilisateur
 void rechercheContact(Annuaire_hashmap *a){
     printf("Rechercher le contact par quoi (n/t/m) ou s pour sortir ?\n");
     char choice;
@@ -176,6 +182,7 @@ void rechercheContact(Annuaire_hashmap *a){
 
 
 
+// Fonction pour supprimer un contact de l'annuaire via l'interface utilisateur
 void SupprimerContact(Annuaire_hashmap *a){
     printf("COmment voulez vous le supprimer(n/t/m) ?\n");
     char choice;
